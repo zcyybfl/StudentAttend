@@ -1,4 +1,4 @@
-package com.example.studentattend.ui.activity;
+package com.example.studentattend.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

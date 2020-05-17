@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="管理员登录"
+            android:text="@string/login_admin"
             android:textSize="24sp"/>
 
     </androidx.appcompat.widget.Toolbar>
@@ -35,14 +34,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_user"/>
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -52,10 +52,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/username"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="username"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -73,14 +75,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_psw"/>
+            android:src="@mipmap/ic_psw"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -89,10 +92,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/password"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="password"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 

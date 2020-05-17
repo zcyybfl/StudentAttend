@@ -16,13 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="注册"
+            android:text="@string/register_text"
             android:textSize="24sp"/>
 
     </androidx.appcompat.widget.Toolbar>
-
-
-
 
     <LinearLayout
         android:layout_width="300dp"
@@ -36,14 +33,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_user"/>
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -52,10 +50,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/username"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="register_username"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -71,14 +71,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_user"/>
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -87,10 +88,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/register_name"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="register_name"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -106,14 +109,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_user"/>
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -122,10 +126,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/register_sex"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="register_sex"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -141,14 +147,15 @@
             android:layout_width="16.4dp"
             android:layout_height="21.1dp"
             android:layout_marginBottom="13.4dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_psw"/>
+            android:src="@mipmap/ic_psw"
+            android:contentDescription="@string/todo" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="19.6dp"
+            android:layout_marginStart="19.6dp"
             android:layout_marginTop="9dp"
             android:background="@color/editText"/>
 
@@ -157,10 +164,12 @@
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:hint="@string/password"
             android:background="@null"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:autofillHints="register_password"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
@@ -173,7 +182,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:text="@string/student_register"
             android:background="@color/button"
             android:textSize="17sp"/>
@@ -181,10 +190,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:text="@string/teacher_register"
             android:background="@color/button"
-            android:textSize="17sp"/>
+            android:textSize="17sp"
+            tools:ignore="RelativeOverlap" />
 
     </RelativeLayout>
 
