@@ -10,4 +10,5 @@
     <string name="teacher_login">教师登录</string>
     <string name="register">没有账号？点击注册</string>
     <string name="admin">管理</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.studentattend.ui.activity;
+package com.example.studentattend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,13 @@ import com.example.studentattend.R;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private Button student_login;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        student_login = findViewById(R.id.student_login);
+        Button student_login = findViewById(R.id.student_login);
         student_login.setOnClickListener(this);
 
     }
@@ -37,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.student_login:
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
         }

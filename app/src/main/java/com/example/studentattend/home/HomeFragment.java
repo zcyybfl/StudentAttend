@@ -1,4 +1,4 @@
-package com.example.studentattend.ui.home;
+package com.example.studentattend.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

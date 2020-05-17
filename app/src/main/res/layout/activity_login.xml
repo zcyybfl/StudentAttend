@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".activity.LoginActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -26,7 +25,8 @@
             android:layout_height="74dp"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:src="@mipmap/app_icon"/>
+            android:src="@mipmap/app_icon"
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,14 +48,15 @@
                 android:layout_width="16.4dp"
                 android:layout_height="21.1dp"
                 android:layout_marginBottom="13.4dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="13.5dp"
-                android:src="@mipmap/ic_user"/>
+                android:src="@mipmap/ic_user"
+                android:contentDescription="@string/todo" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="19.6dp"
+                android:layout_marginStart="19.6dp"
                 android:layout_marginTop="9dp"
                 android:background="@color/editText"/>
 
@@ -64,10 +65,12 @@
                 android:layout_width="203dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:hint="@string/username"
                 android:background="@null"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:autofillHints="username"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -82,14 +85,15 @@
                 android:layout_width="16.4dp"
                 android:layout_height="21.1dp"
                 android:layout_marginBottom="13.4dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="13.5dp"
-                android:src="@mipmap/ic_psw"/>
+                android:src="@mipmap/ic_psw"
+                android:contentDescription="@string/todo" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="19.6dp"
+                android:layout_marginStart="19.6dp"
                 android:layout_marginTop="9dp"
                 android:background="@color/editText"/>
 
@@ -98,11 +102,12 @@
                 android:layout_width="203dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:background="@null"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:autofillHints="password" />
 
         </LinearLayout>
 
@@ -116,7 +121,7 @@
                 android:id="@+id/student_login"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:text="@string/student_login"
                 android:background="@color/button"
                 android:textSize="17sp"/>
@@ -125,10 +130,11 @@
                 android:id="@+id/teacher_login"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:text="@string/teacher_login"
                 android:background="@color/button"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                tools:ignore="RelativeOverlap" />
 
         </RelativeLayout>
 

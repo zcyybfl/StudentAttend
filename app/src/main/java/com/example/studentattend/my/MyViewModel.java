@@ -1,4 +1,4 @@
-package com.example.studentattend.ui.my;
+package com.example.studentattend.my;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

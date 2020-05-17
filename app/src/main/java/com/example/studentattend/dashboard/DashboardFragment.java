@@ -1,4 +1,4 @@
-package com.example.studentattend.ui.dashboard;
+package com.example.studentattend.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
