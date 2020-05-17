@@ -30,4 +30,11 @@
        app:layout_constraintLeft_toLeftOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/title_my" />
 
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#000000"
+       app:layout_constraintTop_toBottomOf="@+id/text_my"
+       app:layout_constraintLeft_toLeftOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
