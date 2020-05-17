@@ -1,7 +1,8 @@
-package com.example.studentattend;
+package com.example.studentattend.ui.activity;
 
 import android.os.Bundle;
 
+import com.example.studentattend.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
