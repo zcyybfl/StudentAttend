@@ -21,8 +21,11 @@
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/LoginTheme">
+        <activity android:name=".activity.AdminLoginActivity"/>
+        <activity android:name=".activity.RegisterActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

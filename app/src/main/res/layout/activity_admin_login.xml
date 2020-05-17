@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/register_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="管理员登录"
+            android:textSize="24sp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_user"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="@string/username"
+            android:background="@null"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_psw"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="@string/password"
+            android:background="@null"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/admin_login"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="33dp"
+        android:text="@string/admin_login"
+        android:background="@color/button"
+        android:textSize="17sp"/>
+
+</LinearLayout>

@@ -11,4 +11,9 @@
     <string name="register">没有账号？点击注册</string>
     <string name="admin">管理</string>
     <string name="todo">TODO</string>
+    <string name="student_register">学生注册</string>
+    <string name="teacher_register">教师注册</string>
+    <string name="register_name">请输入姓名</string>
+    <string name="register_sex">请输入性别</string>
+    <string name="admin_login">登录</string>
 </resources>
