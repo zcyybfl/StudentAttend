@@ -3,13 +3,11 @@
     <string name="title_home">首页</string>
     <string name="title_dashboard">课程</string>
     <string name="title_my">我的</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="my">我的</string>
+    <string name="username">请输入账号</string>
+    <string name="password">请输入密码</string>
+    <string name="student_login">学生登录</string>
+    <string name="teacher_login">教师登录</string>
+    <string name="register">没有账号？点击注册</string>
+    <string name="admin">管理</string>
 </resources>
