@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_my"
         android:name="com.example.studentattend.ui.my.MyFragment"
         android:label="@string/title_my"
         tools:layout="@layout/fragment_my" />
