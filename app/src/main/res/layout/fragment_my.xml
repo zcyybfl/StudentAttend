@@ -19,13 +19,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_my"
+    <ListView
+        android:id="@+id/listView_my"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_my"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_my" />
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
         android:id="@+id/quit_login"
@@ -40,7 +40,7 @@
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_my" />
+        app:layout_constraintTop_toBottomOf="@+id/listView_my" />
 
     <Button
         android:id="@+id/quit"
