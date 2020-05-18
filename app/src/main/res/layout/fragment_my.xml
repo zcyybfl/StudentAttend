@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/my"
-        android:textSize="21sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:background="#00BCD4"
         android:textColor="#FFFFFF"
@@ -35,7 +35,7 @@
         android:layout_marginTop="15dp"
         android:background="#00BCD4"
         android:textColor="#FFFFFF"
-        android:textSize="21sp"
+        android:textSize="20sp"
         android:text="@string/quit_login"
         app:layout_constraintTop_toBottomOf="@+id/listView_my" />
 
