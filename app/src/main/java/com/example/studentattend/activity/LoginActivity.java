@@ -2,7 +2,6 @@ package com.example.studentattend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +20,8 @@ import com.example.studentattend.service.ServiceLogin;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button student_login;
-    private Button teacher_login;
     private EditText username;
     private EditText password;
-    private TextView register;
     public static BaseBean baseBean;
 
     @Override
@@ -34,15 +30,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        student_login = findViewById(R.id.student_login);
-        teacher_login = findViewById(R.id.teacher_login);
-        register = findViewById(R.id.register);
+        Button student_login = findViewById(R.id.student_login);
+        Button teacher_login = findViewById(R.id.teacher_login);
+        TextView register = findViewById(R.id.register);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         student_login.setOnClickListener(this);
         teacher_login.setOnClickListener(this);
         register.setOnClickListener(this);
-
     }
 
     @Override
@@ -53,11 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.administration:
-                Intent admin_login = new Intent(LoginActivity.this,AdminLoginActivity.class);
-                startActivity(admin_login);
-                break;
+        if (item.getItemId() == R.id.administration) {
+            Intent admin_login = new Intent(LoginActivity.this, AdminLoginActivity.class);
+            startActivity(admin_login);
         }
         return true;
     }
@@ -73,10 +66,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"student");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
-//                    Log.d("LoginActivity", "msg is " + baseBean.getMsg());
-//                    Log.d("LoginActivity", "date is " + baseBean.getDate());
-//                    Log.d("LoginActivity", "username is " + username_Text);
-//                    Log.d("LoginActivity", "password is " + password_Text);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -108,24 +97,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
     /**
      * 判断登录是否成功
-     * @param baseBean1
-     * @return
      */
     public boolean judge(BaseBean baseBean1){
-        if (!baseBean1.getMsg().equals("登录失败")){
-            return true;
-        }else{
-            return false;
-        }
+        return !baseBean1.getMsg().equals("登录失败");
     }
 
     /**
      * 验证账户密码是否输入为空
-     * @param username
-     * @param password
-     * @return
      */
     public boolean validateInput(String username,String password){
         if (username.isEmpty()){

@@ -1,4 +1,4 @@
-package com.example.studentattend.my;
+package com.example.studentattend.dao;
 
 public class MyMenu {
 
