@@ -73,10 +73,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"student");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
-                    Log.d("LoginActivity", "msg is " + baseBean.getMsg());
-                    Log.d("LoginActivity", "date is " + baseBean.getDate());
-                    Log.d("LoginActivity", "username is " + username_Text);
-                    Log.d("LoginActivity", "password is " + password_Text);
+//                    Log.d("LoginActivity", "msg is " + baseBean.getMsg());
+//                    Log.d("LoginActivity", "date is " + baseBean.getDate());
+//                    Log.d("LoginActivity", "username is " + username_Text);
+//                    Log.d("LoginActivity", "password is " + password_Text);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
