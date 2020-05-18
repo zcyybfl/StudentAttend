@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(intent);
                         finish();
                     }else {
-                        Toast.makeText(LoginActivity.this,"账户或用户名错误",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,"账户或密码错误",Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -92,14 +92,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"teacher");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
-//                Log.d("LoginActivity", "msg is " + baseBean.getMsg());
-//                Log.d("LoginActivity", "date is " + baseBean.getDate());
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     }else {
-                        Toast.makeText(LoginActivity.this,"账户或用户名错误",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,"账户或密码错误",Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
