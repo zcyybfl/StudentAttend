@@ -6,9 +6,12 @@ public class MyMenu {
 
     private String data;
 
-    public MyMenu(String name, String data) {
+    private int imageId;
+
+    public MyMenu(String name, String data,int imageId) {
         this.name = name;
         this.data = data;
+        this.imageId = imageId;
     }
 
     public String getName() {
@@ -25,5 +28,13 @@ public class MyMenu {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }
