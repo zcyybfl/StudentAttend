@@ -20,4 +20,9 @@
     <string name="register_text">注册</string>
     <string name="quit_login">退出登录</string>
     <string name="quit">退出</string>
+    <string name="modify_password">修改密码</string>
+    <string name="old_password">请输入原密码</string>
+    <string name="new_password">请输入新密码</string>
+    <string name="new_password_again">请再次输入新密码</string>
+    <string name="submit">提交</string>
 </resources>
