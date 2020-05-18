@@ -14,7 +14,6 @@ import com.example.studentattend.R;
 
 public class AdminLoginActivity extends AppCompatActivity {
 
-    private Button admin_login;
     private EditText admin_username;
     private EditText admin_password;
     private String username;
@@ -24,7 +23,7 @@ public class AdminLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
-        admin_login = findViewById(R.id.admin_login);
+        Button admin_login = findViewById(R.id.admin_login);
         admin_username = findViewById(R.id.admin_username);
         admin_password = findViewById(R.id.admin_password);
 
@@ -46,9 +45,7 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     private boolean judge(String username,String password){
         if (username.equals("admin")){
-            if (password.equals("123456")){
-                return true;
-            }
+            return password.equals("123456");
         }
         return false;
     }
