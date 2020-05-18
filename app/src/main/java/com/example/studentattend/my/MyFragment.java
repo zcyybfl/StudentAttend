@@ -46,12 +46,14 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         myMenuList.add(stuId);
         MyMenu classId = new MyMenu("班级号","18406199",R.drawable.ic_null);
         myMenuList.add(classId);
-        MyMenu system = new MyMenu("系","计算机系",R.drawable.ic_baseline_chevron_right_24);
+        MyMenu system = new MyMenu("系","计算机系",R.drawable.ic_null);
         myMenuList.add(system);
-        MyMenu telephone = new MyMenu("手机号","15736037060",R.drawable.ic_baseline_chevron_right_24);
-        myMenuList.add(telephone);
         MyMenu gender = new MyMenu("性别","男",R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(gender);
+        MyMenu telephone = new MyMenu("手机号","15736037060",R.drawable.ic_baseline_chevron_right_24);
+        myMenuList.add(telephone);
+        MyMenu record = new MyMenu("签到记录","",R.drawable.ic_baseline_chevron_right_24);
+        myMenuList.add(record);
         MyMenu Id = new MyMenu("身份证","50022100000000000X",R.drawable.ic_null);
         myMenuList.add(Id);
         MyMenu mailbox = new MyMenu("邮箱","1830190904@qq.com",R.drawable.ic_baseline_chevron_right_24);
