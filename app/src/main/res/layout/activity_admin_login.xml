@@ -47,7 +47,7 @@
 
 
         <EditText
-            android:id="@+id/register_username"
+            android:id="@+id/admin_username"
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
@@ -87,7 +87,7 @@
             android:background="@color/editText"/>
 
         <EditText
-            android:id="@+id/register_password"
+            android:id="@+id/admin_password"
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
