@@ -18,4 +18,5 @@
     <string name="admin_login">登录</string>
     <string name="login_admin">管理员登录</string>
     <string name="register_text">注册</string>
+    <string name="quit_login">退出登录</string>
 </resources>

@@ -29,9 +29,9 @@ public class MyFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
-        TextView textMy = root.findViewById(R.id.text_my);
+        /*TextView textMy = root.findViewById(R.id.text_my);
         TextPaint textPaint = textMy.getPaint();
-        textPaint.setFakeBoldText(true);
+        textPaint.setFakeBoldText(true);*/
         return root;
     }
 
