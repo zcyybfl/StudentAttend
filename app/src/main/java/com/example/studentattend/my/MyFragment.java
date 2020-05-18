@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentattend.R;
 import com.example.studentattend.activity.LoginActivity;
+import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.dao.MyMenu;
 
 import java.util.ArrayList;
@@ -82,14 +82,12 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case 0:
-                Toast.makeText(getContext(),"1",Toast.LENGTH_SHORT).show();
+            case 4:
                 break;
-            case 1:
-                Toast.makeText(getContext(),"2",Toast.LENGTH_SHORT).show();
-                break;
-            case 2:
-                Toast.makeText(getContext(),"3",Toast.LENGTH_SHORT).show();
+            case 9:
+                Intent modifyPassword = new Intent(getContext(), ModifyPasswordActivity.class);
+                startActivity(modifyPassword);
+            default:
                 break;
         }
     }
