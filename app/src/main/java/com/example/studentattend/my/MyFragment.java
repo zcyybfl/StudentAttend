@@ -57,8 +57,6 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         myMenuList.add(telephone);
         MyMenu record = new MyMenu("签到记录","",R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(record);
-        MyMenu Id = new MyMenu("身份证","50022100000000000X",R.drawable.ic_null);
-        myMenuList.add(Id);
         MyMenu mailbox = new MyMenu("邮箱",LoginActivity.studentBean.getEmail(),R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(mailbox);
         MyMenu modifyPassword = new MyMenu("修改密码","",R.drawable.ic_baseline_chevron_right_24);

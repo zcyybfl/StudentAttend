@@ -1,7 +1,6 @@
 package com.example.studentattend.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.studentattend.BaseActivity;
 import com.example.studentattend.R;
 
 public class MobileNumber extends BaseActivity implements View.OnClickListener {
