@@ -15,10 +15,17 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    //获取是老师还是学生登录
+    public static String student_teacher = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+        assert bundle != null;
+        student_teacher = bundle.getString("student_teacher");
         //去掉标题栏
         Objects.requireNonNull(this.getSupportActionBar()).hide();
         BottomNavigationView navView = findViewById(R.id.nav_view);

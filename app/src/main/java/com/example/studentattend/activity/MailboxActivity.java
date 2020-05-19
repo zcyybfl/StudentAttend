@@ -21,12 +21,17 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
 
     private EditText editEmail;
     private TextView error;
+    private String email;
     public static final int UPDATE_UI = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mailbox);
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+        assert bundle != null;
+        email = bundle.getString("email");
         TextView mailboxReturn = findViewById(R.id.mailbox_return);
         TextView mailboxOk = findViewById(R.id.mailbox_ok);
         editEmail = findViewById(R.id.edit_email);
@@ -41,7 +46,7 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
         Pattern pattern = Pattern.compile(strPattern);
         Matcher matcher = pattern.matcher(editEmail.getText().toString());
         if (matcher.matches()) {
-            if (!editEmail.getText().toString().equals("1830190904@qq.com")) {
+            if (!editEmail.getText().toString().equals(email)) {
                 return true;
             } else {
                 error.setText("新邮箱不能和老邮箱一样");
