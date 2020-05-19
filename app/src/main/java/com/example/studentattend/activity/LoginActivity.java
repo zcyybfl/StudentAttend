@@ -2,7 +2,6 @@ package com.example.studentattend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,6 +74,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     studentBean = gson.fromJson(json,StudentBean.class);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=1，老师=2
+                        Bundle bundle=new Bundle();
+                        bundle.putString("student_teacher", "1");
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
                     }else {
@@ -90,6 +93,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     baseBean = serviceLogin.show();
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=1，老师=2
+                        Bundle bundle=new Bundle();
+                        bundle.putString("student_teacher", "2");
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
                     }else {

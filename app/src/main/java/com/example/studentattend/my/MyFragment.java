@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.studentattend.R;
 import com.example.studentattend.activity.LoginActivity;
 import com.example.studentattend.activity.MailboxActivity;
+import com.example.studentattend.activity.MainActivity;
 import com.example.studentattend.activity.MobileNumber;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.dao.MyMenu;
@@ -24,11 +25,15 @@ import java.util.List;
 
 public class MyFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
+    //获取是老师还是学生登录
+    public static String student_teacher = null;
+
     private List<MyMenu> myMenuList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
+        student_teacher = MainActivity.student_teacher;
         initMyMenu();
         ListView listView = view.findViewById(R.id.listView_my);
         //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
@@ -45,10 +50,17 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     private void initMyMenu() {
         MyMenu name = new MyMenu("名字",LoginActivity.studentBean.getName(),R.drawable.ic_null);
         myMenuList.add(name);
-        MyMenu stuId = new MyMenu("学号",LoginActivity.studentBean.getSno(),R.drawable.ic_null);
-        myMenuList.add(stuId);
-        MyMenu classId = new MyMenu("班级号",LoginActivity.studentBean.getClassmate(),R.drawable.ic_null);
-        myMenuList.add(classId);
+        if (student_teacher.equals("1")) {
+            MyMenu stuId = new MyMenu("学号",LoginActivity.studentBean.getSno(),R.drawable.ic_null);
+            myMenuList.add(stuId);
+        } else if (student_teacher.equals("2")) {
+            MyMenu teaId = new MyMenu("教工号",LoginActivity.studentBean.getSno(),R.drawable.ic_null);
+            myMenuList.add(teaId);
+        }
+        if (student_teacher.equals("1")) {
+            MyMenu classId = new MyMenu("班级号",LoginActivity.studentBean.getClassmate(),R.drawable.ic_null);
+            myMenuList.add(classId);
+        }
         MyMenu system = new MyMenu("系",LoginActivity.studentBean.getDepartment(),R.drawable.ic_null);
         myMenuList.add(system);
         MyMenu gender = new MyMenu("性别",LoginActivity.studentBean.getSex(),R.drawable.ic_null);
@@ -81,18 +93,30 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        MyMenu myMenu;
+        Bundle bundle=new Bundle();
+        if (student_teacher.equals("2")) {
+            //如果当为老师时，listView的position++;
+            position++;
+        }
         switch (position) {
             case 5:
                 Intent mobileNumber = new Intent(getContext(), MobileNumber.class);
-                MyMenu myMenu = myMenuList.get(position);
+                myMenu = myMenuList.get(position);
                 //用Bundle携带数据
-                Bundle bundle=new Bundle();
                 bundle.putString("tel", myMenu.getData());
                 mobileNumber.putExtras(bundle);
                 startActivity(mobileNumber);
                 break;
+            case 6:
+                //签到记录
+                break;
             case 7:
                 Intent mailbox = new Intent(getContext(), MailboxActivity.class);
+                myMenu = myMenuList.get(position);
+                //用Bundle携带数据
+                bundle.putString("email", myMenu.getData());
+                mailbox.putExtras(bundle);
                 startActivity(mailbox);
                 break;
             case 8:
