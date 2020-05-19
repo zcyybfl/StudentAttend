@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.studentattend.R;
 import com.example.studentattend.activity.LoginActivity;
 import com.example.studentattend.activity.MailboxActivity;
+import com.example.studentattend.activity.MobileNumber;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.dao.MyMenu;
 
@@ -56,8 +57,6 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         myMenuList.add(telephone);
         MyMenu record = new MyMenu("签到记录","",R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(record);
-        MyMenu Id = new MyMenu("身份证","50022100000000000X",R.drawable.ic_null);
-        myMenuList.add(Id);
         MyMenu mailbox = new MyMenu("邮箱","1830190904@qq.com",R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(mailbox);
         MyMenu modifyPassword = new MyMenu("修改密码","",R.drawable.ic_baseline_chevron_right_24);
@@ -83,15 +82,30 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case 8:
+            case 5:
+                Intent mobileNumber = new Intent(getContext(), MobileNumber.class);
+                MyMenu myMenu = myMenuList.get(position);
+                //用Bundle携带数据
+                Bundle bundle=new Bundle();
+                bundle.putString("tel", myMenu.getData());
+                mobileNumber.putExtras(bundle);
+                startActivity(mobileNumber);
+                break;
+            case 7:
                 Intent mailbox = new Intent(getContext(), MailboxActivity.class);
                 startActivity(mailbox);
                 break;
-            case 9:
+            case 8:
                 Intent modifyPassword = new Intent(getContext(), ModifyPasswordActivity.class);
                 startActivity(modifyPassword);
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onCreate(null);
     }
 }

@@ -40,6 +40,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                 if (judge(username,password)){
                     Intent intent = new Intent(AdminLoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(AdminLoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                 }

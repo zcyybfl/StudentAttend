@@ -28,4 +28,10 @@
     <string name="edit_mailbox">编辑邮箱</string>
     <string name="ok">确定</string>
     <string name="edit_email">请输入要编辑的内容</string>
+    <string name="mobile_number">绑定手机号</string>
+    <string name="bind_mobile">更换手机号码</string>
+    <string name="phone_title">您的手机号</string>
+    <string name="code_button">获取验证码</string>
+    <string name="telephone">手机号码</string>
+    <string name="verification_code">短信验证码</string>
 </resources>

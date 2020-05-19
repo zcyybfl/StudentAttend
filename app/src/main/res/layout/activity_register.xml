@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/register_text"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"/>
 
         <TextView
@@ -191,6 +192,7 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:text="@string/student_register"
+            android:textColor="#FFFFFF"
             android:background="@color/button"
             android:textSize="17sp"/>
 
@@ -200,6 +202,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:text="@string/teacher_register"
+            android:textColor="#FFFFFF"
             android:background="@color/button"
             android:textSize="17sp"
             tools:ignore="RelativeOverlap" />

@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="#FFFFFF"
             android:text="@string/login_admin"
             android:textSize="24sp"/>
 
@@ -113,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="33dp"
+        android:textColor="#FFFFFF"
         android:text="@string/admin_login"
         android:background="@color/button"
         android:textSize="17sp"/>

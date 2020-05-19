@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MobileNumber">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#00BCD4"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/number_return"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/number_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="@string/mobile_number" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout_number"
+        app:layout_constraintBottom_toTopOf="@+id/bind_mobile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/app_icon"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="13dp"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:text="@string/phone_title"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bind_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:text="@string/bind_mobile"
+        android:background="@drawable/button_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
