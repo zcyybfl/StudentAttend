@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studentattend.R;
@@ -16,17 +17,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText register_username;
     private EditText register_password;
+    private Button student_register;
+    private Button teacher_register;
+    private TextView register_return;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Button student_register = findViewById(R.id.student_register);
-        Button teacher_register = findViewById(R.id.teacher_register);
+        student_register = findViewById(R.id.student_register);
+        teacher_register = findViewById(R.id.teacher_register);
         register_username  =findViewById(R.id.register_username);
         register_password = findViewById(R.id.register_password);
+        register_return = findViewById(R.id.register_return);
         student_register.setOnClickListener(this);
         teacher_register.setOnClickListener(this);
+        register_return.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +51,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if (judge(baseBean)){
                         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         finish();
+                    }else {
+                        Toast.makeText(RegisterActivity.this,"用户名重复，请重新输入",Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -55,8 +64,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     if (judge(baseBean)){
                         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         finish();
+                    }else {
+                        Toast.makeText(RegisterActivity.this,"用户名重复，请重新输入",Toast.LENGTH_SHORT).show();
                     }
                 }
+                break;
+            case R.id.register_return:
+                finish();
                 break;
         }
     }
