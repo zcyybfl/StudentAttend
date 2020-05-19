@@ -21,7 +21,7 @@ public class ServiceLogin extends Thread{
 
     public void init(String username,String password,String flag){
         url = "http://zltzlt.cn:8080/studentAttend/Login";
-        path = url + "?username=" + username + "&password=" + password + "&flag=" + flag;
+        path = url + "?sno=" + username + "&password=" + password + "&flag=" + flag;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.studentattend.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,13 +17,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.studentattend.R;
 import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.dao.StudentBean;
 import com.example.studentattend.service.ServiceLogin;
+import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText username;
     private EditText password;
     public static BaseBean baseBean;
+    Gson gson = new Gson();
+    public static StudentBean studentBean;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"student");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
+                    String json = gson.toJson(baseBean.getDate());
+                    studentBean = gson.fromJson(json,StudentBean.class);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -81,6 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"teacher");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
+//                    Log.d("LoginActivity", "msg is " + baseBean.getMsg());
+//                    Log.d("LoginActivity", "date is " + baseBean.getDate());
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);

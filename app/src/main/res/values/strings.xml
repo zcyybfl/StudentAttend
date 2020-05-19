@@ -4,7 +4,7 @@
     <string name="title_dashboard">课程</string>
     <string name="title_my">我的</string>
     <string name="my">我的</string>
-    <string name="username">请输入账号</string>
+    <string name="username">请输入学号</string>
     <string name="password">请输入密码</string>
     <string name="student_login">学生登录</string>
     <string name="teacher_login">教师登录</string>
@@ -15,6 +15,10 @@
     <string name="teacher_register">教师注册</string>
     <string name="register_name">请输入姓名</string>
     <string name="register_sex">请输入性别</string>
+    <string name="register_class">请输入班级</string>
+    <string name="register_department">请输入系别</string>
+    <string name="register_phone">请输入电话</string>
+    <string name="register_email">请输入邮箱</string>
     <string name="admin_login">登录</string>
     <string name="login_admin">管理员登录</string>
     <string name="register_text">注册</string>

@@ -80,6 +80,44 @@
             android:layout_marginBottom="13.4dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_psw"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:hint="@string/password"
+            android:background="@null"
+            android:textSize="15sp"
+            android:autofillHints="register_password"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13.5dp"
             android:src="@mipmap/ic_user"
             android:contentDescription="@string/todo" />
 
@@ -156,7 +194,7 @@
             android:layout_marginBottom="13.4dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="13.5dp"
-            android:src="@mipmap/ic_psw"
+            android:src="@mipmap/ic_user"
             android:contentDescription="@string/todo" />
 
         <View
@@ -167,16 +205,131 @@
             android:background="@color/editText"/>
 
         <EditText
-            android:id="@+id/register_password"
+            android:id="@+id/register_class"
             android:layout_width="203dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
-            android:hint="@string/password"
+            android:hint="@string/register_class"
             android:background="@null"
             android:textSize="15sp"
-            android:autofillHints="register_password"
-            android:inputType="textPassword" />
+            android:autofillHints="register_sex"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/register_department"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:hint="@string/register_department"
+            android:background="@null"
+            android:textSize="15sp"
+            android:autofillHints="register_sex"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/register_phone"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:hint="@string/register_phone"
+            android:background="@null"
+            android:textSize="15sp"
+            android:autofillHints="register_sex"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:hint="@string/register_email"
+            android:background="@null"
+            android:textSize="15sp"
+            android:autofillHints="register_sex"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -184,7 +337,7 @@
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="33dp">
+        android:layout_marginTop="25dp">
 
         <Button
             android:id="@+id/student_register"
