@@ -1,7 +1,6 @@
 package com.example.studentattend.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import android.annotation.SuppressLint;
@@ -18,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.studentattend.BaseActivity;
 import com.example.studentattend.R;
 import com.example.studentattend.collector.ActivityCollector;
 
