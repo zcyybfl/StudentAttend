@@ -17,6 +17,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText register_username;
     private EditText register_password;
+    private EditText register_name;
+    private EditText register_sex;
+    private EditText register_classmate;
+    private EditText register_department;
+    private EditText register_phone;
+    private EditText register_email;
     private Button student_register;
     private Button teacher_register;
     private TextView register_return;
@@ -30,6 +36,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         teacher_register = findViewById(R.id.teacher_register);
         register_username  =findViewById(R.id.register_username);
         register_password = findViewById(R.id.register_password);
+        register_sex = findViewById(R.id.register_sex);
+        register_classmate = findViewById(R.id.register_class);
+        register_name = findViewById(R.id.register_name);
+        register_department = findViewById(R.id.register_department);
+        register_phone = findViewById(R.id.register_phone);
+        register_email = findViewById(R.id.register_email);
         register_return = findViewById(R.id.register_return);
         student_register.setOnClickListener(this);
         teacher_register.setOnClickListener(this);
@@ -41,11 +53,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         ServiceRegister serviceRegister = new ServiceRegister();
         String username_Text = register_username.getText().toString();
         String password_Text = register_password.getText().toString();
+        String name_Text = register_name.getText().toString();
+        String sex_Text = register_sex.getText().toString();
+        String classmate_Text = register_classmate.getText().toString();
+        String department_Text = register_department.getText().toString();
+        String phone_Text = register_phone.getText().toString();
+        String email_Text = register_email.getText().toString();
         BaseBean baseBean;
         switch (v.getId()){
             case R.id.student_register:
-                if (validateInput(username_Text,password_Text)){
-                    serviceRegister.init(username_Text,password_Text,"student");
+                if (validateInput(username_Text,password_Text,name_Text,sex_Text,classmate_Text,department_Text,phone_Text,email_Text)){
+                    serviceRegister.init(username_Text,password_Text,name_Text,sex_Text,classmate_Text,phone_Text,department_Text,email_Text,"student");
                     serviceRegister.start();
                     baseBean = serviceRegister.show();
                     if (judge(baseBean)){
@@ -57,8 +75,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.teacher_register:
-                if (validateInput(username_Text,password_Text)){
-                    serviceRegister.init(username_Text,password_Text,"teacher");
+                if (validateInput(username_Text,password_Text,name_Text,sex_Text,classmate_Text,department_Text,phone_Text,email_Text)){
+                    //serviceRegister.init(username_Text,password_Text,"teacher");
                     serviceRegister.start();
                     baseBean = serviceRegister.show();
                     if (judge(baseBean)){
@@ -79,12 +97,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return baseBean1.getMsg().equals("注册成功");
     }
 
-    public boolean validateInput(String username,String password){
+    public boolean validateInput(String username,String password,String name,String sex,String classmate,String department,String phone,String email){
         if (username.isEmpty()){
-            Toast.makeText(RegisterActivity.this,"账户不能为空",Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this,"学号不能为空",Toast.LENGTH_SHORT).show();
             return false;
         }else if (password.isEmpty()){
             Toast.makeText(RegisterActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (name.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"名字不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (sex.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"性别不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (classmate.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"班级不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (department.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"系别不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (phone.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"电话不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (email.isEmpty()){
+            Toast.makeText(RegisterActivity.this,"邮箱不能为空",Toast.LENGTH_SHORT).show();
             return false;
         }else {
             return true;
