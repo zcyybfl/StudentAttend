@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.studentattend.R;
 import com.example.studentattend.collector.ActivityCollector;
 
@@ -100,6 +102,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.submit_phone:
                 if (isMobileNO(telephone.getText().toString())) {
+                    Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
                     ActivityCollector.finishAll();
                 }
                 break;
