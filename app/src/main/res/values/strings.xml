@@ -25,4 +25,7 @@
     <string name="new_password">请输入新密码</string>
     <string name="new_password_again">请再次输入新密码</string>
     <string name="submit">提交</string>
+    <string name="edit_mailbox">编辑邮箱</string>
+    <string name="ok">确定</string>
+    <string name="edit_email">请输入要编辑的内容</string>
 </resources>

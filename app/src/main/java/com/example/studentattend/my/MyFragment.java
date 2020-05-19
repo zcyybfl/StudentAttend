@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.studentattend.R;
 import com.example.studentattend.activity.LoginActivity;
+import com.example.studentattend.activity.MailboxActivity;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.dao.MyMenu;
 
@@ -49,7 +50,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         myMenuList.add(classId);
         MyMenu system = new MyMenu("系","计算机系",R.drawable.ic_null);
         myMenuList.add(system);
-        MyMenu gender = new MyMenu("性别","男",R.drawable.ic_baseline_chevron_right_24);
+        MyMenu gender = new MyMenu("性别","男",R.drawable.ic_null);
         myMenuList.add(gender);
         MyMenu telephone = new MyMenu("手机号","15736037060",R.drawable.ic_baseline_chevron_right_24);
         myMenuList.add(telephone);
@@ -82,7 +83,9 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case 4:
+            case 8:
+                Intent mailbox = new Intent(getContext(), MailboxActivity.class);
+                startActivity(mailbox);
                 break;
             case 9:
                 Intent modifyPassword = new Intent(getContext(), ModifyPasswordActivity.class);

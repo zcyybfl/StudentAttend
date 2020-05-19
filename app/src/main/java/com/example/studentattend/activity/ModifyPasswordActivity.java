@@ -1,8 +1,12 @@
 package com.example.studentattend.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +21,7 @@ public class ModifyPasswordActivity extends AppCompatActivity implements View.On
     private EditText newPassword;
     private EditText newPasswordAgain;
     private TextView error;
+    public static final int UPDATE_UI = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,7 @@ public class ModifyPasswordActivity extends AppCompatActivity implements View.On
         oldPassword = findViewById(R.id.old_password);
         newPassword = findViewById(R.id.new_password);
         newPasswordAgain = findViewById(R.id.new_password_again);
-        error = findViewById(R.id.error);
+        error = findViewById(R.id.error_password);
         Button submit = findViewById(R.id.submit);
         modifyPasswordReturn.setOnClickListener(this);
         submit.setOnClickListener(this);
@@ -60,19 +65,32 @@ public class ModifyPasswordActivity extends AppCompatActivity implements View.On
         oldPassword.setText("");
         newPassword.setText("");
         newPasswordAgain.setText("");
-        Thread thread = new Thread() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    sleep(1000);
-                    error.setText("");
+                    Thread.sleep(1000);
+                    Message message = new Message();
+                    message.what = UPDATE_UI;
+                    handler.sendMessage(message);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        };
-        thread.start();
+        }).start();
     }
+
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == UPDATE_UI) {
+                error.setText("");
+            }
+        }
+    };
+
 
     @Override
     public void onClick(View v) {

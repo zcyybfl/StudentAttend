@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".activity.MailboxActivity"
+            android:theme="@style/NoTheme" />
+        <activity
             android:name=".activity.ModifyPasswordActivity"
             android:theme="@style/NoTheme" />
         <activity android:name=".activity.MainActivity" />
@@ -32,6 +35,7 @@
             android:theme="@style/NoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
