@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.studentattend.R;
 import com.example.studentattend.collector.ActivityCollector;
+import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.service.ServiceModify;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,10 +25,12 @@ import java.util.regex.Pattern;
 public class BindMobileNumberActivity extends BaseActivity implements View.OnClickListener {
 
     private String tel;
+    private String flag;
     private EditText telephone;
     private TextView error;
     public static final int UPDATE_UI = 1;
     public static boolean student_teacher;
+    BaseBean baseBean = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,16 +110,34 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
             case R.id.submit_phone:
                 if (student_teacher) {
                     tel = LoginActivity.studentBean.getPhone();
+                    flag = "student";
                 } else {
 //                    tel = LoginActivity.teacherBean.getPhone();
+                    flag = "teacher";
                 }
+                Log.d("BindMobileNumberActivity", "student_teacher is " + student_teacher);
                 if (isMobileNO(telephone.getText().toString())) {
-                    Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
-                    ActivityCollector.finishAll(true);
+                    ServiceModify serviceModify = new ServiceModify();
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"phone",telephone.getText().toString(),flag);
+                    serviceModify.start();
+                    baseBean = serviceModify.show();
+                    if (judge(baseBean)){
+                        Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
+                        LoginActivity.studentBean.setPhone(telephone.getText().toString());
+                        ActivityCollector.finishAll(true);
+                    }else {
+                        Toast.makeText(this,"手机号修改失败",Toast.LENGTH_SHORT).show();
+                        ActivityCollector.finishAll(true);
+                    }
+
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public boolean judge(BaseBean baseBean1){
+        return baseBean1.getMsg().equals("修改成功");
     }
 }

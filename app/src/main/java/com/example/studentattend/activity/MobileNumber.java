@@ -77,6 +77,7 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
                 //用Bundle携带数据
                 Bundle bundle=new Bundle();
                 bundle.putString("tel", tel);
+                bundle.putBoolean("student_teacher",student_teacher);
                 bindMobileNumber.putExtras(bundle);
                 startActivity(bindMobileNumber);
                 break;

@@ -11,11 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.studentattend.R;
 import com.example.studentattend.collector.ActivityCollector;
+import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.service.ServiceModify;
 
 public class ModifyPasswordActivity extends BaseActivity implements View.OnClickListener {
 
@@ -27,6 +30,8 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
     public static final int UPDATE_Activity = 2;
     public static boolean student_teacher;
     private String password;
+    private String flag;
+    BaseBean baseBean = null;
 
 
     @Override
@@ -125,23 +130,39 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
             case R.id.submit:
                 if (student_teacher) {
                     password = LoginActivity.studentBean.getPassword();
+                    flag = "student";
                 } else {
 //                    password = LoginActivity.teacherBean.getPassword();
+                    flag = "teacher";
                 }
                 if (judge()) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Message message = new Message();
-                            message.what = UPDATE_Activity;
-                            handler.sendMessage(message);
-                        }
-                    }).start();
+                    ServiceModify serviceModify = new ServiceModify();
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"password",newPasswordAgain.getText().toString(),flag);
+                    serviceModify.start();
+                    baseBean = serviceModify.show();
+                    if (judge_modify(baseBean)){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Message message = new Message();
+                                message.what = UPDATE_Activity;
+                                handler.sendMessage(message);
+                            }
+                        }).start();
+                    }else {
+                        Toast.makeText(this,"密码修改失败",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 break;
             default:
                 break;
+
         }
+    }
+
+    public boolean judge_modify(BaseBean baseBean1){
+        return baseBean1.getMsg().equals("修改成功");
     }
 
 }
