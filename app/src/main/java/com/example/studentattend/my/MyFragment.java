@@ -21,6 +21,7 @@ import com.example.studentattend.activity.MobileNumber;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.MyMenu;
+import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.other.APKVersionCodeUtils;
 
 import java.util.ArrayList;
