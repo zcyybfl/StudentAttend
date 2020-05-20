@@ -76,7 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=1，老师=2
                         Bundle bundle=new Bundle();
-                        bundle.putString("student_teacher", "1");
+                        bundle.putInt("student_teacher", 1);
+                        bundle.putString("id",username_Text);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
@@ -95,7 +96,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=1，老师=2
                         Bundle bundle=new Bundle();
-                        bundle.putString("student_teacher", "2");
+                        bundle.putInt("student_teacher", 2);
+                        bundle.putString("id",username_Text);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();

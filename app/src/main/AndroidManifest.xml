@@ -5,8 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:allowBackup="true"
@@ -18,14 +20,14 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activity.AttendRecordActivity"></activity>
         <activity android:name=".activity.MobileNumber" />
         <activity android:name=".activity.BindMobileNumberActivity" />
         <activity android:name=".activity.MailboxActivity" />
         <activity android:name=".activity.ModifyPasswordActivity" />
         <activity android:name=".activity.AdminLoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity
-            android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

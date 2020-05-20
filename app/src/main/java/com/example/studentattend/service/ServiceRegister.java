@@ -65,7 +65,6 @@ public class ServiceRegister extends Thread{
                     .build();
             Response response = client.newCall(request).execute();
             responseDate = response.body().string();
-            //Log.d("ServiceRegister", "request is " + responseDate);
         }catch (Exception e){
             e.printStackTrace();
         }

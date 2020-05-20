@@ -33,7 +33,6 @@ public class ServiceLogin extends Thread{
                     .build();
             Response response = client.newCall(request).execute();
             responseDate = response.body().string();
-            //Log.d("ServiceLogin", "request is " + responseDate);
         }catch (Exception e){
             e.printStackTrace();
         }
