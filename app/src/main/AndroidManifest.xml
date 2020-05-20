@@ -20,7 +20,7 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activity.AttendRecordActivity"></activity>
+        <activity android:name=".activity.AttendRecordActivity" />
         <activity android:name=".activity.MobileNumber" />
         <activity android:name=".activity.BindMobileNumberActivity" />
         <activity android:name=".activity.MailboxActivity" />

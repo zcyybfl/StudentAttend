@@ -18,6 +18,7 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
     private TextView phone;
     private String tel;
     public static final int UPDATE_UI = 1;
+    public static boolean student_teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         assert bundle != null;
-        tel = bundle.getString("tel");
+        student_teacher = bundle.getBoolean("student_teacher");
         TextView numberReturn = findViewById(R.id.number_return);
         phone = findViewById(R.id.phone);
         Button bindMobile = findViewById(R.id.bind_mobile);
@@ -36,6 +37,11 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
     }
 
     private void telJudge() {
+        if (student_teacher) {
+            tel = LoginActivity.studentBean.getPhone();
+        } else {
+//            tel = LoginActivity.teacherBean.getPhone();
+        }
         if (tel.equals("")) {
             tel = "暂无手机号";
         }

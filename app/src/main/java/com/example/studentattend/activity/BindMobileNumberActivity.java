@@ -3,6 +3,7 @@ package com.example.studentattend.activity;
 import androidx.annotation.NonNull;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
     private EditText telephone;
     private TextView error;
     public static final int UPDATE_UI = 1;
+    public static boolean student_teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         assert bundle != null;
-        tel = bundle.getString("tel");
+        student_teacher = bundle.getBoolean("student_teacher");
         TextView bindNumberReturn = findViewById(R.id.number_bind_return);
         telephone = findViewById(R.id.telephone);
         error = findViewById(R.id.error_phone);
@@ -101,9 +103,14 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
                 finish();
                 break;
             case R.id.submit_phone:
+                if (student_teacher) {
+                    tel = LoginActivity.studentBean.getPhone();
+                } else {
+//                    tel = LoginActivity.teacherBean.getPhone();
+                }
                 if (isMobileNO(telephone.getText().toString())) {
                     Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
-                    ActivityCollector.finishAll();
+                    ActivityCollector.finishAll(true);
                 }
                 break;
             default:

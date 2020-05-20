@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
     private TextView error;
     private String email;
     public static final int UPDATE_UI = 1;
+    public static boolean student_teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         assert bundle != null;
-        email = bundle.getString("email");
+        student_teacher = bundle.getBoolean("student_teacher");
         TextView mailboxReturn = findViewById(R.id.mailbox_return);
         TextView mailboxOk = findViewById(R.id.mailbox_ok);
         editEmail = findViewById(R.id.edit_email);
@@ -95,6 +97,11 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.mailbox_ok:
+                if (student_teacher) {
+                    email = LoginActivity.studentBean.getEmail();
+                } else {
+//                    email = LoginActivity.teacherBean.getEmail();
+                }
                 if (judge()) {
                     Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
                     finish();

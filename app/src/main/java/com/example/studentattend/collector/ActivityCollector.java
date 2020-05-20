@@ -2,8 +2,6 @@ package com.example.studentattend.collector;
 
 import android.app.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +17,12 @@ public class ActivityCollector {
         activities.remove(activity);
     }
 
-    public static void finishAll() {
+    public static void finishAll(boolean flag) {
         for (Activity activity : activities) {
             if (!activity.isFinishing()) {
+                if (activity.getClass().getSimpleName().equals("MainActivity") && flag) {
+                    continue;
+                }
                 activity.finish();
             }
         }
