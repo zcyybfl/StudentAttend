@@ -2,6 +2,7 @@ package com.example.studentattend.my;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,29 +31,11 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     private List<MyMenu> myMenuList = new ArrayList<>();
 
     Bundle bundle=new Bundle();
+    View view;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_my, container, false);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (judgeStuTea()) {
-                    initMyMenuStu();
-                } else {
-                    initMyMenuTea();
-                }
-            }
-        }).start();
-        ListView listView = view.findViewById(R.id.listView_my);
-        //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
-        MyAdapter adapter = new MyAdapter(requireActivity(),R.layout.my_item,myMenuList);
-        listView.setAdapter(adapter);//把listView与adapter绑定，之后由adapter负责显示listView里面要显示的内容
-        listView.setOnItemClickListener(this);
-        Button quitLogin = view.findViewById(R.id.quit_login);
-        Button quit = view.findViewById(R.id.quit);
-        quitLogin.setOnClickListener(this);
-        quit.setOnClickListener(this);
+        view = inflater.inflate(R.layout.fragment_my, container, false);
         return view;
     }
 
@@ -65,6 +48,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Log.d("asdf5",LoginActivity.studentBean.getPhone());
                 MyMenu name = new MyMenu("名字",LoginActivity.studentBean.getName(),R.drawable.ic_null);
                 myMenuList.add(name);
                 MyMenu stuId = new MyMenu("学号",LoginActivity.studentBean.getSno(),R.drawable.ic_null);
@@ -165,7 +149,26 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
 
     @Override
     public void onResume() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (judgeStuTea()) {
+                    initMyMenuStu();
+                } else {
+                    initMyMenuTea();
+                }
+            }
+        }).start();
+        myMenuList.clear();
+        ListView listView = view.findViewById(R.id.listView_my);
+        //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
+        MyAdapter adapter = new MyAdapter(requireActivity(),R.layout.my_item,myMenuList);
+        listView.setAdapter(adapter);//把listView与adapter绑定，之后由adapter负责显示listView里面要显示的内容
+        listView.setOnItemClickListener(this);
+        Button quitLogin = view.findViewById(R.id.quit_login);
+        Button quit = view.findViewById(R.id.quit);
+        quitLogin.setOnClickListener(this);
+        quit.setOnClickListener(this);
         super.onResume();
-        onCreate(null);
     }
 }
