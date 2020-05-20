@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Bundle bundle=new Bundle();
                         bundle.putInt("student_teacher", 1);
                         bundle.putString("id",username_Text);
+                        bundle.putString("password",password_Text);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
@@ -98,6 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Bundle bundle=new Bundle();
                         bundle.putInt("student_teacher", 2);
                         bundle.putString("id",username_Text);
+                        bundle.putString("password",password_Text);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();

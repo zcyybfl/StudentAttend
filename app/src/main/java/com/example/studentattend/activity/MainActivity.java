@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     //获取是老师还是学生登录
     public static int student_teacher;
     public static  String id;
+    public static String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         assert bundle != null;
         student_teacher = bundle.getInt("student_teacher");
         id = bundle.getString("id");
+        password = bundle.getString("password");
         //去掉标题栏
         Objects.requireNonNull(this.getSupportActionBar()).hide();
         BottomNavigationView navView = findViewById(R.id.nav_view);

@@ -34,6 +34,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     //获取是老师还是学生登录
     public static int student_teacher;
     public static String id;
+    public static String password;
     public static BaseBean baseBean;
     public static StudentBean studentBean;
 
@@ -44,6 +45,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         View view = inflater.inflate(R.layout.fragment_my, container, false);
         student_teacher = MainActivity.student_teacher;
         id = MainActivity.id;
+        password = MainActivity.password;
         update();
         initMyMenu();
         ListView listView = view.findViewById(R.id.listView_my);
@@ -66,7 +68,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         } else {
             flag = "teacher";
         }
-        /*ServiceLogin serviceLogin = new ServiceLogin();
+        ServiceLogin serviceLogin = new ServiceLogin();
         serviceLogin.init(id,password,flag);
         serviceLogin.start();
         baseBean = serviceLogin.show();
@@ -75,7 +77,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
             studentBean = gson.fromJson(json, StudentBean.class);
         } else {
 
-        }*/
+        }
     }
 
     private void initMyMenu() {
