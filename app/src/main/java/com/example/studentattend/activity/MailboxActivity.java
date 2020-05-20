@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studentattend.R;
+import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.service.ServiceModify;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +27,8 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
     private String email;
     public static final int UPDATE_UI = 1;
     public static boolean student_teacher;
+    private String flag;
+    BaseBean baseBean = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,16 +103,32 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.mailbox_ok:
                 if (student_teacher) {
                     email = LoginActivity.studentBean.getEmail();
+                    flag = "student";
                 } else {
 //                    email = LoginActivity.teacherBean.getEmail();
+                    flag = "teacher";
                 }
                 if (judge()) {
-                    Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
-                    finish();
+                    ServiceModify serviceModify = new ServiceModify();
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"email",editEmail.getText().toString(),flag);
+                    serviceModify.start();
+                    baseBean = serviceModify.show();
+                    if (judge_modify(baseBean)){
+                        LoginActivity.studentBean.setEmail(editEmail.getText().toString());
+                        Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else {
+                        Toast.makeText(this,"邮箱修改失败",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public boolean judge_modify(BaseBean baseBean1){
+        return baseBean1.getMsg().equals("修改成功");
     }
 }
