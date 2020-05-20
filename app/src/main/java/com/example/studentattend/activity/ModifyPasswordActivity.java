@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import com.example.studentattend.R;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.service.ServiceModify;
 
 public class ModifyPasswordActivity extends BaseActivity implements View.OnClickListener {
@@ -30,7 +31,6 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
     public static final int UPDATE_Activity = 2;
     public static boolean student_teacher;
     private String password;
-    private String flag;
     BaseBean baseBean = null;
 
 
@@ -59,7 +59,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
             error.setText("密码不能为空");
             reset();
             return false;
-        } else if (!oldPassword.getText().toString().equals(password)) {
+        } else if (!Md5Utils.md5(oldPassword.getText().toString(),"StudentAttend").equals(password)) {
             error.setText("原密码不正确");
             reset();
             return false;
@@ -123,6 +123,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        String flag;
         switch (v.getId()) {
             case R.id.modify_return:
                 finish();
@@ -137,7 +138,8 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                 }
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"password",newPasswordAgain.getText().toString(),flag);
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"password",
+                            Md5Utils.md5(newPasswordAgain.getText().toString(),"StudentAttend"), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){

@@ -21,7 +21,6 @@ import com.example.studentattend.activity.MobileNumber;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.MyMenu;
-import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.other.APKVersionCodeUtils;
 
 import java.util.ArrayList;
@@ -33,6 +32,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
 
     Bundle bundle=new Bundle();
     View view;
+    ListView listView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("asdf5",LoginActivity.studentBean.getPhone());
                 MyMenu name = new MyMenu("名字",LoginActivity.studentBean.getName(),R.drawable.ic_null);
                 myMenuList.add(name);
                 MyMenu stuId = new MyMenu("学号",LoginActivity.studentBean.getSno(),R.drawable.ic_null);
@@ -161,7 +160,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
             }
         }).start();
         myMenuList.clear();
-        ListView listView = view.findViewById(R.id.listView_my);
+        listView = view.findViewById(R.id.listView_my);
         //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
         MyAdapter adapter = new MyAdapter(requireActivity(),R.layout.my_item,myMenuList);
         listView.setAdapter(adapter);//把listView与adapter绑定，之后由adapter负责显示listView里面要显示的内容

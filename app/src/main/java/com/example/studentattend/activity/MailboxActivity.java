@@ -7,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +26,6 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
     private String email;
     public static final int UPDATE_UI = 1;
     public static boolean student_teacher;
-    private String flag;
     BaseBean baseBean = null;
 
     @Override
@@ -96,6 +94,7 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        String flag;
         switch (v.getId()) {
             case R.id.mailbox_return:
                 finish();
@@ -110,17 +109,16 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"email",editEmail.getText().toString(),flag);
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"email",editEmail.getText().toString(), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){
                         LoginActivity.studentBean.setEmail(editEmail.getText().toString());
                         Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
-                        finish();
                     }else {
                         Toast.makeText(this,"邮箱修改失败",Toast.LENGTH_SHORT).show();
-                        finish();
                     }
+                    finish();
                 }
                 break;
             default:

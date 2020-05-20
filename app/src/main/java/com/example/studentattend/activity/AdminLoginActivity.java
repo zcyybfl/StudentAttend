@@ -17,8 +17,6 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     private EditText admin_username;
     private EditText admin_password;
-    private Button admin_login;
-    private TextView admin_return;
     private String username;
     private String password;
 
@@ -26,8 +24,8 @@ public class AdminLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
-        admin_login = findViewById(R.id.admin_login);
-        admin_return = findViewById(R.id.admin_return);
+        Button admin_login = findViewById(R.id.admin_login);
+        TextView admin_return = findViewById(R.id.admin_return);
         admin_username = findViewById(R.id.admin_username);
         admin_password = findViewById(R.id.admin_password);
 
