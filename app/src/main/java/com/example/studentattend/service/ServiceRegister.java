@@ -5,7 +5,6 @@ import android.util.Log;
 import com.example.studentattend.dao.BaseBean;
 import com.google.gson.Gson;
 
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,15 +25,15 @@ public class ServiceRegister extends Thread{
 
     public void init(String sno,String password,String name,String sex,String classmate,String phone,String department,String email,String flag){
         url = "http://zltzlt.cn:8080/studentAttend/Register?";
-        sb.append("sno=" +sno);
-        sb.append("&password=" + password);
-        sb.append("&name=" + name);
-        sb.append("&sex=" + sex);
-        sb.append("&class=" + classmate);
-        sb.append("&department=" + department);
-        sb.append("&phone=" + phone);
-        sb.append("&email=" + email);
-        sb.append("&flag=" + flag);
+        sb.append("sno=").append(sno);
+        sb.append("&password=").append(password);
+        sb.append("&name=").append(name);
+        sb.append("&sex=").append(sex);
+        sb.append("&class=").append(classmate);
+        sb.append("&department=").append(department);
+        sb.append("&phone=").append(phone);
+        sb.append("&email=").append(email);
+        sb.append("&flag=").append(flag);
     }
 
     @Override

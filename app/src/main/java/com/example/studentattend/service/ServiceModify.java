@@ -29,10 +29,6 @@ public class ServiceModify extends Thread{
         this.item = item;
         this.content = content;
         this.flag = flag;
-        Log.d("ServiceModify", "sno is " + this.sno);
-        Log.d("ServiceModify", "item is " + this.item);
-        Log.d("ServiceModify", "content is " + this.content);
-        Log.d("ServiceModify", "flag is " + this.flag);
     }
 
     @Override

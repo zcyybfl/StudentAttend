@@ -1,7 +1,12 @@
 package com.example.studentattend.activity;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Gson gson = new Gson();
     public static StudentBean studentBean;
     Bundle bundle=new Bundle();
+    public static final int REGISTER = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,11 +111,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.register:
-                Intent register_activity = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(register_activity);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        message.what = REGISTER;
+                        handler.sendMessage(message);
+                    }
+                }).start();
                 break;
         }
     }
+
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == REGISTER) {
+                new AlertDialog.Builder(LoginActivity.this)
+                        .setTitle("注册")
+                        .setMessage("请选择注册类型")
+                        .setNegativeButton("学生", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent registerStudent = new Intent(LoginActivity.this,RegisterActivity.class);
+                                startActivity(registerStudent);
+                            }
+                        })
+                        .setPositiveButton("老师", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent registerTeacher = new Intent(LoginActivity.this,RegisterActivity.class);
+                                startActivity(registerTeacher);
+                            }
+                        })
+                        .setNeutralButton("取消",null)
+                        .show();
+            }
+        }
+    };
 
 
     /**
