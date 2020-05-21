@@ -20,8 +20,10 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activity.AttendRecordTeacherActivity" />
+        <activity android:name=".activity.AdminMainActivity" />
         <activity android:name=".activity.ForgetPasswordActivity" />
-        <activity android:name=".activity.AttendRecordActivity" />
+        <activity android:name=".activity.AttendRecordStudentActivity" />
         <activity android:name=".activity.MobileNumber" />
         <activity android:name=".activity.BindMobileNumberActivity" />
         <activity android:name=".activity.MailboxActivity" />

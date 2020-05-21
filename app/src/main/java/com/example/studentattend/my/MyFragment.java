@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentattend.R;
+import com.example.studentattend.activity.AttendRecordStudentActivity;
+import com.example.studentattend.activity.AttendRecordTeacherActivity;
 import com.example.studentattend.activity.LoginActivity;
 import com.example.studentattend.activity.MailboxActivity;
 import com.example.studentattend.activity.MainActivity;
@@ -127,7 +129,13 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
                 startActivity(mobileNumber);
                 break;
             case 6:
-                //签到记录
+                if (judgeStuTea()) {
+                    Intent recordStudent = new Intent(getContext(), AttendRecordStudentActivity.class);
+                    startActivity(recordStudent);
+                } else {
+                    Intent recordTeacher = new Intent(getContext(), AttendRecordTeacherActivity.class);
+                    startActivity(recordTeacher);
+                }
                 break;
             case 7:
                 Intent mailbox = new Intent(getContext(), MailboxActivity.class);

@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.studentattend.R;
 
-public class AttendRecordActivity extends AppCompatActivity {
+public class AdminMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attend_record);
+        setContentView(R.layout.activity_admin_main);
     }
 }
