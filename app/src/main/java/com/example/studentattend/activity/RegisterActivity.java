@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         finish();
                     }else {
-                        Toast.makeText(RegisterActivity.this,"用户名重复，请重新输入",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"用户名(学号)重复，请重新输入",Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         finish();
                     }else {
-                        Toast.makeText(RegisterActivity.this,"用户名重复，请重新输入",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"用户名（学号）重复，请重新输入",Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;

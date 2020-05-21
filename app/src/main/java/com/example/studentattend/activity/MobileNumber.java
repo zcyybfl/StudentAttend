@@ -42,9 +42,6 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
         } else {
 //            tel = LoginActivity.teacherBean.getPhone();
         }
-        if (tel.equals("")) {
-            tel = "暂无手机号";
-        }
         new Thread(new Runnable() {
             @Override
             public void run() {

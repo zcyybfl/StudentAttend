@@ -47,7 +47,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
 
     //判断手机格式是否正确
     private boolean isMobileNO(String mobiles) {
-        if (mobiles.equals("")) {
+        if (mobiles.isEmpty()) {
             error.setText("手机号不能为空");
             reset();
             return false;

@@ -53,9 +53,9 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
     }
 
     private boolean judge() {
-        if (oldPassword.getText().toString().equals("")
-                || newPassword.getText().toString().equals("")
-                || newPasswordAgain.getText().toString().equals("")) {
+        if (oldPassword.getText().toString().isEmpty()
+                || newPassword.getText().toString().isEmpty()
+                || newPasswordAgain.getText().toString().isEmpty()) {
             error.setText("密码不能为空");
             reset();
             return false;

@@ -2,7 +2,6 @@ package com.example.studentattend.my;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import com.example.studentattend.activity.MobileNumber;
 import com.example.studentattend.activity.ModifyPasswordActivity;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.MyMenu;
-import com.example.studentattend.other.APKVersionCodeUtils;
+import com.example.studentattend.version.APKVersionCodeUtils;
 
 import java.util.ArrayList;
 import java.util.List;

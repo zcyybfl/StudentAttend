@@ -1,4 +1,4 @@
-package com.example.studentattend.other;
+package com.example.studentattend.version;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

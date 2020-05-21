@@ -34,7 +34,6 @@ public class AdminLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 username = admin_username.getText().toString();
                 password = admin_password.getText().toString();
-                Log.d("AdminLoginActivity", "password" + password);
                 if (judge(username,password)){
                     Intent intent = new Intent(AdminLoginActivity.this, MainActivity.class);
                     startActivity(intent);
