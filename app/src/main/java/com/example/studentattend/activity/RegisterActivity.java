@@ -11,7 +11,11 @@ import android.widget.Toast;
 
 import com.example.studentattend.R;
 import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.service.ServiceRegister;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -52,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         ServiceRegister serviceRegister = new ServiceRegister();
         String username_Text = register_username.getText().toString();
-        String password_Text = register_password.getText().toString();
+        String password_Text = Md5Utils.md5(register_password.getText().toString(),"StudentAttend");
         String name_Text = register_name.getText().toString();
         String sex_Text = register_sex.getText().toString();
         String classmate_Text = register_classmate.getText().toString();
@@ -101,29 +105,50 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (username.isEmpty()){
             Toast.makeText(RegisterActivity.this,"学号不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (password.isEmpty()){
+        } else if (password.isEmpty()){
             Toast.makeText(RegisterActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (name.isEmpty()){
+        } else if (name.isEmpty()){
             Toast.makeText(RegisterActivity.this,"名字不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (sex.isEmpty()){
+        } else if (sex.isEmpty()){
             Toast.makeText(RegisterActivity.this,"性别不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (classmate.isEmpty()){
+        } else if (classmate.isEmpty()){
             Toast.makeText(RegisterActivity.this,"班级不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (department.isEmpty()){
+        } else if (department.isEmpty()){
             Toast.makeText(RegisterActivity.this,"系别不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (phone.isEmpty()){
+        } else if (phone.isEmpty()){
             Toast.makeText(RegisterActivity.this,"电话不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else if (email.isEmpty()){
+        } else if (email.isEmpty()){
             Toast.makeText(RegisterActivity.this,"邮箱不能为空",Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        } else if (judge(true)) {
+            Toast.makeText(RegisterActivity.this,"电话格式不正确",Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (judge(false)) {
+            Toast.makeText(RegisterActivity.this,"邮箱格式不正确",Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
             return true;
         }
+    }
+
+    private boolean judge(boolean flag) {
+        Matcher matcher;
+        if (flag) {
+            String strPhone = "^((\\+|00)86)?((134\\d{4})|((13[0-3|5-9]|14[1|5-9]|15[0-9]|16[2|5-7]|17[0-8]|18[0-9]|19[0-2|5-9])\\d{8}))$";
+            Pattern pattern = Pattern.compile(strPhone);
+            matcher = pattern.matcher(register_phone.getText().toString());
+        } else {
+            String strPattern = "^([a-zA-Z0-9_\\-.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)" +
+                    "|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$";
+            Pattern pattern = Pattern.compile(strPattern);
+            matcher = pattern.matcher(register_email.getText().toString());
+        }
+        return !matcher.matches();
     }
 }

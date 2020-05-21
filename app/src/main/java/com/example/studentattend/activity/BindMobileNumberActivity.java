@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +23,6 @@ import java.util.regex.Pattern;
 public class BindMobileNumberActivity extends BaseActivity implements View.OnClickListener {
 
     private String tel;
-    private String flag;
     private EditText telephone;
     private TextView error;
     public static final int UPDATE_UI = 1;
@@ -102,6 +100,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        String flag;
         switch (v.getId()) {
             case R.id.number_bind_return:
                 finish();
@@ -114,20 +113,18 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
 //                    tel = LoginActivity.teacherBean.getPhone();
                     flag = "teacher";
                 }
-                Log.d("BindMobileNumberActivity", "student_teacher is " + student_teacher);
                 if (isMobileNO(telephone.getText().toString())) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"phone",telephone.getText().toString(),flag);
+                    serviceModify.init(LoginActivity.studentBean.getSno(),"phone",telephone.getText().toString(), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge(baseBean)){
                         Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
                         LoginActivity.studentBean.setPhone(telephone.getText().toString());
-                        ActivityCollector.finishAll(true);
                     }else {
                         Toast.makeText(this,"手机号修改失败",Toast.LENGTH_SHORT).show();
-                        ActivityCollector.finishAll(true);
                     }
+                    ActivityCollector.finishAll(true);
 
                 }
                 break;

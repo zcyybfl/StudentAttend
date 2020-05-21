@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.studentattend.R;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.StudentBean;
+import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.service.ServiceLogin;
 import com.google.gson.Gson;
 
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         ServiceLogin serviceLogin = new ServiceLogin();
         String username_Text = username.getText().toString();
-        String password_Text = password.getText().toString();
+        String password_Text = Md5Utils.md5(password.getText().toString(),"StudentAttend");
         switch (v.getId()){
             case R.id.student_login:
                 if (validateInput(username_Text,password_Text)){
