@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.AttendRecordActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout_number_bind"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/record"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?actionBarSize"
         android:background="#00BCD4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -24,13 +27,15 @@
         <TextView
             android:id="@+id/record_title"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:layout_centerInParent="true"
             android:text="@string/record_title" />
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

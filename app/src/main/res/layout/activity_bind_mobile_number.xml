@@ -6,17 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".activity.BindMobileNumberActivity">
 
-    <RelativeLayout
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/relativeLayout_number_bind"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?actionBarSize"
         android:background="#00BCD4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/number_bind_return"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/ic_baseline_chevron_left_24"
             android:layout_alignParentStart="true"/>
@@ -24,14 +28,15 @@
         <TextView
             android:id="@+id/number_bind_title"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#FFFFFF"
+            android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_centerInParent="true"
             android:text="@string/mobile_number" />
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/telephone"

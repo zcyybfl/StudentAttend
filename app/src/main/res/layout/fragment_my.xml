@@ -6,18 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".my.MyFragment">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/title_my"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?actionBarSize"
         android:background="#00BCD4"
-        android:gravity="center"
-        android:text="@string/my"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/my"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#00BCD4"
+            android:gravity="center"
+            android:text="@string/my"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/listView_my"
