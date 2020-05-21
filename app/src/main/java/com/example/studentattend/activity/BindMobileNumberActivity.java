@@ -107,7 +107,7 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.submit_phone:
                 if (student_teacher) {
-                    tel = LoginActivity.studentBean.getPhone();
+                    tel = LoginActivity.userBean.getPhone();
                     flag = "student";
                 } else {
 //                    tel = LoginActivity.teacherBean.getPhone();
@@ -115,12 +115,12 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
                 }
                 if (isMobileNO(telephone.getText().toString())) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"phone",telephone.getText().toString(), flag);
+                    serviceModify.init(LoginActivity.userBean.getSno(),"phone",telephone.getText().toString(), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge(baseBean)){
                         Toast.makeText(this,"手机号修改成功",Toast.LENGTH_SHORT).show();
-                        LoginActivity.studentBean.setPhone(telephone.getText().toString());
+                        LoginActivity.userBean.setPhone(telephone.getText().toString());
                     }else {
                         Toast.makeText(this,"手机号修改失败",Toast.LENGTH_SHORT).show();
                     }
