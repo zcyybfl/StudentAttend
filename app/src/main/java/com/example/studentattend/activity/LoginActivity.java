@@ -176,14 +176,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         .setNegativeButton("学生", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent forgetStudent = new Intent(LoginActivity.this,ForgetStudentActivity.class);
+                                Intent forgetStudent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                                bundle.putBoolean("student_teacher",true);
+                                forgetStudent.putExtras(bundle);
                                 startActivity(forgetStudent);
                             }
                         })
                         .setPositiveButton("老师", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent forgetTeacher = new Intent(LoginActivity.this,ForgetTeacherActivity.class);
+                                Intent forgetTeacher = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                                bundle.putBoolean("student_teacher",false);
+                                forgetTeacher.putExtras(bundle);
                                 startActivity(forgetTeacher);
                             }
                         })

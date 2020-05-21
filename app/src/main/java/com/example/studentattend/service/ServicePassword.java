@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ServiceLogin extends Thread{
+public class ServicePassword extends Thread {
 
     public static String path;
     public String url;
@@ -17,11 +17,9 @@ public class ServiceLogin extends Thread{
     public Gson gson = new Gson();
     BaseBean baseBean = null;
 
-
-
-    public void init(String username,String password,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/Login";
-        path = url + "?sno=" + username + "&password=" + password + "&flag=" + flag;
+    public void init(String username,String phone,String email,String flag){
+        url = "http://zltzlt.cn:8080/studentAttend/Retrieve";
+        path = url + "?sno=" + username + "&phone=" + phone + "&email=" + email +"&flag=" + flag;
     }
 
     @Override
@@ -40,7 +38,7 @@ public class ServiceLogin extends Thread{
 
     public BaseBean show(){
         while (true){
-            Log.d("ServiceLogin", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServicePassword", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
             if (responseDate != null){
                 baseBean = gson.fromJson(responseDate,BaseBean.class);
                 responseDate = null;

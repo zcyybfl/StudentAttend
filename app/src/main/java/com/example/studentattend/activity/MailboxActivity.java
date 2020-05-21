@@ -101,12 +101,11 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.mailbox_ok:
                 if (student_teacher) {
-                    email = LoginActivity.userBean.getEmail();
                     flag = "student";
                 } else {
-//                    email = LoginActivity.teacherBean.getEmail();
                     flag = "teacher";
                 }
+                email = LoginActivity.userBean.getEmail();
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
                     serviceModify.init(LoginActivity.userBean.getSno(),"email",editEmail.getText().toString(), flag);

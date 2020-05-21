@@ -175,7 +175,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="@string/forget_password"
+            android:text="@string/forget_password_title"
             tools:ignore="RelativeOverlap" />
 
     </RelativeLayout>

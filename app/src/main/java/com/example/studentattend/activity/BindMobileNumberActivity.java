@@ -107,12 +107,11 @@ public class BindMobileNumberActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.submit_phone:
                 if (student_teacher) {
-                    tel = LoginActivity.userBean.getPhone();
                     flag = "student";
                 } else {
-//                    tel = LoginActivity.teacherBean.getPhone();
                     flag = "teacher";
                 }
+                tel = LoginActivity.userBean.getPhone();
                 if (isMobileNO(telephone.getText().toString())) {
                     ServiceModify serviceModify = new ServiceModify();
                     serviceModify.init(LoginActivity.userBean.getSno(),"phone",telephone.getText().toString(), flag);
