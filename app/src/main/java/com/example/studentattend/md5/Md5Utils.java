@@ -7,14 +7,14 @@ import java.security.NoSuchAlgorithmException;
 
 public class Md5Utils {
 
-    public static String md5(String string,String slat) {
+    public static String md5(String string) {
         if (TextUtils.isEmpty(string)) {
             return "";
         }
         MessageDigest md5;
         try {
             md5 = MessageDigest.getInstance("MD5");
-            byte[] bytes = md5.digest((string + slat).getBytes());
+            byte[] bytes = md5.digest((string + "StudentAttend").getBytes());
             StringBuilder result = new StringBuilder();
             for (byte b : bytes) {
                 String temp = Integer.toHexString(b & 0xff);

@@ -59,7 +59,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
             error.setText("密码不能为空");
             reset();
             return false;
-        } else if (!Md5Utils.md5(oldPassword.getText().toString(),"StudentAttend").equals(password)) {
+        } else if (!Md5Utils.md5(oldPassword.getText().toString()).equals(password)) {
             error.setText("原密码不正确");
             reset();
             return false;
@@ -139,7 +139,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
                     serviceModify.init(LoginActivity.userBean.getSno(),"password",
-                            Md5Utils.md5(newPasswordAgain.getText().toString(),"StudentAttend"), flag);
+                            Md5Utils.md5(newPasswordAgain.getText().toString()), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){

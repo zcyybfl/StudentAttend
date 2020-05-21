@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         ServiceRegister serviceRegister = new ServiceRegister();
         String username_Text = register_username.getText().toString();
-        String password_Text = Md5Utils.md5(register_password.getText().toString(),"StudentAttend");
+        String password_Text = Md5Utils.md5(register_password.getText().toString());
         String name_Text = register_name.getText().toString();
         String sex_Text = register_sex.getText().toString();
         String classmate_Text = register_classmate.getText().toString();

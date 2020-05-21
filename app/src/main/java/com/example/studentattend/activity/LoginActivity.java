@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static UserBean userBean;
     Bundle bundle=new Bundle();
     public static final int REGISTER = 1;
+    public static final int FORGET = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,11 +46,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Button student_login = findViewById(R.id.student_login);
         Button teacher_login = findViewById(R.id.teacher_login);
         TextView register = findViewById(R.id.register);
+        TextView forget = findViewById(R.id.forget);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         student_login.setOnClickListener(this);
         teacher_login.setOnClickListener(this);
         register.setOnClickListener(this);
+        forget.setOnClickListener(this);
     }
 
     @Override
@@ -71,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         ServiceLogin serviceLogin = new ServiceLogin();
         String username_Text = username.getText().toString();
-        String password_Text = Md5Utils.md5(password.getText().toString(),"StudentAttend");
+        String password_Text = Md5Utils.md5(password.getText().toString());
         switch (v.getId()){
             case R.id.student_login:
                 if (validateInput(username_Text,password_Text)){
@@ -122,6 +125,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }).start();
                 break;
+            case R.id.forget:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        message.what = FORGET;
+                        handler.sendMessage(message);
+                    }
+                }).start();
+                break;
+            default:
+                break;
         }
     }
 
@@ -150,6 +165,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 bundle.putBoolean("student_teacher",false);
                                 registerTeacher.putExtras(bundle);
                                 startActivity(registerTeacher);
+                            }
+                        })
+                        .setNeutralButton("取消",null)
+                        .show();
+            } else if (msg.what == FORGET) {
+                new AlertDialog.Builder(LoginActivity.this)
+                        .setTitle("忘记密码")
+                        .setMessage("请选择忘记类型")
+                        .setNegativeButton("学生", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent forgetStudent = new Intent(LoginActivity.this,ForgetStudentActivity.class);
+                                startActivity(forgetStudent);
+                            }
+                        })
+                        .setPositiveButton("老师", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent forgetTeacher = new Intent(LoginActivity.this,ForgetTeacherActivity.class);
+                                startActivity(forgetTeacher);
                             }
                         })
                         .setNeutralButton("取消",null)

@@ -8,7 +8,7 @@
     <string name="password">请输入密码</string>
     <string name="student_login">学生登录</string>
     <string name="teacher_login">教师登录</string>
-    <string name="register">没有账号？点击注册</string>
+    <string name="register">点击注册</string>
     <string name="admin">管理</string>
     <string name="todo">TODO</string>
     <string name="student_register">学生注册</string>
@@ -39,4 +39,5 @@
     <string name="telephone">手机号码</string>
     <string name="verification_code">短信验证码</string>
     <string name="record_title">签到记录</string>
+    <string name="forget_password">忘记密码</string>
 </resources>
