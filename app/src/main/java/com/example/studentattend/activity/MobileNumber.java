@@ -38,7 +38,7 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
 
     private void telJudge() {
         if (student_teacher) {
-            tel = LoginActivity.studentBean.getPhone();
+            tel = LoginActivity.userBean.getPhone();
         } else {
 //            tel = LoginActivity.teacherBean.getPhone();
         }

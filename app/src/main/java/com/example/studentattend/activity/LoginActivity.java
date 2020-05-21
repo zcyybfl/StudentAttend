@@ -21,7 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.studentattend.R;
 import com.example.studentattend.dao.BaseBean;
-import com.example.studentattend.dao.StudentBean;
+import com.example.studentattend.dao.UserBean;
 import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.service.ServiceLogin;
 import com.google.gson.Gson;
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText password;
     public static BaseBean baseBean;
     Gson gson = new Gson();
-    public static StudentBean studentBean;
+    public static UserBean userBean;
     Bundle bundle=new Bundle();
     public static final int REGISTER = 1;
 
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
                     String json = gson.toJson(baseBean.getDate());
-                    studentBean = gson.fromJson(json,StudentBean.class);
+                    userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=true，老师=false
@@ -98,6 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.init(username_Text,password_Text,"teacher");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
+                    String json = gson.toJson(baseBean.getDate());
+                    userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=true，老师=false
@@ -136,6 +138,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent registerStudent = new Intent(LoginActivity.this,RegisterActivity.class);
+                                bundle.putBoolean("student_teacher",true);
+                                registerStudent.putExtras(bundle);
                                 startActivity(registerStudent);
                             }
                         })
@@ -143,6 +147,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent registerTeacher = new Intent(LoginActivity.this,RegisterActivity.class);
+                                bundle.putBoolean("student_teacher",false);
+                                registerTeacher.putExtras(bundle);
                                 startActivity(registerTeacher);
                             }
                         })
