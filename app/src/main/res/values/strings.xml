@@ -4,7 +4,7 @@
     <string name="title_dashboard">课程</string>
     <string name="title_my">我的</string>
     <string name="my">我的</string>
-    <string name="username">请输入学号</string>
+    <string name="username">请输入账号(学号或教工号)</string>
     <string name="password">请输入密码</string>
     <string name="student_login">学生登录</string>
     <string name="teacher_login">教师登录</string>

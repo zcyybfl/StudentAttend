@@ -101,7 +101,7 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.mailbox_ok:
                 if (student_teacher) {
-                    email = LoginActivity.studentBean.getEmail();
+                    email = LoginActivity.userBean.getEmail();
                     flag = "student";
                 } else {
 //                    email = LoginActivity.teacherBean.getEmail();
@@ -109,11 +109,11 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"email",editEmail.getText().toString(), flag);
+                    serviceModify.init(LoginActivity.userBean.getSno(),"email",editEmail.getText().toString(), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){
-                        LoginActivity.studentBean.setEmail(editEmail.getText().toString());
+                        LoginActivity.userBean.setEmail(editEmail.getText().toString());
                         Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(this,"邮箱修改失败",Toast.LENGTH_SHORT).show();

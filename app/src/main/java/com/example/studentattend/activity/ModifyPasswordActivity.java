@@ -130,15 +130,15 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.submit:
                 if (student_teacher) {
-                    password = LoginActivity.studentBean.getPassword();
+                    password = LoginActivity.userBean.getPassword();
                     flag = "student";
                 } else {
-//                    password = LoginActivity.teacherBean.getPassword();
+                    password = LoginActivity.userBean.getPassword();
                     flag = "teacher";
                 }
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.studentBean.getSno(),"password",
+                    serviceModify.init(LoginActivity.userBean.getSno(),"password",
                             Md5Utils.md5(newPasswordAgain.getText().toString()), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();

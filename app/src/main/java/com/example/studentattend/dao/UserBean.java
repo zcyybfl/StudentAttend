@@ -1,6 +1,6 @@
 package com.example.studentattend.dao;
 
-public class StudentBean {
+public class UserBean {
 
     private int id;
     private String sno;//学号
