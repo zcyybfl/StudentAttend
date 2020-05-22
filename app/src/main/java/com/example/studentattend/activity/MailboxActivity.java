@@ -105,14 +105,14 @@ public class MailboxActivity extends AppCompatActivity implements View.OnClickLi
                 } else {
                     flag = "teacher";
                 }
-                email = LoginActivity.userBean.getEmail();
+                email = SplashActivity.userBean.getEmail();
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.userBean.getSno(),"email",editEmail.getText().toString(), flag);
+                    serviceModify.init(SplashActivity.userBean.getSno(),"email",editEmail.getText().toString(), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){
-                        LoginActivity.userBean.setEmail(editEmail.getText().toString());
+                        SplashActivity.userBean.setEmail(editEmail.getText().toString());
                         Toast.makeText(this,"邮箱修改成功",Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(this,"邮箱修改失败",Toast.LENGTH_SHORT).show();

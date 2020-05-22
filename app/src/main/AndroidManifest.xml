@@ -20,6 +20,15 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.AttendTeacherActivity" />
+        <activity android:name=".activity.AttendStudentActivity" />
         <activity android:name=".activity.AttendRecordTeacherActivity" />
         <activity android:name=".activity.AdminMainActivity" />
         <activity android:name=".activity.ForgetPasswordActivity" />
@@ -30,13 +39,7 @@
         <activity android:name=".activity.ModifyPasswordActivity" />
         <activity android:name=".activity.AdminLoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme" />

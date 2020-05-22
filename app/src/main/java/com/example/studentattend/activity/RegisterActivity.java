@@ -28,10 +28,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText register_department;
     private EditText register_phone;
     private EditText register_email;
-    private Button student_register;
-    private Button teacher_register;
-    private TextView register_return;
-    private LinearLayout classmate;
     //获取是老师还是学生登录
     public static boolean student_teacher;
 
@@ -40,8 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        student_register = findViewById(R.id.student_register);
-        teacher_register = findViewById(R.id.teacher_register);
+        Button student_register = findViewById(R.id.student_register);
+        Button teacher_register = findViewById(R.id.teacher_register);
         register_username  =findViewById(R.id.register_username);
         register_password = findViewById(R.id.register_password);
         register_sex = findViewById(R.id.register_sex);
@@ -50,14 +46,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         register_department = findViewById(R.id.register_department);
         register_phone = findViewById(R.id.register_phone);
         register_email = findViewById(R.id.register_email);
-        register_return = findViewById(R.id.register_return);
-        classmate = findViewById(R.id.classmate);
+        TextView register_return = findViewById(R.id.register_return);
+        LinearLayout classmate = findViewById(R.id.classmate);
         student_register.setOnClickListener(this);
         teacher_register.setOnClickListener(this);
         register_return.setOnClickListener(this);
 
         Bundle bundle = this.getIntent().getExtras();
-        //assert bundle != null;
+        assert bundle != null;
         student_teacher = bundle.getBoolean("student_teacher");
         if (student_teacher){
             student_register.setVisibility(View.VISIBLE);

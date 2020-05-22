@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.studentattend.R;
+import com.example.studentattend.UserManage;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.UserBean;
 import com.example.studentattend.md5.Md5Utils;
@@ -32,7 +33,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText password;
     public static BaseBean baseBean;
     Gson gson = new Gson();
-    public static UserBean userBean;
     Bundle bundle=new Bundle();
     public static final int REGISTER = 1;
     public static final int FORGET = 2;
@@ -82,8 +82,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
                     String json = gson.toJson(baseBean.getDate());
-                    userBean = gson.fromJson(json, UserBean.class);
+                    SplashActivity.userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
+                        UserManage.getInstance().saveUserInfo(this,username_Text,password_Text,"student");
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=true，老师=false
                         bundle.putBoolean("student_teacher", true);
@@ -102,8 +103,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
                     String json = gson.toJson(baseBean.getDate());
-                    userBean = gson.fromJson(json, UserBean.class);
+                    SplashActivity.userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
+                        UserManage.getInstance().saveUserInfo(this,username_Text,password_Text,"teacher");
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //用Bundle携带数据，后面创建键值对时，记得把老师还是学生传进去，学生=true，老师=false
                         bundle.putBoolean("student_teacher", false);

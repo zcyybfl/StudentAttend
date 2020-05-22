@@ -134,10 +134,10 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                 } else {
                     flag = "teacher";
                 }
-                password = LoginActivity.userBean.getPassword();
+                password = SplashActivity.userBean.getPassword();
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.userBean.getSno(),"password",
+                    serviceModify.init(SplashActivity.userBean.getSno(),"password",
                             Md5Utils.md5(newPasswordAgain.getText().toString()), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();

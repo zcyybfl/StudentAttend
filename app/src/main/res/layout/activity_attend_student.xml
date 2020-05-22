@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AttendRecordStudentActivity">
+    tools:context=".activity.AttendStudentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/record_student"
@@ -43,7 +43,7 @@
         android:layout_height="50dp"
         android:background="#FFFFFF"
         android:textSize="22sp"
-        android:text="@string/sign_in_record"
+        android:text="@string/attendance_details"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/record_student"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -70,95 +70,96 @@
                 android:layout_marginEnd="8dp"
                 android:background="#FFFFFF"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
 
                 <TextView
-                    android:id="@+id/student_name"
+                    android:id="@+id/course_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="30dp"
                     android:textSize="18sp"
-                    android:text="@string/student_name"/>
+                    android:text="@string/course_name"/>
 
                 <TextView
-                    android:id="@+id/student_name_text"
+                    android:id="@+id/course_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_toEndOf="@+id/student_name" />
+                    android:layout_toEndOf="@+id/course_name" />
 
                 <TextView
-                    android:id="@+id/student_id"
+                    android:id="@+id/course_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="30dp"
-                    android:layout_below="@+id/student_name"
+                    android:layout_below="@+id/course_name"
                     android:textSize="18sp"
-                    android:text="@string/student_id"/>
+                    android:text="@string/course_id"/>
 
                 <TextView
-                    android:id="@+id/student_id_text"
+                    android:id="@+id/course_id_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_below="@id/student_name_text"
-                    android:layout_toEndOf="@+id/student_id"
-                    android:layout_alignStart="@+id/student_name_text" />
+                    android:layout_below="@id/course_name_text"
+                    android:layout_toEndOf="@+id/course_id"
+                    android:layout_alignStart="@+id/course_name_text" />
 
                 <TextView
-                    android:id="@+id/student_phone"
+                    android:id="@+id/teacher_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="30dp"
-                    android:layout_below="@+id/student_id"
+                    android:layout_below="@+id/course_id"
                     android:textSize="18sp"
-                    android:text="@string/student_phone"/>
+                    android:text="@string/teacher_name"/>
 
                 <TextView
-                    android:id="@+id/student_phone_text"
+                    android:id="@+id/teacher_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_below="@id/student_id_text"
-                    android:layout_toEndOf="@+id/student_phone"
-                    android:layout_alignStart="@+id/student_id_text" />
+                    android:layout_below="@id/course_id_text"
+                    android:layout_toEndOf="@+id/teacher_name"
+                    android:layout_alignStart="@+id/course_id_text" />
 
                 <TextView
-                    android:id="@+id/student_email"
+                    android:id="@+id/teacher_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_below="@+id/student_phone"
+                    android:layout_below="@+id/teacher_name"
                     android:textSize="18sp"
-                    android:text="@string/student_email"/>
+                    android:text="@string/teacher_id"/>
 
                 <TextView
-                    android:id="@+id/student_email_text"
+                    android:id="@+id/teacher_id_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_below="@id/student_phone_text"
-                    android:layout_toEndOf="@+id/student_email"
-                    android:layout_alignStart="@+id/student_phone_text" />
+                    android:layout_below="@id/teacher_name_text"
+                    android:layout_toEndOf="@+id/teacher_id"
+                    android:layout_alignStart="@+id/teacher_name_text" />
 
             </RelativeLayout>
 
@@ -176,30 +177,20 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:textSize="18sp"
                     android:textColor="#FFFFFF"
-                    android:text="@string/course_name"
+                    android:text="@string/order"
                     tools:ignore="RtlHardcoded,Suspicious0dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textColor="#FFFFFF"
-                    android:text="@string/attendance"
-                    tools:ignore="Suspicious0dp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:text="@string/absence_from_duty"
+                    android:text="@string/date"
                     tools:ignore="Suspicious0dp" />
 
                 <TextView
@@ -209,23 +200,10 @@
                     android:gravity="center"
                     android:textSize="18sp"
                     android:layout_weight="1"
-                    android:text="@string/details"
+                    android:text="@string/attendance_status"
                     tools:ignore="RtlHardcoded,Suspicious0dp" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/null_record"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="@string/record_null"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:visibility="gone"/>
 
             <com.example.studentattend.ListViewForScrollView
                 android:id="@+id/student_listView"
@@ -234,9 +212,8 @@
                 android:layout_marginBottom="8dp"
                 android:background="#FFFFFF"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:ignore="NestedScrolling" />
-            
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </ScrollView>
