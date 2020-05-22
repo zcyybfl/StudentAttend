@@ -2,30 +2,30 @@ package com.example.studentattend.dao;
 
 import java.util.Date;
 
-public class AttendBean {
+public class AttendStudentBean {
 
-    private Date time;
+    private String time;
 
-    private boolean status;
+    private String status;
 
-    public AttendBean(Date time, boolean status) {
+    public AttendStudentBean(String time, String status) {
         this.time = time;
         this.status = status;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

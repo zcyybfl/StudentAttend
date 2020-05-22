@@ -1,4 +1,4 @@
-package com.example.studentattend.home;
+package com.example.studentattend.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.studentattend.R;
+import com.example.studentattend.model.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 

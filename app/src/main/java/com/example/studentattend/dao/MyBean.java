@@ -1,6 +1,6 @@
 package com.example.studentattend.dao;
 
-public class MyMenu {
+public class MyBean {
 
     private String name;
 
@@ -8,7 +8,7 @@ public class MyMenu {
 
     private int imageId;
 
-    public MyMenu(String name, String data,int imageId) {
+    public MyBean(String name, String data, int imageId) {
         this.name = name;
         this.data = data;
         this.imageId = imageId;

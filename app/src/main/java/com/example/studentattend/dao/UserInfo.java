@@ -1,4 +1,4 @@
-package com.example.studentattend;
+package com.example.studentattend.dao;
 
 public class UserInfo {
 

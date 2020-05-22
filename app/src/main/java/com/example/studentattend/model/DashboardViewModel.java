@@ -1,4 +1,4 @@
-package com.example.studentattend.dashboard;
+package com.example.studentattend.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
