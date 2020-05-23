@@ -1,37 +1,21 @@
 package com.example.studentattend.dao;
 
-public class StudentRecordBean {
+public class TeacherRecordBean {
 
-    private String teacherId;
-    private String teacherName;
     private String courseId;
+    private String classId;
+    private String time;
     private String courseName;
     private int attendance;
     private int absenceFromDuty;
 
-    public StudentRecordBean(String teacherId, String teacherName, String courseId, String courseName, int attendance, int absenceFromDuty) {
-        this.teacherId = teacherId;
-        this.teacherName = teacherName;
+    public TeacherRecordBean(String courseId, String classId, String time, String courseName, int attendance, int absenceFromDuty) {
         this.courseId = courseId;
+        this.classId = classId;
+        this.time = time;
         this.courseName = courseName;
         this.attendance = attendance;
         this.absenceFromDuty = absenceFromDuty;
-    }
-
-    public String getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
     }
 
     public String getCourseId() {
@@ -40,6 +24,22 @@ public class StudentRecordBean {
 
     public void setCourseId(String courseId) {
         this.courseId = courseId;
+    }
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getCourseName() {

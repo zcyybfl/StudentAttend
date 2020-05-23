@@ -6,4 +6,226 @@
     android:layout_height="match_parent"
     tools:context=".activity.AttendTeacherActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/record_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#00BCD4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/record_return_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_baseline_chevron_left_24"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/record_title_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="@string/record_title" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/sign_in_record_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:textSize="22sp"
+        android:text="@string/attendance_details"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/record_teacher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#D8D7D7"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_record_teacher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="ScrollViewCount">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    android:textSize="18sp"
+                    android:text="@string/course_name"/>
+
+                <TextView
+                    android:id="@+id/course_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_toEndOf="@+id/course_name" />
+
+                <TextView
+                    android:id="@+id/course_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_below="@+id/course_name"
+                    android:textSize="18sp"
+                    android:text="@string/course_id"/>
+
+                <TextView
+                    android:id="@+id/course_id_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_below="@id/course_name_text"
+                    android:layout_toEndOf="@+id/course_id"
+                    android:layout_alignStart="@+id/course_name_text" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_below="@+id/course_id"
+                    android:textSize="18sp"
+                    android:text="@string/time"/>
+
+                <TextView
+                    android:id="@+id/time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_below="@id/course_id_text"
+                    android:layout_toEndOf="@+id/time"
+                    android:layout_alignStart="@+id/course_id_text" />
+
+                <TextView
+                    android:id="@+id/class_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/time"
+                    android:textSize="18sp"
+                    android:text="@string/class_id"/>
+
+                <TextView
+                    android:id="@+id/class_id_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_below="@id/time_text"
+                    android:layout_toEndOf="@+id/time"
+                    android:layout_alignStart="@+id/time_text" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#00BCD4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/order"
+                    tools:ignore="RtlHardcoded,Suspicious0dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/student_id"
+                    tools:ignore="Suspicious0dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/name"
+                    tools:ignore="Suspicious0dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:text="@string/attendance_status"
+                    tools:ignore="RtlHardcoded,Suspicious0dp" />
+
+            </LinearLayout>
+
+            <com.example.studentattend.override.ListViewForScrollView
+                android:id="@+id/teacher_listView"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

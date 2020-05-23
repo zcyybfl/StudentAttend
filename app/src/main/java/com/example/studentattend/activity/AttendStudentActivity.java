@@ -22,6 +22,8 @@ public class AttendStudentActivity extends AppCompatActivity implements View.OnC
 
     private static String obtainCourseId;
     private static String obtainCourseName;
+    private static String obtainTeacherId;
+    private static String obtainTeacherName;
     private List<AttendStudentBean> attendStudentBeanList = new ArrayList<>();
 
     public static final int INFORMATION = 1;
@@ -39,6 +41,8 @@ public class AttendStudentActivity extends AppCompatActivity implements View.OnC
         assert bundle != null;
         obtainCourseId = bundle.getString("courseId");
         obtainCourseName = bundle.getString("courseName");
+        obtainTeacherId = bundle.getString("teacherId");
+        obtainTeacherName = bundle.getString("teacherName");
         information();
         initAttend();
         ListView listView = findViewById(R.id.student_listView);
@@ -85,8 +89,8 @@ public class AttendStudentActivity extends AppCompatActivity implements View.OnC
             if (msg.what == INFORMATION) {
                 courseName.setText(obtainCourseName);
                 courseId.setText(obtainCourseId);
-                teacherName.setText(SplashActivity.userBean.getName());
-                teacherId.setText(SplashActivity.userBean.getSno());
+                teacherName.setText(obtainTeacherName);
+                teacherId.setText(obtainTeacherId);
             }
         }
     };

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.studentattend.R;
+import com.example.studentattend.UserManage;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.md5.Md5Utils;
@@ -109,6 +110,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                UserManage.getInstance().clear(ModifyPasswordActivity.this);
                                 Intent loginActivity = new Intent(ModifyPasswordActivity.this,LoginActivity.class);
                                 startActivity(loginActivity);
                                 ActivityCollector.finishAll(false);

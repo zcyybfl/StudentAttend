@@ -64,11 +64,14 @@ public class AttendRecordStudentActivity extends AppCompatActivity implements Vi
                 @Override
                 public void run() {
                     for (int i = 0;i < 20;i++) {
-                        StudentRecordBean studentRecordBean = new StudentRecordBean("C001","验证性工程实践",12,0);
+                        StudentRecordBean studentRecordBean = new StudentRecordBean("1840610610","黄思捷",
+                                "C001","验证性工程实践",12,0);
                         studentRecordBeanList.add(studentRecordBean);
-                        StudentRecordBean studentRecordBean2 = new StudentRecordBean("C002","Java程序设计",5,0);
+                        StudentRecordBean studentRecordBean2 = new StudentRecordBean("1840610608","郑龙涛",
+                                "C002","Java程序设计",5,0);
                         studentRecordBeanList.add(studentRecordBean2);
-                        StudentRecordBean studentRecordBean3 = new StudentRecordBean("C003","数据库结构",20,10);
+                        StudentRecordBean studentRecordBean3 = new StudentRecordBean("1840610626","向前程",
+                                "C003","数据库结构",20,10);
                         studentRecordBeanList.add(studentRecordBean3);
                     }
                 }
@@ -113,6 +116,8 @@ public class AttendRecordStudentActivity extends AppCompatActivity implements Vi
         Bundle bundle=new Bundle();
         bundle.putString("courseId",studentRecordBeanList.get(position).getCourseId());
         bundle.putString("courseName",studentRecordBeanList.get(position).getCourseName());
+        bundle.putString("teacherId",studentRecordBeanList.get(position).getTeacherId());
+        bundle.putString("teacherName",studentRecordBeanList.get(position).getTeacherName());
         attendStudentActivity.putExtras(bundle);
         startActivity(attendStudentActivity);
     }
