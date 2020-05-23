@@ -159,6 +159,7 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
 
     @Override
     public void onResume() {
+        super.onResume();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -179,6 +180,6 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
         Button quit = view.findViewById(R.id.quit);
         quitLogin.setOnClickListener(this);
         quit.setOnClickListener(this);
-        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }

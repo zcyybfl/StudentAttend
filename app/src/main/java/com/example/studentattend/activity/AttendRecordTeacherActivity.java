@@ -78,13 +78,13 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                 if (flag == 1) {
                     for (int i = 0;i < 10;i++) {
                         TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1001","数据结构",
-                                "18406199","2020/6/23 12:00:00",100,0);
+                                "2020/6/23 12:00:00","18406199",100,0);
                         teacherRecordBeanList.add(teacherRecordBean);
                     }
                 } else if (flag == 2){
                     for (int i = 0;i < 10;i++) {
                         TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1002","数据结构",
-                                "18406188","2020/5/23 12:00:00",10,0);
+                                "2020/5/23 12:00:00",   "18406188",10,0);
                         teacherRecordBeanList.add(teacherRecordBean);
                     }
                 }
@@ -146,6 +146,7 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                                 TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
                                         AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
                                 listView.setAdapter(teacherRecordAdapter);
+                                teacherRecordAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("取消",null)
