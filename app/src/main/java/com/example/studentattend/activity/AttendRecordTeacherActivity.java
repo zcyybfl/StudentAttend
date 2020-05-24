@@ -11,14 +11,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.TeacherRecordAdapter;
@@ -77,14 +75,14 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
             public void run() {
                 if (flag == 1) {
                     for (int i = 0;i < 10;i++) {
-                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1001","数据结构",
-                                "2020/6/23 12:00:00","18406199",100,0);
+                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1001","18406199",
+                                "2020/6/23 12:00:00","数据结构",100,0);
                         teacherRecordBeanList.add(teacherRecordBean);
                     }
                 } else if (flag == 2){
                     for (int i = 0;i < 10;i++) {
-                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1002","数据结构",
-                                "2020/5/23 12:00:00",   "18406188",10,0);
+                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1002","18406188",
+                                "2020/5/23 12:00:00",   "数据结构",10,0);
                         teacherRecordBeanList.add(teacherRecordBean);
                     }
                 }
