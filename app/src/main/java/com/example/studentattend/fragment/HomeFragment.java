@@ -7,10 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studentattend.GlideImageLoader;
 import com.example.studentattend.R;
 import com.example.studentattend.activity.WebViewActivity;
+import com.example.studentattend.adapter.HomeAppAdapter;
+import com.example.studentattend.dao.HomeAppBean;
 import com.youth.banner.Banner;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
@@ -20,16 +25,20 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements OnBannerListener {
 
-    private Banner banner;
-    private List<String> listPath = new ArrayList<>();
     View root;
     private String url;
+    private List<String> listPath = new ArrayList<>();
+    private List<HomeAppBean> homeAppBeanList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
         initView();
-
+        initApp();
+        RecyclerView recyclerView = root.findViewById(R.id.home_relativeLayout);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3,GridLayoutManager.VERTICAL,false));
+        HomeAppAdapter appAdapter = new HomeAppAdapter(getContext(),homeAppBeanList);
+        recyclerView.setAdapter(appAdapter);
         return root;
     }
 
@@ -43,13 +52,34 @@ public class HomeFragment extends Fragment implements OnBannerListener {
 
     private void initView() {
         initData();
-        banner = root.findViewById(R.id.banner);
+        Banner banner = root.findViewById(R.id.banner);
         banner.setImageLoader(new GlideImageLoader())
                 .setBannerAnimation(Transformer.Default)
                 .setDelayTime(5000)
                 .setImages(listPath)
                 .setOnBannerListener(this)
                 .start();
+    }
+
+    private void initApp() {
+        HomeAppBean google_chrome = new HomeAppBean("浏览器","http://hsjnb.com/baidu.jpg");
+        homeAppBeanList.add(google_chrome);
+        HomeAppBean translate = new HomeAppBean("翻译器","http://hsjnb.com/translate.jpg");
+        homeAppBeanList.add(translate);
+        HomeAppBean calculator = new HomeAppBean("教务系统","http://hsjnb.com/educational_administration _system.jpg");
+        homeAppBeanList.add(calculator);
+        HomeAppBean mooc = new HomeAppBean("慕课网","http://hsjnb.com/mooc.jpg");
+        homeAppBeanList.add(mooc);
+        HomeAppBean runoob = new HomeAppBean("菜鸟教程","http://hsjnb.com/runoob.jpg");
+        homeAppBeanList.add(runoob);
+        HomeAppBean howNet = new HomeAppBean("中国知网","http://hsjnb.com/zhiwang.jpg");
+        homeAppBeanList.add(howNet);
+        HomeAppBean BiliBili = new HomeAppBean("BiliBili","http://hsjnb.com/BiliBili.jpg");
+        homeAppBeanList.add(BiliBili);
+        HomeAppBean chinaMooc = new HomeAppBean("MOOC","http://hsjnb.com/chinaMooc.jpg");
+        homeAppBeanList.add(chinaMooc);
+        HomeAppBean W3school= new HomeAppBean("W3school","http://hsjnb.com/W3school.jpg");
+        homeAppBeanList.add(W3school);
     }
 
     @Override
@@ -79,6 +109,7 @@ public class HomeFragment extends Fragment implements OnBannerListener {
         webView.putExtras(bundle);
         startActivity(webView);
     }
+
 
     @Override
     public void onResume() {

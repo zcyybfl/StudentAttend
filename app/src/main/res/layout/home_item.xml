@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/app_background"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginEnd="18dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/image_app"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/text_app"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
