@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.studentattend.R;
-import com.example.studentattend.UserManage;
+import com.example.studentattend.saveread.UserManage;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.UserBean;
 import com.example.studentattend.service.ServiceLogin;

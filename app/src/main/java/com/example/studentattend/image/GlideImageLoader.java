@@ -1,4 +1,4 @@
-package com.example.studentattend;
+package com.example.studentattend.image;
 
 import android.content.Context;
 import android.widget.ImageView;

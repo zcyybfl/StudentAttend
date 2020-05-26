@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.studentattend.GlideImageLoader;
+import com.example.studentattend.image.GlideImageLoader;
 import com.example.studentattend.R;
 import com.example.studentattend.activity.WebViewActivity;
 import com.example.studentattend.adapter.HomeAppAdapter;
