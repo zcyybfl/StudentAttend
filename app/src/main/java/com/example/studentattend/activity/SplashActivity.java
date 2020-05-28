@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.studentattend.R;
 import com.example.studentattend.saveread.UserManage;
 import com.example.studentattend.dao.BaseBean;
@@ -32,6 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     Gson gson = new Gson();
     Bundle bundle=new Bundle();
     public static UserBean userBean;
+    private ImageView splashImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         getWindow().setFlags(full,full);
         setContentView(R.layout.activity_splash);
         initView();
+        initImage();
         flag = UserManage.getInstance().hasUserInfo(this);
         if (flag) {
             ServiceLogin serviceLogin = new ServiceLogin();
@@ -76,8 +82,16 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         //自动登录判断，SharedPreferences中有数据，则跳转到主页，没数据则跳转到登录页
     }
 
+    private void initImage() {
+        Glide
+                .with(this)
+                .load(Uri.parse("http://hsjnb.com/AttendStudent/splash.png"))
+                .into(splashImage);
+    }
+
     private void initView() {
         textView = findViewById(R.id.textView);//跳过
+        splashImage = findViewById(R.id.splash_image);
         textView.setOnClickListener(this);//跳过监听
     }
 

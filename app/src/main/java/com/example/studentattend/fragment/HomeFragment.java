@@ -42,11 +42,11 @@ public class HomeFragment extends Fragment implements OnBannerListener {
     }
 
     private void initData() {
-        listPath.add("http://hsjnb.com/timg.png");
-        listPath.add("http://hsjnb.com/timg2.png");
-        listPath.add("http://hsjnb.com/timg3.png");
-        listPath.add("http://hsjnb.com/timg4.png");
-        listPath.add("http://hsjnb.com/timg5.png");
+        listPath.add("http://hsjnb.com/AttendStudent/timg.png");
+        listPath.add("http://hsjnb.com/AttendStudent/timg2.png");
+        listPath.add("http://hsjnb.com/AttendStudent/timg3.png");
+        listPath.add("http://hsjnb.com/AttendStudent/timg4.png");
+        listPath.add("http://hsjnb.com/AttendStudent/timg5.png");
     }
 
     private void initView() {
@@ -61,23 +61,23 @@ public class HomeFragment extends Fragment implements OnBannerListener {
     }
 
     private void initApp() {
-        HomeAppBean google_chrome = new HomeAppBean("浏览器","http://hsjnb.com/baidu.jpg");
+        HomeAppBean google_chrome = new HomeAppBean("浏览器","http://hsjnb.com/AttendStudent/baidu.jpg");
         homeAppBeanList.add(google_chrome);
-        HomeAppBean translate = new HomeAppBean("翻译器","http://hsjnb.com/translate.jpg");
+        HomeAppBean translate = new HomeAppBean("翻译器","http://hsjnb.com/AttendStudent/translate.jpg");
         homeAppBeanList.add(translate);
-        HomeAppBean calculator = new HomeAppBean("教务系统","http://hsjnb.com/educational_administration _system.jpg");
+        HomeAppBean calculator = new HomeAppBean("教务系统","http://hsjnb.com/AttendStudent/educational_administration _system.jpg");
         homeAppBeanList.add(calculator);
-        HomeAppBean mooc = new HomeAppBean("慕课网","http://hsjnb.com/mooc.jpg");
+        HomeAppBean mooc = new HomeAppBean("慕课网","http://hsjnb.com/AttendStudent/mooc.jpg");
         homeAppBeanList.add(mooc);
-        HomeAppBean runoob = new HomeAppBean("菜鸟教程","http://hsjnb.com/runoob.jpg");
+        HomeAppBean runoob = new HomeAppBean("菜鸟教程","http://hsjnb.com/AttendStudent/runoob.jpg");
         homeAppBeanList.add(runoob);
-        HomeAppBean howNet = new HomeAppBean("中国知网","http://hsjnb.com/zhiwang.jpg");
+        HomeAppBean howNet = new HomeAppBean("中国知网","http://hsjnb.com/AttendStudent/zhiwang.jpg");
         homeAppBeanList.add(howNet);
-        HomeAppBean BiliBili = new HomeAppBean("BiliBili","http://hsjnb.com/BiliBili.jpg");
+        HomeAppBean BiliBili = new HomeAppBean("BiliBili","http://hsjnb.com/AttendStudent/BiliBili.jpg");
         homeAppBeanList.add(BiliBili);
-        HomeAppBean chinaMooc = new HomeAppBean("MOOC","http://hsjnb.com/chinaMooc.jpg");
+        HomeAppBean chinaMooc = new HomeAppBean("MOOC","http://hsjnb.com/AttendStudent/chinaMooc.jpg");
         homeAppBeanList.add(chinaMooc);
-        HomeAppBean W3school= new HomeAppBean("W3school","http://hsjnb.com/W3school.jpg");
+        HomeAppBean W3school= new HomeAppBean("W3school","http://hsjnb.com/AttendStudent/W3school.jpg");
         homeAppBeanList.add(W3school);
     }
 
