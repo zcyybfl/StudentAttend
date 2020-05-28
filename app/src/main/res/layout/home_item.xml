@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:background="@drawable/app_background"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginStart="18dp"
-    android:layout_marginEnd="18dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:ignore="UseCompoundDrawables">
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/image_app"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo" />
-
-    <TextView
-        android:id="@+id/text_app"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        tools:ignore="UselessParent">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/image_app"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/todo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:id="@+id/text_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="#014559"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

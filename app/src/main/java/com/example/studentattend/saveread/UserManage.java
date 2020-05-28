@@ -7,6 +7,8 @@ import android.text.TextUtils;
 
 import com.example.studentattend.dao.UserInfo;
 
+import org.jetbrains.annotations.NotNull;
+
 public class UserManage {
 
     private static UserManage instance;
@@ -27,7 +29,7 @@ public class UserManage {
     /**
      * 保存自动登录的用户信息
      */
-    public void saveUserInfo(Context context,String username,String password,String type) {
+    public void saveUserInfo(@NotNull Context context, String username, String password, String type) {
         //Context.MODE_PRIVATE表示SharedPreferences的数据只有自己应用程序能访问。
         SharedPreferences sharedPreferences = context.getSharedPreferences("userData",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -40,7 +42,7 @@ public class UserManage {
     /**
      * 获取用户信息model
      */
-    public UserInfo getUserInfo(Context context) {
+    public UserInfo getUserInfo(@NotNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("userData",Context.MODE_PRIVATE);
         userInfo = new UserInfo();
         userInfo.setUserName(sharedPreferences.getString("用户名",""));
@@ -63,7 +65,7 @@ public class UserManage {
     }
 
     @SuppressLint("CommitPrefEdits")
-    public void clear(Context context) {
+    public void clear(@NotNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("userData",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
