@@ -47,6 +47,6 @@ public class MyAdapter extends ArrayAdapter<MyBean> {
         myImage.setImageResource(myBean.getImageId());
         return view;
     }
-    //覆盖父类ArrayAdapter<Fruit>的getView，让FruitAdapter能够按照resourceId的样子，
+    //覆盖父类ArrayAdapter<>的getView，让Adapter能够按照resourceId的样子，
     //显示objects的内容在listView上
 }

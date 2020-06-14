@@ -1,5 +1,6 @@
 package com.example.studentattend.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentattend.R;
@@ -107,14 +109,36 @@ public class MyFragment extends Fragment implements View.OnClickListener, Adapte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.quit_login:
-                UserManage.getInstance().clear(requireContext());
-                Intent quitLogin = new Intent(getContext(), LoginActivity.class);
-                startActivity(quitLogin);
-                //结束当前activity
-                ActivityCollector.finishAll(false);
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("退出登录")
+                        .setMessage("您确定退出登录")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                UserManage.getInstance().clear(requireContext());
+                                Intent quitLogin = new Intent(getContext(), LoginActivity.class);
+                                startActivity(quitLogin);
+                                //结束当前activity
+                                ActivityCollector.finishAll();
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .setCancelable(false)
+                        .show();
                 break;
             case R.id.quit:
-                ActivityCollector.finishAll(false);
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("退出")
+                        .setMessage("您确定退出")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCollector.finishAll();
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .setCancelable(false)
+                        .show();
         }
     }
 

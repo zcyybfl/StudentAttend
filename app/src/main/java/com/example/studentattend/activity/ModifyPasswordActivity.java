@@ -113,7 +113,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                                 UserManage.getInstance().clear(ModifyPasswordActivity.this);
                                 Intent loginActivity = new Intent(ModifyPasswordActivity.this,LoginActivity.class);
                                 startActivity(loginActivity);
-                                ActivityCollector.finishAll(false);
+                                ActivityCollector.finishAll();
                             }
                         })
                         .setCancelable(false)

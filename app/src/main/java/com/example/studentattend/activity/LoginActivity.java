@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.studentattend.R;
@@ -27,7 +26,7 @@ import com.example.studentattend.md5.Md5Utils;
 import com.example.studentattend.service.ServiceLogin;
 import com.google.gson.Gson;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     private EditText username;
     private EditText password;

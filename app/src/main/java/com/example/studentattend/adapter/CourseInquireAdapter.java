@@ -12,15 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.studentattend.R;
-import com.example.studentattend.dao.StudentRecordBean;
+import com.example.studentattend.dao.CourseInquireBean;
 
 import java.util.List;
 
-public class StudentRecordAdapter extends ArrayAdapter<StudentRecordBean> {
+public class CourseInquireAdapter extends ArrayAdapter<CourseInquireBean> {
 
     private int resource;
 
-    public StudentRecordAdapter(@NonNull Context context, int resource, @NonNull List<StudentRecordBean> objects) {
+
+    public CourseInquireAdapter(@NonNull Context context, int resource, @NonNull List<CourseInquireBean> objects) {
         super(context, resource, objects);
         this.resource = resource;
     }
@@ -29,17 +30,15 @@ public class StudentRecordAdapter extends ArrayAdapter<StudentRecordBean> {
     @Override
     @SuppressLint("ViewHolder")
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        StudentRecordBean studentRecordBean = getItem(position);
+        CourseInquireBean courseInquireBean = getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resource,parent,false);
         //resource就是item的布局
         //LayoutInflater.from(getContext()).inflate(resource,parent,false)的作用是：从布局xml生成控件
+        TextView courseId = view.findViewById(R.id.course_id);
         TextView courseName = view.findViewById(R.id.course_name);
-        TextView attendance = view.findViewById(R.id.attendance);
-        TextView absenceFromDuty = view.findViewById(R.id.absence_from_duty);
-        assert studentRecordBean != null;
-        courseName.setText(studentRecordBean.getCourseName());
-        attendance.setText(String.valueOf(studentRecordBean.getAttendance()));
-        absenceFromDuty.setText(String.valueOf(studentRecordBean.getAbsenceFromDuty()));
+        assert courseInquireBean != null;
+        courseId.setText(courseInquireBean.getCourseId());
+        courseName.setText(courseInquireBean.getCourseName());
         return view;
     }
     //覆盖父类ArrayAdapter<>的getView，让Adapter能够按照resourceId的样子，

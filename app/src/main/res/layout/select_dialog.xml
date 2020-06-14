@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_background"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:layout_width="16.4dp"
+            android:layout_height="21.1dp"
+            android:layout_marginBottom="13.4dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13.5dp"
+            android:src="@mipmap/ic_user"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="19.6dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/editText"/>
+
+        <EditText
+            android:id="@+id/inquire"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:hint="@string/student_inquire"
+            android:background="@null"
+            android:textSize="18sp"
+            android:autofillHints="inquire"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+</LinearLayout>
