@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.TeacherRecordAdapter;
-import com.example.studentattend.dao.AttendTeacherBean;
 import com.example.studentattend.dao.TeacherRecordBean;
 import com.example.studentattend.service.ServiceAttendRecordTeacher;
 import com.example.studentattend.service.ServiceTeacherInfo;
@@ -34,8 +32,8 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
     private List<TeacherRecordBean> teacherRecordBeanList = new ArrayList<>();
     public static final int CHOICE = 1;
     public static final int INFORMATION = 2;
-    int flag;
     TextView nullRecord;
+    TextView teacherNull;
     TextView teacherName;
     TextView teacherId;
     TextView courseName;
@@ -43,19 +41,20 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
     ListView listView;
     String course_name;
     String course_id;
+    Button choice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attend_record_teacher);
         //先获取老师教的课程
-        //。。。。。
         information();
         listView = findViewById(R.id.teacher_listView);
         listView.setOnItemClickListener(this);
         nullRecord = findViewById(R.id.null_record);
+        teacherNull = findViewById(R.id.teacher_null_course);
         TextView recordReturnTeacher = findViewById(R.id.record_return_teacher);
-        Button choice = findViewById(R.id.choice);
+        choice = findViewById(R.id.choice);
         choice.setOnClickListener(this);
         recordReturnTeacher.setOnClickListener(this);
         teacherName = findViewById(R.id.teacher_name_text);
@@ -71,27 +70,6 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                 Message message = new Message();
                 message.what = INFORMATION;
                 handler.sendMessage(message);
-            }
-        }).start();
-    }
-
-    private void initTeacherRecordBean() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (flag == 1) {
-                    for (int i = 0;i < 10;i++) {
-                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1001","18406199",
-                                "2020/6/23 12:00:00","数据结构",100,0);
-                        teacherRecordBeanList.add(teacherRecordBean);
-                    }
-                } else if (flag == 2){
-                    for (int i = 0;i < 10;i++) {
-                        TeacherRecordBean teacherRecordBean = new TeacherRecordBean("C1002","18406188",
-                                "2020/5/23 12:00:00",   "数据结构",10,0);
-                        teacherRecordBeanList.add(teacherRecordBean);
-                    }
-                }
             }
         }).start();
     }
@@ -119,7 +97,6 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
-        @SuppressLint("SetTextI18n")
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
@@ -141,32 +118,12 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                                     listView.setVisibility(View.GONE);
                                     nullRecord.setVisibility(View.VISIBLE);
                                 }else {
-                                    //initTeacherRecordBean();
                                     listView.setVisibility(View.VISIBLE);
                                     nullRecord.setVisibility(View.GONE);
                                     TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
                                             AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
                                     listView.setAdapter(teacherRecordAdapter);
-                                    teacherRecordAdapter.notifyDataSetChanged();
                                 }
-                                //服务端交互
-                                //测试代码,判断有无数据
-//                                if (editText.getText().toString().equals("18406199")) {
-//                                    flag = 1;
-//                                    nullRecord.setVisibility(View.GONE);
-//
-//                                } else if (editText.getText().toString().equals("18406188")){
-//                                    flag = 2;
-//                                    nullRecord.setVisibility(View.GONE);
-//                                } else {
-//                                    nullRecord.setVisibility(View.VISIBLE);
-//                                }
-//                                teacherRecordBeanList.clear();
-//                                initTeacherRecordBean();
-//                                TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
-//                                        AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
-//                                listView.setAdapter(teacherRecordAdapter);
-//                                teacherRecordAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("取消",null)
@@ -183,6 +140,10 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                 teacherId.setText(SplashActivity.userBean.getSno());
                 courseName.setText(course_name);
                 courseId.setText(course_id);
+                if (course_name.isEmpty() || course_id.isEmpty()) {
+                    teacherNull.setVisibility(View.VISIBLE);
+                    choice.setVisibility(View.GONE);
+                }
             }
         }
     };

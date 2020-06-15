@@ -42,7 +42,6 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
     private static String attendId;
     private static String studentId;
     private static String attendance;
-    private static boolean flag;
     private static int position1;
 
     @Override
@@ -71,20 +70,9 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
         listView.setOnItemClickListener(this);
     }
 
+
+
     private void initAttend() {
-//        new Thread(new Runnable() {
-////            @Override
-////            public void run() {
-////                for (int i = 0;i < 6;i++) {
-////                    AttendTeacherBean attendTeacherBean = new AttendTeacherBean("1840610610","黄思捷","签到","1");
-////                    attendTeacherBeanList.add(attendTeacherBean);
-////                    AttendTeacherBean attendTeacherBean2 = new AttendTeacherBean("1840610608","郑龙涛","未签","1");
-////                    attendTeacherBeanList.add(attendTeacherBean2);
-////                    AttendTeacherBean attendTeacherBean3 = new AttendTeacherBean("1840610626","向前程","迟签","1");
-////                    attendTeacherBeanList.add(attendTeacherBean3);
-////                }
-////            }
-////        }).start();
         ServiceAttendTeacher serviceAttendTeacher = new ServiceAttendTeacher();
         serviceAttendTeacher.init(SplashActivity.userBean.getSno(),time);
         serviceAttendTeacher.start();
@@ -139,10 +127,8 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
                                                 if (baseBean.getMsg().equals("修改成功")){
                                                     Toast.makeText(AttendTeacherActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
                                                     //跟新客户端数据
-                                                    flag = true;
                                                     attendTeacherBeanList.get(position1).setAttendance(attendance);
                                                     attendTeacherAdapter.notifyDataSetChanged();
-                                                    flag = false;
                                                 }else {
                                                     Toast.makeText(AttendTeacherActivity.this,"修改失败",Toast.LENGTH_SHORT).show();
                                                 }

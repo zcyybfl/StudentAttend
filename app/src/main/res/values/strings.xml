@@ -51,6 +51,7 @@
     <string name="absence_from_duty">缺勤</string>
     <string name="details">详情</string>
     <string name="record_null">没有考勤记录</string>
+    <string name="teacher_null_course">没有课程</string>
     <string name="student_null">没有该学生</string>
     <string name="teacher_null">没有该教师</string>
     <string name="course_null">没有该课程</string>
