@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.example.studentattend.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,12 +12,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    //获取是老师还是学生登录
+    public static boolean student_teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+        assert bundle != null;
+        student_teacher = bundle.getBoolean("student_teacher");
         //去掉标题栏
         Objects.requireNonNull(this.getSupportActionBar()).hide();
         BottomNavigationView navView = findViewById(R.id.nav_view);
