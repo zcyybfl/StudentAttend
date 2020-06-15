@@ -41,7 +41,7 @@ public class AttendTeacherAdapter extends ArrayAdapter<AttendTeacherBean> {
         teacherOrder.setText(String.valueOf(position + 1));
         studentId.setText(attendTeacherBean.getStudentId());
         studentName.setText(attendTeacherBean.getStudentName());
-        teacherAttendanceStatus.setText(attendTeacherBean.getStatus());
+        teacherAttendanceStatus.setText(attendTeacherBean.getAttendance());
         return view;
     }
     //覆盖父类ArrayAdapter<>的getView，让Adapter能够按照resourceId的样子，

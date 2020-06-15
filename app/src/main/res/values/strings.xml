@@ -54,6 +54,8 @@
     <string name="student_null">没有该学生</string>
     <string name="teacher_null">没有该教师</string>
     <string name="course_null">没有该课程</string>
+    <string name="teacher_course_null">没有该教师课程</string>
+    <string name="class_course_null">没有该班级课程</string>
     <string name="student_name">学生姓名</string>
     <string name="student_id">学号</string>
     <string name="teachers_id">教工号</string>

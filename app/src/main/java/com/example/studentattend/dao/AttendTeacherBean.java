@@ -4,12 +4,14 @@ public class AttendTeacherBean {
 
     private String studentId;
     private String studentName;
-    private String status;
+    private String attendance;
+    private String attendId;
 
-    public AttendTeacherBean(String studentId, String studentName, String status) {
+    public AttendTeacherBean(String studentId, String studentName, String attendance, String attendId) {
         this.studentId = studentId;
         this.studentName = studentName;
-        this.status = status;
+        this.attendance = attendance;
+        this.attendId = attendId;
     }
 
     public String getStudentId() {
@@ -28,11 +30,19 @@ public class AttendTeacherBean {
         this.studentName = studentName;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAttendance() {
+        return attendance;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
+    }
+
+    public String getAttendId() {
+        return attendId;
+    }
+
+    public void setAttendId(String attendId) {
+        this.attendId = attendId;
     }
 }

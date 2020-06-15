@@ -128,7 +128,7 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //服务端交互
-                                //测试代码
+                                //测试代码,判断有无数据
                                 if (editText.getText().toString().equals("18406199")) {
                                     flag = 1;
                                     nullRecord.setVisibility(View.GONE);

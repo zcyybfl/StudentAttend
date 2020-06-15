@@ -36,7 +36,7 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
     TextView classIdText;
     AttendTeacherAdapter attendTeacherAdapter;
     private static String studentId;
-    private static String status;
+    private static String attendance;
     private static boolean flag;
     private static int position1;
 
@@ -71,11 +71,11 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
             @Override
             public void run() {
                 for (int i = 0;i < 6;i++) {
-                    AttendTeacherBean attendTeacherBean = new AttendTeacherBean("1840610610","黄思捷","签到");
+                    AttendTeacherBean attendTeacherBean = new AttendTeacherBean("1840610610","黄思捷","签到","1");
                     attendTeacherBeanList.add(attendTeacherBean);
-                    AttendTeacherBean attendTeacherBean2 = new AttendTeacherBean("1840610608","郑龙涛","未签");
+                    AttendTeacherBean attendTeacherBean2 = new AttendTeacherBean("1840610608","郑龙涛","未签","1");
                     attendTeacherBeanList.add(attendTeacherBean2);
-                    AttendTeacherBean attendTeacherBean3 = new AttendTeacherBean("1840610626","向前程","迟签");
+                    AttendTeacherBean attendTeacherBean3 = new AttendTeacherBean("1840610626","向前程","迟签","1");
                     attendTeacherBeanList.add(attendTeacherBean3);
                 }
             }
@@ -111,9 +111,9 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which) {
-                                    case 0:status = "签到";break;
-                                    case 1:status = "迟签";break;
-                                    case 2:status = "未签";break;
+                                    case 0:attendance = "签到";break;
+                                    case 1:attendance = "迟签";break;
+                                    case 2:attendance = "未签";break;
                                     default:break;
                                 }
                                 new AlertDialog.Builder(AttendTeacherActivity.this)
@@ -126,7 +126,7 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
 
                                                 //跟新客户端数据
                                                 flag = true;
-                                                attendTeacherBeanList.get(position1).setStatus(status);
+                                                attendTeacherBeanList.get(position1).setAttendance(attendance);
                                                 attendTeacherAdapter.notifyDataSetChanged();
                                                 flag = false;
                                             }

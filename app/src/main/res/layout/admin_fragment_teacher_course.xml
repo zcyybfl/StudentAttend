@@ -84,10 +84,18 @@
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:textColor="#FFFFFF"
+                    android:text="@string/class_id"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:text="@string/courses_id"/>
 
                 <TextView
-                    android:layout_marginStart="50dp"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -99,16 +107,16 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/null_course"
+                android:id="@+id/null_teacher_course"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:text="@string/course_null"
+                android:text="@string/teacher_course_null"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:visibility="gone"/>
 
             <com.example.studentattend.override.ListViewForScrollView
-                android:id="@+id/course_inquire_listView"
+                android:id="@+id/teacher_course_inquire_listView"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
