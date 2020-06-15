@@ -84,7 +84,7 @@
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:textColor="#FFFFFF"
-                    android:text="@string/class_id"/>
+                    android:text="@string/teachers_id"/>
 
                 <TextView
                     android:layout_width="0dp"

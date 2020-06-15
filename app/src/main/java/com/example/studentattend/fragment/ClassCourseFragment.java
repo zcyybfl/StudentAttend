@@ -104,10 +104,10 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
                                 Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getContext(),"添加失败,该教师没有课程",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),"添加失败,该教师没有课程或教工号不存在",Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getContext(),"添加失败,班级号或教工号不存在",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"添加失败,班级号不存在",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
