@@ -8,14 +8,22 @@
         android:id="@+id/register_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="@color/button">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="#FFFFFF"
             android:text="@string/login_admin"
             android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/admin_return"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_baseline_chevron_left_24"
+            android:layout_alignParentStart="true"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -106,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="33dp"
+        android:textColor="#FFFFFF"
         android:text="@string/admin_login"
         android:background="@color/button"
         android:textSize="17sp"/>
