@@ -5,14 +5,13 @@ public class StudentOrTeacherInquireBean {
     private String studentOrTeacherId;
     private String studentOrTeacherName;
     private String studentOrTeacherSex;
-    private String classIdOrCourseId;
+    private String classIdOrDepartment;
 
-    public StudentOrTeacherInquireBean(String studentOrTeacherId, String studentOrTeacherName,
-                                       String studentOrTeacherSex, String classIdOrCourseId) {
+    public StudentOrTeacherInquireBean(String studentOrTeacherId, String studentOrTeacherName, String studentOrTeacherSex, String classIdOrDepartment) {
         this.studentOrTeacherId = studentOrTeacherId;
         this.studentOrTeacherName = studentOrTeacherName;
         this.studentOrTeacherSex = studentOrTeacherSex;
-        this.classIdOrCourseId = classIdOrCourseId;
+        this.classIdOrDepartment = classIdOrDepartment;
     }
 
     public String getStudentOrTeacherId() {
@@ -39,11 +38,11 @@ public class StudentOrTeacherInquireBean {
         this.studentOrTeacherSex = studentOrTeacherSex;
     }
 
-    public String getClassIdOrCourseId() {
-        return classIdOrCourseId;
+    public String getClassIdOrDepartment() {
+        return classIdOrDepartment;
     }
 
-    public void setClassIdOrCourseId(String classIdOrCourseId) {
-        this.classIdOrCourseId = classIdOrCourseId;
+    public void setClassIdOrDepartment(String classIdOrDepartment) {
+        this.classIdOrDepartment = classIdOrDepartment;
     }
 }

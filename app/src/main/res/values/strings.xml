@@ -88,6 +88,7 @@
     <string name="sex">性别</string>
     <string name="courses_id">课程号</string>
     <string name="courses_name">课程名</string>
+    <string name="department">系别</string>
     <string name="add">增</string>
     <string name="delete">删</string>
     <string name="select">查</string>
