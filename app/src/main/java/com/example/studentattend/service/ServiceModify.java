@@ -61,6 +61,5 @@ public class ServiceModify extends Thread{
                 return baseBean;
             }
         }
-
     }
 }

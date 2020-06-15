@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.studentattend.R;
+import com.example.studentattend.saveread.UserManage;
 import com.example.studentattend.collector.ActivityCollector;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.md5.Md5Utils;
@@ -59,7 +60,7 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
             error.setText("密码不能为空");
             reset();
             return false;
-        } else if (!Md5Utils.md5(oldPassword.getText().toString(),"StudentAttend").equals(password)) {
+        } else if (!Md5Utils.md5(oldPassword.getText().toString()).equals(password)) {
             error.setText("原密码不正确");
             reset();
             return false;
@@ -109,9 +110,10 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                UserManage.getInstance().clear(ModifyPasswordActivity.this);
                                 Intent loginActivity = new Intent(ModifyPasswordActivity.this,LoginActivity.class);
                                 startActivity(loginActivity);
-                                ActivityCollector.finishAll(false);
+                                ActivityCollector.finishAll();
                             }
                         })
                         .setCancelable(false)
@@ -130,16 +132,15 @@ public class ModifyPasswordActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.submit:
                 if (student_teacher) {
-                    password = LoginActivity.userBean.getPassword();
                     flag = "student";
                 } else {
-                    password = LoginActivity.userBean.getPassword();
                     flag = "teacher";
                 }
+                password = SplashActivity.userBean.getPassword();
                 if (judge()) {
                     ServiceModify serviceModify = new ServiceModify();
-                    serviceModify.init(LoginActivity.userBean.getSno(),"password",
-                            Md5Utils.md5(newPasswordAgain.getText().toString(),"StudentAttend"), flag);
+                    serviceModify.init(SplashActivity.userBean.getSno(),"password",
+                            Md5Utils.md5(newPasswordAgain.getText().toString()), flag);
                     serviceModify.start();
                     baseBean = serviceModify.show();
                     if (judge_modify(baseBean)){

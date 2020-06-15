@@ -358,33 +358,4 @@
         android:layout_marginTop="25dp"
         android:textSize="17sp" />
 
-    <!--    <RelativeLayout-->
-<!--        android:layout_width="270dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="25dp">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/student_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:text="@string/student_register"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:background="@color/button"-->
-<!--            android:textSize="17sp"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/teacher_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:text="@string/teacher_register"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:background="@color/button"-->
-<!--            android:textSize="17sp"-->
-<!--            tools:ignore="RelativeOverlap" />-->
-
-<!--    </RelativeLayout>-->
-
 </LinearLayout>

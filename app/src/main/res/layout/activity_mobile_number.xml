@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.MobileNumber">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/relativeLayout_number"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?actionBarSize"
         android:background="#00BCD4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -27,11 +30,12 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:textColor="#FFFFFF"
+            android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_centerInParent="true"
             android:text="@string/mobile_number" />
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:orientation="vertical"

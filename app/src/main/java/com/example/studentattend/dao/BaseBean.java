@@ -3,7 +3,7 @@ package com.example.studentattend.dao;
 public class BaseBean {
 
     private  String msg;
-    private  Object date;
+    private  Object data;
 
     public String getMsg() {
         return msg;
@@ -13,11 +13,11 @@ public class BaseBean {
         this.msg = msg;
     }
 
-    public Object getDate() {
-        return date;
+    public Object getData() {
+        return data;
     }
 
-    public void setDate(Object date) {
-        this.date = date;
+    public void setDate(Object data) {
+        this.data = data;
     }
 }
