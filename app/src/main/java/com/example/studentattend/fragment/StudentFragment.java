@@ -86,14 +86,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.student_inquire_button) {
-            if (studentInquire.getText().toString().isEmpty()) {
-                //首先会查询所有
-                flag = selectAll();
-            } else {
-                //把信息传递给数据库
-                flag = select(studentInquire.getText().toString());
-
-            }
+            //把信息传递给数据库
+            flag = select(studentInquire.getText().toString());
             //如果返回的信息没有学生，将nullStudent设置为显示,反之，设置为隐藏
             initListView();
         }
@@ -108,14 +102,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private boolean selectAll() {
-        //查询所有
-
-        //查询成功与否，要替换成
-        return true;
-    }
-
-    private boolean select(String id) {
+    private boolean select(String classId) {
         //传递给数据库
 
 

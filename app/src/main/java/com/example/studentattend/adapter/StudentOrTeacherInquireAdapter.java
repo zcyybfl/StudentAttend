@@ -36,12 +36,12 @@ public class StudentOrTeacherInquireAdapter extends ArrayAdapter<StudentOrTeache
         TextView studentOrTeacherId = view.findViewById(R.id.student_or_teacher_id);
         TextView studentOrTeacherName = view.findViewById(R.id.student_or_teacher_name);
         TextView studentOrTeacherSex = view.findViewById(R.id.student_or_teacher_sex);
-        TextView classIdOrCourseId = view.findViewById(R.id.class_id_or_course_id);
+        TextView classIdOrDepartment = view.findViewById(R.id.class_id_or_department);
         assert studentOrTeacherInquireBean != null;
         studentOrTeacherId.setText(studentOrTeacherInquireBean.getStudentOrTeacherId());
         studentOrTeacherName.setText(studentOrTeacherInquireBean.getStudentOrTeacherName());
         studentOrTeacherSex.setText(studentOrTeacherInquireBean.getStudentOrTeacherSex());
-        classIdOrCourseId.setText(studentOrTeacherInquireBean.getClassIdOrCourseId());
+        classIdOrDepartment.setText(studentOrTeacherInquireBean.getClassIdOrDepartment());
         return view;
     }
     //覆盖父类ArrayAdapter<>的getView，让Adapter能够按照resourceId的样子，

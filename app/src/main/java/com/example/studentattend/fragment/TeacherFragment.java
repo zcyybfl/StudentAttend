@@ -70,13 +70,13 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
             public void run() {
                 for (int i = 0;i < 10;i++) {
                     StudentOrTeacherInquireBean one = new StudentOrTeacherInquireBean("1840610610","黄思捷",
-                            "男","C001");
+                            "男","计算机系");
                     studentOrTeacherInquireBeans.add(one);
                     StudentOrTeacherInquireBean two = new StudentOrTeacherInquireBean("1840610608","郑龙涛",
-                            "女","C002");
+                            "女","计算机系");
                     studentOrTeacherInquireBeans.add(two);
                     StudentOrTeacherInquireBean three = new StudentOrTeacherInquireBean("1840610626","向前程",
-                            "男","C003");
+                            "男","计算机系");
                     studentOrTeacherInquireBeans.add(three);
                 }
             }
@@ -86,18 +86,13 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.teacher_inquire_button) {
-            if (teacherInquire.getText().toString().isEmpty()) {
-                //首先会查询所有
-                flag = selectAll();
-            } else {
-                //把教工号信息传递给数据库
-                flag = select(teacherInquire.getText().toString());
-
-            }
+            //把教工号信息传递给数据库
+            flag = select(teacherInquire.getText().toString());
             //如果返回的信息没有教师，将nullTeacher置为显示,反之，设置为隐藏
             initListView();
         }
     }
+
     private void initListView() {
         if (flag) {
             nullTeacher.setVisibility(View.GONE);
@@ -107,16 +102,8 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private boolean selectAll() {
-        //查询所有
-
-        //查询成功与否，要替换成
-        return true;
-    }
-
-    private boolean select(String id) {
+    private boolean select(String teacherId) {
         //传递给数据库
-
 
         //查询成功与否，要替换成
         return true;
