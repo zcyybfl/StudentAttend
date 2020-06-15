@@ -1,6 +1,5 @@
 package com.example.studentattend.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,38 +65,99 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_course:
+                addCourseDialog();
                 break;
             case R.id.delete_course:
+                deleteCourseDialog();
                 break;
             case R.id.select_course:
                 selectCourseDialog();
                 break;
             case R.id.modify_course:
+                modifyCourseDialog();
                 break;
             default:
                 break;
         }
     }
 
-    @SuppressLint("InflateParams")
+    private void addCourseDialog() {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        final View addCourseView = inflater.inflate(R.layout.two_input_dialog, null);
+        final EditText courseId = addCourseView.findViewById(R.id.one);
+        final EditText courseName = addCourseView.findViewById(R.id.two);
+        courseId.setHint("请输入课程号");
+        courseName.setHint("请输入课程名");
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("添加课程");
+        builder.setView(addCourseView);
+        builder.setPositiveButton("删除", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (courseId.getText().toString().isEmpty() || courseName.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),"课程号和课程名不能为空",Toast.LENGTH_SHORT).show();
+                } else {
+                    //查询该课程存在不
+                    flag = addSelect(courseId.getText().toString());
+                    if (flag) {
+                        Toast.makeText(getContext(),"添加失败,该课程号已存在",Toast.LENGTH_SHORT).show();
+                    } else {
+                        //添加课程
+                        addCourse(courseId.getText().toString(),courseName.getText().toString());
+                        Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("取消",null);
+        builder.setCancelable(false);
+        builder.show();
+    }
+
+    private void deleteCourseDialog() {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        final View deleteCourseView = inflater.inflate(R.layout.one_input_dialog, null);
+        final EditText courseId = deleteCourseView.findViewById(R.id.one);
+        courseId.setHint("请输入课程号");
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("删除课程");
+        builder.setView(deleteCourseView);
+        builder.setPositiveButton("删除", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (courseId.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),"课程号不能为空",Toast.LENGTH_SHORT).show();
+                } else {
+                    //判断课程存在不
+                    flag = deleteSelect(courseId.getText().toString());
+                    if (flag) {
+                        //删除课程
+                        deleteCourse(courseId.getText().toString());
+                        Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(),"删除失败,该课程号不存在",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("取消",null);
+        builder.setCancelable(false);
+        builder.show();
+    }
+
     private void selectCourseDialog() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        final View selectCourseView = inflater.inflate(R.layout.select_dialog, null);
-        final EditText selectCourse = selectCourseView.findViewById(R.id.inquire);
-        selectCourse.setHint("请输入课程号(模糊查询)");
+        final View selectCourseView = inflater.inflate(R.layout.one_input_dialog, null);
+        final EditText courseId = selectCourseView.findViewById(R.id.one);
+        courseId.setHint("请输入课程号(模糊查询)");
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("课程查询");
+        builder.setTitle("查询课程");
         builder.setView(selectCourseView);
         builder.setPositiveButton("查询", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (selectCourse.getText().toString().isEmpty()) {
-                    //首先会查询所有
-                    flag = selectAll();
-                } else {
-                    //把课程号信息传递给数据库
-                    flag = select(selectCourse.getText().toString());
-                }
+                //把课程号信息传递给数据库
+                flag = select(courseId.getText().toString());
                 //如果返回的信息没有课程，将nullStudent设置为显示,反之，设置为隐藏
                 initListView();
             }
@@ -104,6 +165,72 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         builder.setNegativeButton("取消",null);
         builder.setCancelable(false);
         builder.show();
+    }
+
+    private void modifyCourseDialog() {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        final View modifyCourseView = inflater.inflate(R.layout.two_input_dialog, null);
+        final EditText courseId = modifyCourseView.findViewById(R.id.one);
+        final EditText courseName = modifyCourseView.findViewById(R.id.two);
+        courseId.setHint("请输入课程号");
+        courseName.setHint("请输入修改课程名");
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("修改课程");
+        builder.setView(modifyCourseView);
+        builder.setPositiveButton("修改", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (courseId.getText().toString().isEmpty() || courseName.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),"课程号和课程名不能为空",Toast.LENGTH_SHORT).show();
+                } else {
+                    //判断课程存在不
+                    flag = modifySelect(courseId.getText().toString());
+                    if (flag) {
+                        //修改课程
+                        modifyCourse(courseId.getText().toString(),courseName.getText().toString());
+                        Toast.makeText(getContext(),"修改成功",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(),"修改失败,该课程号不存在",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("取消",null);
+        builder.setCancelable(false);
+        builder.show();
+    }
+
+    private boolean addSelect(String courseId) {
+        //查询添加课程号存在否
+        return false;
+    }
+
+    private void addCourse(String courseId,String courseName) {
+        //添加课程
+    }
+
+    private boolean deleteSelect(String courseId) {
+        //查询删除课程号存在否
+        return true;
+    }
+
+    private void deleteCourse(String courseId) {
+        //删除课程
+    }
+
+    private boolean modifySelect(String courseId) {
+        //查询修改课程号存在否
+        return true;
+    }
+
+    private void modifyCourse(String courseId,String courseName) {
+        //修改课程
+    }
+
+    private boolean select(String courseId) {
+        //传递给数据库
+        //查询有无数据
+        return true;
     }
 
     private void initListView() {
@@ -140,20 +267,5 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         CourseInquireAdapter courseInquireAdapter = new CourseInquireAdapter(requireContext(),
                 R.layout.admin_fragment_course_item,courseInquireBeans);
         courseInquireListView.setAdapter(courseInquireAdapter);
-    }
-
-    private boolean selectAll() {
-        //查询所有
-
-        //查询成功与否，要替换成
-        return true;
-    }
-
-    private boolean select(String id) {
-        //传递给数据库
-
-
-        //查询成功与否，要替换成
-        return true;
     }
 }

@@ -54,7 +54,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             serviceLogin.init(UserManage.userInfo.getUserName(),UserManage.userInfo.getPassword(),UserManage.userInfo.getType());
             serviceLogin.start();
             baseBean = serviceLogin.show();
-            String json = gson.toJson(baseBean.getDate());
+            String json = gson.toJson(baseBean.getData());
             userBean = gson.fromJson(json, UserBean.class);
         }
         timer.schedule(task,1000,1000);//等待时间一秒，停顿时间一秒

@@ -80,7 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     serviceLogin.init(username_Text,password_Text,"student");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
-                    String json = gson.toJson(baseBean.getDate());
+                    String json = gson.toJson(baseBean.getData());
                     SplashActivity.userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
                         UserManage.getInstance().saveUserInfo(this,username_Text,password_Text,"student");
@@ -101,7 +101,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     serviceLogin.init(username_Text,password_Text,"teacher");
                     serviceLogin.start();
                     baseBean = serviceLogin.show();
-                    String json = gson.toJson(baseBean.getDate());
+                    String json = gson.toJson(baseBean.getData());
                     SplashActivity.userBean = gson.fromJson(json, UserBean.class);
                     if (judge(baseBean)){
                         UserManage.getInstance().saveUserInfo(this,username_Text,password_Text,"teacher");

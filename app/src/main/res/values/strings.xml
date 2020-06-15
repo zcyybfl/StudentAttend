@@ -76,9 +76,13 @@
     <string name="student">学生</string>
     <string name="teacher">教师</string>
     <string name="course">课程</string>
+    <string name="teacher_course">教师课程</string>
+    <string name="class_course">班级课程</string>
     <string name="student_information">学生信息</string>
     <string name="teacher_information">教师信息</string>
     <string name="course_information">课程信息</string>
+    <string name="teacher_course_information">教师课程信息</string>
+    <string name="class_course_information">班级课程信息</string>
     <string name="sex">性别</string>
     <string name="courses_id">课程号</string>
     <string name="courses_name">课程名</string>

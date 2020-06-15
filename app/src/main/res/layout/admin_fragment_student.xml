@@ -42,7 +42,7 @@
 
             <EditText
                 android:id="@+id/student_inquire"
-                android:layout_width="203dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
