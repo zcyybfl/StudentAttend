@@ -4,11 +4,9 @@
     package="com.example.studentattend">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,20 +18,28 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activity.AttendRecordActivity" />
-        <activity android:name=".activity.MobileNumber" />
-        <activity android:name=".activity.BindMobileNumberActivity" />
-        <activity android:name=".activity.MailboxActivity" />
-        <activity android:name=".activity.ModifyPasswordActivity" />
-        <activity android:name=".activity.AdminLoginActivity" />
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.SplashActivity"
+            android:theme="@style/NoTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AttendTeacherActivity" />
+        <activity android:name=".activity.AttendStudentActivity" />
+        <activity android:name=".activity.AttendRecordTeacherActivity" />
+        <activity android:name=".activity.AdminMainActivity" />
+        <activity android:name=".activity.ForgetPasswordActivity" />
+        <activity android:name=".activity.AttendRecordStudentActivity" />
+        <activity android:name=".activity.MobileNumber" />
+        <activity android:name=".activity.BindMobileNumberActivity" />
+        <activity android:name=".activity.MailboxActivity" />
+        <activity android:name=".activity.ModifyPasswordActivity" />
+        <activity android:name=".activity.AdminLoginActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme" />

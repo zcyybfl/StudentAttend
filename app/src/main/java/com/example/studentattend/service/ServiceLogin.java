@@ -17,8 +17,6 @@ public class ServiceLogin extends Thread{
     public Gson gson = new Gson();
     BaseBean baseBean = null;
 
-
-
     public void init(String username,String password,String flag){
         url = "http://zltzlt.cn:8080/studentAttend/Login";
         path = url + "?sno=" + username + "&password=" + password + "&flag=" + flag;
@@ -47,8 +45,5 @@ public class ServiceLogin extends Thread{
                 return baseBean;
             }
         }
-
     }
-
-
 }

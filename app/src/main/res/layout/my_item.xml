@@ -13,6 +13,7 @@
         android:gravity="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/my_data"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/todo"
         app:layout_constraintLeft_toRightOf="@+id/my_data"
         app:layout_constraintRight_toRightOf="parent"

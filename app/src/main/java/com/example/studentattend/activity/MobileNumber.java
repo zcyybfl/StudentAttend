@@ -37,11 +37,7 @@ public class MobileNumber extends BaseActivity implements View.OnClickListener {
     }
 
     private void telJudge() {
-        if (student_teacher) {
-            tel = LoginActivity.userBean.getPhone();
-        } else {
-//            tel = LoginActivity.teacherBean.getPhone();
-        }
+        tel = SplashActivity.userBean.getPhone();
         new Thread(new Runnable() {
             @Override
             public void run() {

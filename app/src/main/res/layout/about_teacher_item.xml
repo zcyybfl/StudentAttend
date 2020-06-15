@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/teacher_order"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/teacher_date"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_weight="3"/>
+
+    <TextView
+        android:id="@+id/teacher_attendance"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/teacher_absence_from_duty"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+</LinearLayout>
