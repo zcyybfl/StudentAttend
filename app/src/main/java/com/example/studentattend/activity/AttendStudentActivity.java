@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.AttendStudentAdapter;
 import com.example.studentattend.dao.AttendStudentBean;
+import com.example.studentattend.service.ServiceAttendStudent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,15 +60,10 @@ public class AttendStudentActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initAttend() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0;i < 10;i++) {
-                    AttendStudentBean attendStudentBean = new AttendStudentBean("2019/10/26 10:49","签到");
-                    attendStudentBeanList.add(attendStudentBean);
-                }
-            }
-        }).start();
+        ServiceAttendStudent serviceAttendStudent = new ServiceAttendStudent();
+        serviceAttendStudent.init(SplashActivity.userBean.getSno(),obtainTeacherId);
+        serviceAttendStudent.start();
+        attendStudentBeanList = serviceAttendStudent.show();
     }
 
     private void information() {

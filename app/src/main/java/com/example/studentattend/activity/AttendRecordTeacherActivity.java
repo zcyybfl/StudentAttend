@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,7 +21,10 @@ import android.widget.TextView;
 
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.TeacherRecordAdapter;
+import com.example.studentattend.dao.AttendTeacherBean;
 import com.example.studentattend.dao.TeacherRecordBean;
+import com.example.studentattend.service.ServiceAttendRecordTeacher;
+import com.example.studentattend.service.ServiceTeacherInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,8 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
     TextView courseName;
     TextView courseId;
     ListView listView;
+    String course_name;
+    String course_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,34 +133,56 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                ServiceAttendRecordTeacher serviceAttendRecordTeacher = new ServiceAttendRecordTeacher();
+                                serviceAttendRecordTeacher.init(SplashActivity.userBean.getSno(),editText.getText().toString());
+                                serviceAttendRecordTeacher.start();
+                                teacherRecordBeanList = serviceAttendRecordTeacher.show();
+                                if (teacherRecordBeanList.isEmpty()){
+                                    listView.setVisibility(View.GONE);
+                                    nullRecord.setVisibility(View.VISIBLE);
+                                }else {
+                                    //initTeacherRecordBean();
+                                    listView.setVisibility(View.VISIBLE);
+                                    nullRecord.setVisibility(View.GONE);
+                                    TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
+                                            AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
+                                    listView.setAdapter(teacherRecordAdapter);
+                                    teacherRecordAdapter.notifyDataSetChanged();
+                                }
                                 //服务端交互
                                 //测试代码,判断有无数据
-                                if (editText.getText().toString().equals("18406199")) {
-                                    flag = 1;
-                                    nullRecord.setVisibility(View.GONE);
-
-                                } else if (editText.getText().toString().equals("18406188")){
-                                    flag = 2;
-                                    nullRecord.setVisibility(View.GONE);
-                                } else {
-                                    nullRecord.setVisibility(View.VISIBLE);
-                                }
-                                teacherRecordBeanList.clear();
-                                initTeacherRecordBean();
-                                TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
-                                        AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
-                                listView.setAdapter(teacherRecordAdapter);
-                                teacherRecordAdapter.notifyDataSetChanged();
+//                                if (editText.getText().toString().equals("18406199")) {
+//                                    flag = 1;
+//                                    nullRecord.setVisibility(View.GONE);
+//
+//                                } else if (editText.getText().toString().equals("18406188")){
+//                                    flag = 2;
+//                                    nullRecord.setVisibility(View.GONE);
+//                                } else {
+//                                    nullRecord.setVisibility(View.VISIBLE);
+//                                }
+//                                teacherRecordBeanList.clear();
+//                                initTeacherRecordBean();
+//                                TeacherRecordAdapter teacherRecordAdapter = new TeacherRecordAdapter(
+//                                        AttendRecordTeacherActivity.this, R.layout.about_teacher_item,teacherRecordBeanList);
+//                                listView.setAdapter(teacherRecordAdapter);
+//                                teacherRecordAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("取消",null)
                         .setCancelable(false)
                         .show();
             }else if (msg.what == INFORMATION) {
+                ServiceTeacherInfo serviceTeacherInfo = new ServiceTeacherInfo();
+                serviceTeacherInfo.init(SplashActivity.userBean.getSno());
+                serviceTeacherInfo.start();
+                TeacherRecordBean teacherRecordBean = serviceTeacherInfo.show();
+                course_name = teacherRecordBean.getCourseName();
+                course_id = teacherRecordBean.getCourseId();
                 teacherName.setText(SplashActivity.userBean.getName());
                 teacherId.setText(SplashActivity.userBean.getSno());
-                courseName.setText("数据结构");
-                courseId.setText("C001");
+                courseName.setText(course_name);
+                courseId.setText(course_id);
             }
         }
     };
@@ -165,8 +193,8 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
         Bundle bundle=new Bundle();
         bundle.putString("time",teacherRecordBeanList.get(position).getTime());
         bundle.putString("classId",teacherRecordBeanList.get(position).getClassId());
-        bundle.putString("courseName",teacherRecordBeanList.get(position).getCourseName());
-        bundle.putString("courseId",teacherRecordBeanList.get(position).getCourseId());
+        bundle.putString("courseName",course_name);
+        bundle.putString("courseId",course_id);
         attendTeacherActivity.putExtras(bundle);
         startActivity(attendTeacherActivity);
     }

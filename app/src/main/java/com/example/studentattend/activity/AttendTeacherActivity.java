@@ -13,10 +13,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.AttendTeacherAdapter;
 import com.example.studentattend.dao.AttendTeacherBean;
+import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.service.ServiceAttendTeacher;
+import com.example.studentattend.service.ServiceModifyAttendStudent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +39,7 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
     TextView timeText;
     TextView classIdText;
     AttendTeacherAdapter attendTeacherAdapter;
+    private static String attendId;
     private static String studentId;
     private static String attendance;
     private static boolean flag;
@@ -67,19 +72,23 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initAttend() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0;i < 6;i++) {
-                    AttendTeacherBean attendTeacherBean = new AttendTeacherBean("1840610610","黄思捷","签到","1");
-                    attendTeacherBeanList.add(attendTeacherBean);
-                    AttendTeacherBean attendTeacherBean2 = new AttendTeacherBean("1840610608","郑龙涛","未签","1");
-                    attendTeacherBeanList.add(attendTeacherBean2);
-                    AttendTeacherBean attendTeacherBean3 = new AttendTeacherBean("1840610626","向前程","迟签","1");
-                    attendTeacherBeanList.add(attendTeacherBean3);
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+////            @Override
+////            public void run() {
+////                for (int i = 0;i < 6;i++) {
+////                    AttendTeacherBean attendTeacherBean = new AttendTeacherBean("1840610610","黄思捷","签到","1");
+////                    attendTeacherBeanList.add(attendTeacherBean);
+////                    AttendTeacherBean attendTeacherBean2 = new AttendTeacherBean("1840610608","郑龙涛","未签","1");
+////                    attendTeacherBeanList.add(attendTeacherBean2);
+////                    AttendTeacherBean attendTeacherBean3 = new AttendTeacherBean("1840610626","向前程","迟签","1");
+////                    attendTeacherBeanList.add(attendTeacherBean3);
+////                }
+////            }
+////        }).start();
+        ServiceAttendTeacher serviceAttendTeacher = new ServiceAttendTeacher();
+        serviceAttendTeacher.init(SplashActivity.userBean.getSno(),time);
+        serviceAttendTeacher.start();
+        attendTeacherBeanList = serviceAttendTeacher.show();
     }
 
     private void information() {
@@ -107,11 +116,11 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
                 new AlertDialog.Builder(AttendTeacherActivity.this)
                         .setTitle("请选择")
                         .setIcon(R.mipmap.app_icon)
-                        .setSingleChoiceItems(new String[]{"签到", "迟签", "未签"}, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(new String[]{"已签", "迟签", "未签"}, -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which) {
-                                    case 0:attendance = "签到";break;
+                                    case 0:attendance = "已签";break;
                                     case 1:attendance = "迟签";break;
                                     case 2:attendance = "未签";break;
                                     default:break;
@@ -123,12 +132,21 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //更新服务器数据
+                                                ServiceModifyAttendStudent serviceModifyAttendStudent = new ServiceModifyAttendStudent();
+                                                serviceModifyAttendStudent.init(studentId,attendId,attendance);
+                                                serviceModifyAttendStudent.start();
+                                                BaseBean baseBean = serviceModifyAttendStudent.show();
+                                                if (baseBean.getMsg().equals("修改成功")){
+                                                    Toast.makeText(AttendTeacherActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+                                                    //跟新客户端数据
+                                                    flag = true;
+                                                    attendTeacherBeanList.get(position1).setAttendance(attendance);
+                                                    attendTeacherAdapter.notifyDataSetChanged();
+                                                    flag = false;
+                                                }else {
+                                                    Toast.makeText(AttendTeacherActivity.this,"修改失败",Toast.LENGTH_SHORT).show();
+                                                }
 
-                                                //跟新客户端数据
-                                                flag = true;
-                                                attendTeacherBeanList.get(position1).setAttendance(attendance);
-                                                attendTeacherAdapter.notifyDataSetChanged();
-                                                flag = false;
                                             }
                                         })
                                         .setNegativeButton("取消",null)
@@ -153,6 +171,7 @@ public class AttendTeacherActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        attendId = attendTeacherBeanList.get(position).getAttendId();
         studentId = attendTeacherBeanList.get(position).getStudentId();
         position1 = position;
         modify();

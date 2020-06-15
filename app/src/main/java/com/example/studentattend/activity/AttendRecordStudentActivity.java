@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.StudentRecordAdapter;
 import com.example.studentattend.dao.StudentRecordBean;
+import com.example.studentattend.service.ServiceAttendRecordStudent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,22 +61,10 @@ public class AttendRecordStudentActivity extends AppCompatActivity implements Vi
     }
 
     private void initStudentRecordBean() {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0;i < 20;i++) {
-                        StudentRecordBean studentRecordBean = new StudentRecordBean("1840610610","黄思捷",
-                                "C001","验证性工程实践",12,0);
-                        studentRecordBeanList.add(studentRecordBean);
-                        StudentRecordBean studentRecordBean2 = new StudentRecordBean("1840610608","郑龙涛",
-                                "C002","Java程序设计",5,0);
-                        studentRecordBeanList.add(studentRecordBean2);
-                        StudentRecordBean studentRecordBean3 = new StudentRecordBean("1840610626","向前程",
-                                "C003","数据库结构",20,10);
-                        studentRecordBeanList.add(studentRecordBean3);
-                    }
-                }
-            }).start();
+        ServiceAttendRecordStudent serviceAttendRecordStudent = new ServiceAttendRecordStudent();
+        serviceAttendRecordStudent.init(SplashActivity.userBean.getSno());
+        serviceAttendRecordStudent.start();
+        studentRecordBeanList = serviceAttendRecordStudent.show();
     }
 
     private void information() {

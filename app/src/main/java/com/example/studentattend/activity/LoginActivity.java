@@ -72,7 +72,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         ServiceLogin serviceLogin = new ServiceLogin();
-        String username_Text = username.getText().toString();
+        String username_Text = username.getText(    ).toString();
         String password_Text = Md5Utils.md5(password.getText().toString());
         switch (v.getId()){
             case R.id.student_login:
