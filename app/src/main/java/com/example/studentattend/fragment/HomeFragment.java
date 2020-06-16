@@ -65,20 +65,20 @@ public class HomeFragment extends Fragment implements OnBannerListener {
         homeAppBeanList.add(google_chrome);
         HomeAppBean translate = new HomeAppBean("翻译器","http://hsjnb.com/AttendStudent/translate.jpg");
         homeAppBeanList.add(translate);
-        HomeAppBean calculator = new HomeAppBean("教务系统","http://hsjnb.com/AttendStudent/educational_administration _system.jpg");
-        homeAppBeanList.add(calculator);
+        HomeAppBean education_system = new HomeAppBean("教务系统","http://hsjnb.com/AttendStudent/educational_administration _system.jpg");
+        homeAppBeanList.add(education_system);
         HomeAppBean mooc = new HomeAppBean("慕课网","http://hsjnb.com/AttendStudent/mooc.jpg");
         homeAppBeanList.add(mooc);
         HomeAppBean runoob = new HomeAppBean("菜鸟教程","http://hsjnb.com/AttendStudent/runoob.jpg");
         homeAppBeanList.add(runoob);
-        HomeAppBean howNet = new HomeAppBean("中国知网","http://hsjnb.com/AttendStudent/zhiwang.jpg");
-        homeAppBeanList.add(howNet);
         HomeAppBean BiliBili = new HomeAppBean("BiliBili","http://hsjnb.com/AttendStudent/BiliBili.jpg");
         homeAppBeanList.add(BiliBili);
-        HomeAppBean chinaMooc = new HomeAppBean("MOOC","http://hsjnb.com/AttendStudent/chinaMooc.jpg");
-        homeAppBeanList.add(chinaMooc);
-        HomeAppBean W3school= new HomeAppBean("W3school","http://hsjnb.com/AttendStudent/W3school.jpg");
-        homeAppBeanList.add(W3school);
+        HomeAppBean calculator = new HomeAppBean("计算器","http://hsjnb.com/AttendStudent/calculator.png");
+        homeAppBeanList.add(calculator);
+        HomeAppBean binary = new HomeAppBean("进制转换","http://hsjnb.com/AttendStudent/binary.png");
+        homeAppBeanList.add(binary);
+        HomeAppBean random = new HomeAppBean("随机数","http://hsjnb.com/AttendStudent/random.png");
+        homeAppBeanList.add(random);
     }
 
     @Override
@@ -109,10 +109,9 @@ public class HomeFragment extends Fragment implements OnBannerListener {
         startActivity(webView);
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        onCreate(null);
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        onCreate(null);
+//    }
 }

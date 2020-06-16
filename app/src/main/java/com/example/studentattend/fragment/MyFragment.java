@@ -35,7 +35,6 @@ import java.util.List;
 public class MyFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private List<MyBean> myBeanList = new ArrayList<>();
-
     Bundle bundle=new Bundle();
     View view;
 

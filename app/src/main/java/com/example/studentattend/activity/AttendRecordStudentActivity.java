@@ -40,11 +40,9 @@ public class AttendRecordStudentActivity extends AppCompatActivity implements Vi
         ListView listView = findViewById(R.id.student_listView);
         TextView nullRecord = findViewById(R.id.null_record);
         studentRecordBeanList.clear();
-        if (flag) {
-            initStudentRecordBean();
-        }else {
+        flag = initStudentRecordBean();
+        if (!flag) {
             nullRecord.setVisibility(View.VISIBLE);
-            listView.setVisibility(View.GONE);
         }
         //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
         StudentRecordAdapter studentRecordAdapter = new StudentRecordAdapter(
@@ -60,11 +58,12 @@ public class AttendRecordStudentActivity extends AppCompatActivity implements Vi
         recordReturnStudent.setOnClickListener(this);
     }
 
-    private void initStudentRecordBean() {
+    private boolean initStudentRecordBean() {
         ServiceAttendRecordStudent serviceAttendRecordStudent = new ServiceAttendRecordStudent();
         serviceAttendRecordStudent.init(SplashActivity.userBean.getSno());
         serviceAttendRecordStudent.start();
         studentRecordBeanList = serviceAttendRecordStudent.show();
+        return studentRecordBeanList != null && studentRecordBeanList.size() != 0;
     }
 
     private void information() {
