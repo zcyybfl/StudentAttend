@@ -1,10 +1,14 @@
 package com.example.studentattend.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.example.studentattend.R;
+import com.example.studentattend.collector.ActivityCollector;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,6 +40,25 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            new AlertDialog.Builder(this)
+                    .setTitle("退出")
+                    .setMessage("您确定退出")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCollector.finishAll();
+                        }
+                    })
+                    .setNegativeButton("取消", null)
+                    .setCancelable(false)
+                    .show();
+        }
+        return false;
     }
 
 }

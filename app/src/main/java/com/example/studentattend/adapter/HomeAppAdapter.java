@@ -2,7 +2,7 @@ package com.example.studentattend.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.studentattend.R;
+import com.example.studentattend.activity.BinaryActivity;
+import com.example.studentattend.activity.CalculatorActivity;
+import com.example.studentattend.activity.RandomActivity;
 import com.example.studentattend.activity.WebViewActivity;
 import com.example.studentattend.dao.HomeAppBean;
 
@@ -76,25 +77,16 @@ public class HomeAppAdapter extends RecyclerView.Adapter<HomeAppAdapter.ViewHold
                         html("https://www.runoob.com/");
                         break;
                     case 5:
-                        html("https://www.cnki.net/");
-                        break;
-                    case 6:
                         html("https://www.bilibili.com/");
                         break;
+                    case 6:
+                        openActivity(CalculatorActivity.class);
+                        break;
                     case 7:
-                        html("https://www.icourse163.org/");
+                        openActivity(BinaryActivity.class);
                         break;
                     case 8:
-                        html("https://www.w3school.com.cn/");
-                        break;
-                    case 9:
-                        openActivity();
-                        break;
-                    case 10:
-//                        openActivity();
-                        break;
-                    case 11:
-//                        openActivity();
+                        openActivity(RandomActivity.class);
                         break;
                     default:
                         break;
@@ -121,13 +113,9 @@ public class HomeAppAdapter extends RecyclerView.Adapter<HomeAppAdapter.ViewHold
         HomeAppBean homeAppBean = homeAppBeanList.get(position);
         holder.textView.setText(homeAppBean.getName());
         Glide.with(context)
-                .load(homeAppBeanList.get(position).getImageUrl())
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        holder.imageView.setImageDrawable(resource);
-                    }
-                });
+                .load(Uri.parse(homeAppBeanList.get(position).getImageUrl()))
+                .apply(new RequestOptions().placeholder(R.drawable.ic_launcher_foreground))
+                .into(holder.imageView);
     }
 
     @Override

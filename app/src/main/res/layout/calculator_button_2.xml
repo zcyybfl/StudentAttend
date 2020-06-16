@@ -8,44 +8,40 @@
     tools:ignore="ButtonStyle">
 
     <Button
-        android:id="@+id/clear"
+        android:id="@+id/seven"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textColor="#FF5722"
         android:background="@drawable/border2"
-        android:text="@string/clear"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:text="@string/seven" />
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/eight"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textColor="#FF5722"
         android:background="@drawable/border2"
-        android:text="@string/delete1"
-        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:text="@string/eight"/>
+
+    <Button
+        android:id="@+id/nine"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/border2"
+        android:text="@string/nine"
         android:textSize="30sp"/>
 
     <Button
-        android:id="@+id/percent"
+        android:id="@+id/multiplication"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:textColor="#FF5722"
         android:background="@drawable/border2"
         android:textSize="30sp"
-        android:text="@string/percent" />
-
-    <Button
-        android:id="@+id/division"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/border2"
-        android:textColor="#FF5722"
-        android:text="@string/division"
-        android:textSize="30sp"/>
+        android:text="@string/multiplication" />
 
 </LinearLayout>

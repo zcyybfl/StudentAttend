@@ -95,4 +95,30 @@
     <string name="select">查</string>
     <string name="modify">改</string>
     <string name="prompt">提示</string>
+    <string name="zero">0</string>
+    <string name="delete1">Del</string>
+    <string name="clear">C</string>
+    <string name="multiplication">×</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="division">÷</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="subtraction">-</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="add1">+</string>
+    <string name="point">.</string>
+    <string name="equal">=</string>
+    <string name="percent">%</string>
+    <string name="data">输入需要转换的数据</string>
+    <string name="convert_to">转换为</string>
+    <string name="convert">转换</string>
+    <string name="result">结果</string>
+    <string name="smallest_integer">最小整数</string>
+    <string name="maximum_integer">最大整数</string>
+    <string name="ten">10</string>
 </resources>

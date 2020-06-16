@@ -71,14 +71,8 @@ public class HomeFragment extends Fragment implements OnBannerListener {
         homeAppBeanList.add(mooc);
         HomeAppBean runoob = new HomeAppBean("菜鸟教程","http://hsjnb.com/AttendStudent/runoob.jpg");
         homeAppBeanList.add(runoob);
-        HomeAppBean howNet = new HomeAppBean("中国知网","http://hsjnb.com/AttendStudent/zhiwang.jpg");
-        homeAppBeanList.add(howNet);
         HomeAppBean BiliBili = new HomeAppBean("BiliBili","http://hsjnb.com/AttendStudent/BiliBili.jpg");
         homeAppBeanList.add(BiliBili);
-        HomeAppBean chinaMooc = new HomeAppBean("MOOC","http://hsjnb.com/AttendStudent/chinaMooc.jpg");
-        homeAppBeanList.add(chinaMooc);
-        HomeAppBean W3school= new HomeAppBean("W3school","http://hsjnb.com/AttendStudent/W3school.jpg");
-        homeAppBeanList.add(W3school);
         HomeAppBean calculator = new HomeAppBean("计算器","http://hsjnb.com/AttendStudent/calculator.png");
         homeAppBeanList.add(calculator);
         HomeAppBean binary = new HomeAppBean("进制转换","http://hsjnb.com/AttendStudent/binary.png");

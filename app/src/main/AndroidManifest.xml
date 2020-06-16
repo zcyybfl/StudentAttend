@@ -18,7 +18,9 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activity.CalculatorActivity"></activity>
+        <activity android:name=".activity.RandomActivity" />
+        <activity android:name=".activity.BinaryActivity" />
+        <activity android:name=".activity.CalculatorActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity
             android:name=".activity.SplashActivity"
