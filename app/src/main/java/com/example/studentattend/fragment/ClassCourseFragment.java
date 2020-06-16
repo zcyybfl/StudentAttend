@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.ClassCourseInquireAdapter;
 import com.example.studentattend.dao.ClassCourseInquireBean;
+import com.example.studentattend.service.ServiceAdminSearchCourseInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -202,21 +203,31 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
 
     private boolean select(String classId) {
         //传递给数据库
+        ServiceAdminSearchCourseInfo serviceAdminSearchCourseInfo = new ServiceAdminSearchCourseInfo();
+        serviceAdminSearchCourseInfo.init(classId,"class");
+        serviceAdminSearchCourseInfo.start();
+        classCourseInquireBeans = serviceAdminSearchCourseInfo.classCourseInfo();
         //查询有无数据
-        return true;
+        if (classCourseInquireBeans.isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     private void initListView() {
         if (flag) {
             nullClassCourse.setVisibility(View.GONE);
+            classCourseInquireListView.setVisibility(View.VISIBLE);
             initView();
         } else {
             nullClassCourse.setVisibility(View.VISIBLE);
+            classCourseInquireListView.setVisibility(View.GONE);
         }
     }
 
     private void initView() {
-        initClassCourseInquireBean();
+        //initClassCourseInquireBean();
         initClassCourseInquireAdapter();
     }
 
