@@ -18,7 +18,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.ClassCourseInquireAdapter;
+import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.ClassCourseInquireBean;
+import com.example.studentattend.service.ServiceAdminAddCurseInfo;
 import com.example.studentattend.service.ServiceAdminSearchCourseInfo;
 
 import java.util.ArrayList;
@@ -88,28 +90,29 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("添加班级课程");
         builder.setView(addClassCourseView);
-        builder.setPositiveButton("删除", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("添加", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (classId.getText().toString().isEmpty() || teacherId.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(),"班级号和教工号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
-                    //查询该班级，教师存在不,查询教师存在课程不，查询班级有这这门课不
-                    flag = addSelectClassCourse(classId.getText().toString(),teacherId.getText().toString());
-                    if (flag) {
-                        if (judge1) {
-                            if (judge2) {
-                                Toast.makeText(getContext(),"添加失败,该班级已存在该课程",Toast.LENGTH_SHORT).show();
-                            } else {
-                                addClassCourse(classId.getText().toString(),teacherId.getText().toString());
-                                Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Toast.makeText(getContext(),"添加失败,该教师没有课程或教工号不存在",Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getContext(),"添加失败,班级号不存在",Toast.LENGTH_SHORT).show();
-                    }
+                    addClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                    //查询该班级，教师存在不,查询教师存在课程不，查询班级有这这门课不
+//                    flag = addSelectClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                    if (flag) {
+//                        if (judge1) {
+//                            if (judge2) {
+//                                Toast.makeText(getContext(),"添加失败,该班级已存在该课程",Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                addClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                                Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
+//                            }
+//                        } else {
+//                            Toast.makeText(getContext(),"添加失败,该教师没有课程或教工号不存在",Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        Toast.makeText(getContext(),"添加失败,班级号不存在",Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });
@@ -188,6 +191,15 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
 
     private void addClassCourse(String classId,String teacherId) {
         //添加课程
+        ServiceAdminAddCurseInfo serviceAdminAddCurseInfo = new ServiceAdminAddCurseInfo();
+        serviceAdminAddCurseInfo.init(classId,teacherId,"class");
+        serviceAdminAddCurseInfo.start();
+        BaseBean baseBean = serviceAdminAddCurseInfo.show();
+        if (baseBean.getMsg().equals("添加成功")){
+            Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(),"添加失败",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean deleteSelectClassCourse(String classId,String teacherId) {
