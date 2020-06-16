@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.studentattend.R;
 import com.example.studentattend.adapter.StudentOrTeacherInquireAdapter;
 import com.example.studentattend.dao.StudentOrTeacherInquireBean;
+import com.example.studentattend.service.ServiceAdminSearchStudentOrTeacherInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
-        initStudentOrTeacherInquireBean();
+        //initStudentOrTeacherInquireBean();
         initStudentOrTeacherInquireAdapter();
     }
 
@@ -96,16 +97,25 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
     private void initListView() {
         if (flag) {
             nullTeacher.setVisibility(View.GONE);
+            teacherInquireListView.setVisibility(View.VISIBLE);
             initView();
         } else {
             nullTeacher.setVisibility(View.VISIBLE);
+            teacherInquireListView.setVisibility(View.GONE);
         }
     }
 
     private boolean select(String teacherId) {
         //传递给数据库
-
+        ServiceAdminSearchStudentOrTeacherInfo serviceAdminSearchStudentOrTeacherInfo = new ServiceAdminSearchStudentOrTeacherInfo();
+        serviceAdminSearchStudentOrTeacherInfo.init(teacherId,"teacher");
+        serviceAdminSearchStudentOrTeacherInfo.start();
+        studentOrTeacherInquireBeans = serviceAdminSearchStudentOrTeacherInfo.show();
         //查询成功与否，要替换成
-        return true;
+        if (studentOrTeacherInquireBeans.isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
     }
 }
