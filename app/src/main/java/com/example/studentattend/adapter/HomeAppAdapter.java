@@ -30,6 +30,7 @@ public class HomeAppAdapter extends RecyclerView.Adapter<HomeAppAdapter.ViewHold
     private List<HomeAppBean> homeAppBeanList;
     Bundle bundle = new Bundle();
     Intent webView;
+    View view;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -51,50 +52,68 @@ public class HomeAppAdapter extends RecyclerView.Adapter<HomeAppAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext())
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.home_item,parent,false);
         final ViewHolder holder = new ViewHolder(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                webView = new Intent(view.getContext(), WebViewActivity.class);
                 switch (position) {
                     case 0:
-                        bundle.putString("url","https://www.baidu.com/");
+                        html("https://www.baidu.com/");
                         break;
                     case 1:
-                        bundle.putString("url","http://fanyi.youdao.com/");
+                        html("http://fanyi.youdao.com/");
                         break;
                     case 2:
-                        bundle.putString("url","http://newjw.cduestc.cn:1234/");
+                        html("http://newjw.cduestc.cn:1234/");
                         break;
                     case 3:
-                        bundle.putString("url","https://www.imooc.com/");
+                        html("https://www.imooc.com/");
                         break;
                     case 4:
-                        bundle.putString("url","https://www.runoob.com/");
+                        html("https://www.runoob.com/");
                         break;
                     case 5:
-                        bundle.putString("url","https://www.cnki.net/");
+                        html("https://www.cnki.net/");
                         break;
                     case 6:
-                        bundle.putString("url","https://www.bilibili.com/");
+                        html("https://www.bilibili.com/");
                         break;
                     case 7:
-                        bundle.putString("url","https://www.icourse163.org/");
+                        html("https://www.icourse163.org/");
                         break;
                     case 8:
-                        bundle.putString("url","https://www.w3school.com.cn/");
+                        html("https://www.w3school.com.cn/");
+                        break;
+                    case 9:
+                        openActivity();
+                        break;
+                    case 10:
+//                        openActivity();
+                        break;
+                    case 11:
+//                        openActivity();
                         break;
                     default:
                         break;
                 }
-                webView.putExtras(bundle);
-                context.startActivity(webView);
             }
         });
         return holder;
+    }
+
+    private void html(String url) {
+        webView = new Intent(view.getContext(), WebViewActivity.class);
+        bundle.putString("url",url);
+        webView.putExtras(bundle);
+        context.startActivity(webView);
+    }
+
+    protected void openActivity(Class<?> paramClass) {
+        Intent localIntent = new Intent(context,paramClass);
+        context.startActivity(localIntent);
     }
 
     @Override

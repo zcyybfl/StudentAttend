@@ -18,8 +18,10 @@
         android:theme="@style/NoTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activity.CalculatorActivity"></activity>
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:theme="@style/NoTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
