@@ -150,6 +150,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else if (judge(false)) {
             Toast.makeText(RegisterActivity.this,"邮箱格式不正确",Toast.LENGTH_SHORT).show();
             return false;
+        } else if (!sex.equals("男") && !sex.equals("女")) {
+            Toast.makeText(RegisterActivity.this,"性别输入不正确",Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             return true;
         }

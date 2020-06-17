@@ -17,7 +17,7 @@
     <string name="student_register">学生注册</string>
     <string name="teacher_register">教师注册</string>
     <string name="register_name">请输入姓名</string>
-    <string name="register_sex">请输入性别</string>
+    <string name="register_sex">请输入性别(男/女)</string>
     <string name="register_class">请输入班级</string>
     <string name="register_department">请输入系别</string>
     <string name="register_phone">请输入电话</string>
