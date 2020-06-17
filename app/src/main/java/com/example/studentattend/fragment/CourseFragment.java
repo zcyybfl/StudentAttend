@@ -126,15 +126,6 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(),"课程号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     deleteCourse(courseId.getText().toString());
-//                    //判断课程存在不
-//                    flag = deleteSelect(courseId.getText().toString());
-//                    if (flag) {
-//                        //删除课程
-//                        deleteCourse(courseId.getText().toString());
-//                        Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(getContext(),"删除失败,该课程号不存在",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -203,11 +194,6 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private boolean deleteSelect(String courseId) {
-        //查询删除课程号存在否
-        return true;
-    }
-
     private void deleteCourse(String courseId) {
         //删除课程
         ServiceAdminDeleteCourseInfo serviceAdminDeleteCourseInfo = new ServiceAdminDeleteCourseInfo();
@@ -219,11 +205,6 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         }else {
             Toast.makeText(getContext(),"删除失败",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private boolean modifySelect(String courseId) {
-        //查询修改课程号存在否
-        return true;
     }
 
     private void modifyCourse(String courseId,String courseName) {

@@ -37,8 +37,6 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
     private TextView nullTeacherCourse;
     private ListView teacherCourseInquireListView;
     private Boolean flag = true;
-    //判断老师存在课程不
-    private boolean judge = false;
 
     @Nullable
     @Override
@@ -121,14 +119,6 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
                     Toast.makeText(getContext(),"教工号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     deleteTeacherCourse(teacherId.getText().toString());
-//                    //查询教师存在不和有无课程
-//                    flag = deleteSelectTeacherCourse(teacherId.getText().toString());
-//                    if (flag) {
-//                        deleteTeacherCourse(teacherId.getText().toString());
-//                        Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(getContext(),"删除失败,教工号不存在或该教工不存在课程",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -170,11 +160,6 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
         }else {
             Toast.makeText(getContext(),"添加失败",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private boolean deleteSelectTeacherCourse(String teacherId) {
-        //查询教师存在不和有无课程
-        return true;
     }
 
     private void deleteTeacherCourse(String teacherId) {
