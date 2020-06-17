@@ -97,22 +97,6 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
                     Toast.makeText(getContext(),"班级号和教工号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     addClassCourse(classId.getText().toString(),teacherId.getText().toString());
-//                    //查询该班级，教师存在不,查询教师存在课程不，查询班级有这这门课不
-//                    flag = addSelectClassCourse(classId.getText().toString(),teacherId.getText().toString());
-//                    if (flag) {
-//                        if (judge1) {
-//                            if (judge2) {
-//                                Toast.makeText(getContext(),"添加失败,该班级已存在该课程",Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                addClassCourse(classId.getText().toString(),teacherId.getText().toString());
-//                                Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
-//                            }
-//                        } else {
-//                            Toast.makeText(getContext(),"添加失败,该教师没有课程或教工号不存在",Toast.LENGTH_SHORT).show();
-//                        }
-//                    } else {
-//                        Toast.makeText(getContext(),"添加失败,班级号不存在",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -180,15 +164,6 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
         builder.show();
     }
 
-    private boolean addSelectClassCourse(String classId,String teacherId) {
-        //查询该班级，教师存在不,查询教师存在课程不，查询班级有这这门课不
-        //查询教师存在课程不
-        judge1 = true;
-        //查询班级有这这门课不
-        judge2 = false;
-        return true;
-    }
-
     private void addClassCourse(String classId,String teacherId) {
         //添加课程
         ServiceAdminAddCurseInfo serviceAdminAddCurseInfo = new ServiceAdminAddCurseInfo();
@@ -220,43 +195,20 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
         serviceAdminSearchCourseInfo.start();
         classCourseInquireBeans = serviceAdminSearchCourseInfo.classCourseInfo();
         //查询有无数据
-        if (classCourseInquireBeans.isEmpty()){
-            return false;
-        }else {
-            return true;
-        }
+        return !classCourseInquireBeans.isEmpty();
     }
 
     private void initListView() {
         if (flag) {
             nullClassCourse.setVisibility(View.GONE);
             classCourseInquireListView.setVisibility(View.VISIBLE);
-            initView();
+            initClassCourseInquireAdapter();
         } else {
             nullClassCourse.setVisibility(View.VISIBLE);
             classCourseInquireListView.setVisibility(View.GONE);
         }
     }
 
-    private void initView() {
-        //initClassCourseInquireBean();
-        initClassCourseInquireAdapter();
-    }
-
-    private void initClassCourseInquireBean() {
-        classCourseInquireBeans.clear();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    ClassCourseInquireBean one = new ClassCourseInquireBean("18406199","1840610610","C001");
-                    classCourseInquireBeans.add(one);
-                    ClassCourseInquireBean two = new ClassCourseInquireBean("18406199","1840610608","C002");
-                    classCourseInquireBeans.add(two);
-                }
-            }
-        }).start();
-    }
 
     private void initClassCourseInquireAdapter() {
         //创建adapter adapter有很多种类型，这里使用最简单的类型——数组

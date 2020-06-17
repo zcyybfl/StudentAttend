@@ -102,15 +102,6 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(),"课程号和课程名不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     addCourse(courseId.getText().toString(),courseName.getText().toString());
-//                    //查询该课程存在不
-//                    flag = addSelect(courseId.getText().toString());
-//                    if (flag) {
-//                        Toast.makeText(getContext(),"添加失败,该课程号已存在",Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        //添加课程
-//
-//                        Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -189,26 +180,12 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(),"课程号和课程名不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     modifyCourse(courseId.getText().toString(),courseName.getText().toString());
-//                    //判断课程存在不
-//                    flag = modifySelect(courseId.getText().toString());
-//                    if (flag) {
-//                        //修改课程
-//                        modifyCourse(courseId.getText().toString(),courseName.getText().toString());
-//                        Toast.makeText(getContext(),"修改成功",Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(getContext(),"修改失败,该课程号不存在",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
         builder.setNegativeButton("取消",null);
         builder.setCancelable(false);
         builder.show();
-    }
-
-    private boolean addSelect(String courseId) {
-        //查询添加课程号存在否
-        return false;
     }
 
     private void addCourse(String courseId,String courseName) {
@@ -220,7 +197,7 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         if (baseBean.getMsg().equals("添加成功")){
             Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getContext(),"添加失败,该课程号不存在",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"添加失败,该课程号已存在",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -258,11 +235,7 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         serviceAdminSearchCourseInfo.start();
         courseInquireBeans = serviceAdminSearchCourseInfo.courseInfo();
         //查询有无数据
-        if (courseInquireBeans.isEmpty()){
-            return false;
-        }else {
-            return true;
-        }
+        return !courseInquireBeans.isEmpty();
 
     }
 
@@ -270,31 +243,11 @@ public class CourseFragment extends Fragment implements View.OnClickListener {
         if (flag) {
             nullCourse.setVisibility(View.GONE);
             courseInquireListView.setVisibility(View.VISIBLE);
-            initView();
+            initCourseInquireAdapter();
         } else {
             nullCourse.setVisibility(View.VISIBLE);
             courseInquireListView.setVisibility(View.GONE);
         }
-    }
-
-    private void initView() {
-        //initCourseInquireBean();
-        initCourseInquireAdapter();
-    }
-
-    private void initCourseInquireBean() {
-        courseInquireBeans.clear();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    CourseInquireBean one = new CourseInquireBean("C001", "Java程序设计");
-                    courseInquireBeans.add(one);
-                    CourseInquireBean two = new CourseInquireBean("C002", "数据结构");
-                    courseInquireBeans.add(two);
-                }
-            }
-        }).start();
     }
 
     private void initCourseInquireAdapter() {

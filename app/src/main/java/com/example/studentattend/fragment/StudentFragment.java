@@ -64,26 +64,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         studentInquireListView.setAdapter(studentOrTeacherInquireAdapter);
     }
 
-    private void initStudentOrTeacherInquireBean() {
-        studentOrTeacherInquireBeans.clear();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0;i < 10;i++) {
-                    StudentOrTeacherInquireBean one = new StudentOrTeacherInquireBean("1840610610","黄思捷",
-                            "男","18406199");
-                    studentOrTeacherInquireBeans.add(one);
-                    StudentOrTeacherInquireBean two = new StudentOrTeacherInquireBean("1840610608","郑龙涛",
-                            "女","18406199");
-                    studentOrTeacherInquireBeans.add(two);
-                    StudentOrTeacherInquireBean three = new StudentOrTeacherInquireBean("1840610626","向前程",
-                            "男","18406199");
-                    studentOrTeacherInquireBeans.add(three);
-                }
-            }
-        }).start();
-    }
-
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.student_inquire_button) {
@@ -112,10 +92,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         serviceAdminSearchStudentOrTeacherInfo.start();
         studentOrTeacherInquireBeans = serviceAdminSearchStudentOrTeacherInfo.show();
         //查询成功与否，要替换成
-        if (studentOrTeacherInquireBeans.isEmpty()){
-            return false;
-        }else {
-            return true;
-        }
+        return !studentOrTeacherInquireBeans.isEmpty();
     }
 }

@@ -97,18 +97,6 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
                     Toast.makeText(getContext(),"教工号和课程号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
                     addTeacherCourse(teacherId.getText().toString(),courseId.getText().toString());
-//                    //查询该教师，课程存在不,查询教师存在课程不
-//                    flag = addSelectTeacherCourse(teacherId.getText().toString(),courseId.getText().toString());
-//                    if (flag) {
-//                        if (judge) {
-//                            Toast.makeText(getContext(),"添加失败,该教工已有课程",Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            addTeacherCourse(teacherId.getText().toString(),courseId.getText().toString());
-//                            Toast.makeText(getContext(),"添加成功",Toast.LENGTH_SHORT).show();
-//                        }
-//                    } else {
-//                        Toast.makeText(getContext(),"添加失败,教工号或课程号不存在",Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -169,13 +157,6 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
         builder.show();
     }
 
-    private boolean addSelectTeacherCourse(String teacherId,String courseId) {
-        //查询添加  查询该教师，课程存在不,查询教师存在课程不
-        //判断教师存在课程不
-        judge = false;
-        return true;
-    }
-
     private void addTeacherCourse(String teacherId,String courseId) {
         //添加教工课程
         ServiceAdminAddCurseInfo serviceAdminAddCurseInfo = new ServiceAdminAddCurseInfo();
@@ -205,42 +186,18 @@ public class TeacherCourseFragment extends Fragment implements View.OnClickListe
         serviceAdminSearchCourseInfo.start();
         teacherCourseInquireBeans = serviceAdminSearchCourseInfo.teacherCourseInfo();
         //查询有无数据
-        if (teacherCourseInquireBeans.isEmpty()){
-            return false;
-        }else {
-            return true;
-        }
+        return !teacherCourseInquireBeans.isEmpty();
     }
 
     private void initListView() {
         if (flag) {
             nullTeacherCourse.setVisibility(View.GONE);
             teacherCourseInquireListView.setVisibility(View.VISIBLE);
-            initView();
+            initTeacherCourseInquireAdapter();
         } else {
             nullTeacherCourse.setVisibility(View.VISIBLE);
             teacherCourseInquireListView.setVisibility(View.GONE);
         }
-    }
-
-    private void initView() {
-        //initTeacherCourseInquireBean();
-        initTeacherCourseInquireAdapter();
-    }
-
-    private void initTeacherCourseInquireBean() {
-        teacherCourseInquireBeans.clear();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    TeacherCourseInquireBean one = new TeacherCourseInquireBean("1840610608","C001","数据结构");
-                    teacherCourseInquireBeans.add(one);
-                    TeacherCourseInquireBean two = new TeacherCourseInquireBean("1840610610","C002","数据库原理");
-                    teacherCourseInquireBeans.add(two);
-                }
-            }
-        }).start();
     }
 
     private void initTeacherCourseInquireAdapter() {
