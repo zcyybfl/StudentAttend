@@ -21,6 +21,7 @@ import com.example.studentattend.adapter.ClassCourseInquireAdapter;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.ClassCourseInquireBean;
 import com.example.studentattend.service.ServiceAdminAddCurseInfo;
+import com.example.studentattend.service.ServiceAdminDeleteCourseInfo;
 import com.example.studentattend.service.ServiceAdminSearchCourseInfo;
 
 import java.util.ArrayList;
@@ -121,19 +122,20 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
                 if (classId.getText().toString().isEmpty() || teacherId.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(),"班级号和教工号不能为空",Toast.LENGTH_SHORT).show();
                 } else {
-                    //查询班级存在不，查询该班级存在这课程不
-                    flag = deleteSelectClassCourse(classId.getText().toString(),teacherId.getText().toString());
-                    if (flag) {
-                        if (judge1) {
-                            //删除课程
-                            deleteClassCourse(classId.getText().toString(),teacherId.getText().toString());
-                            Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getContext(),"删除失败,该班级不存在该课程",Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getContext(),"删除失败,班级号不存在",Toast.LENGTH_SHORT).show();
-                    }
+                    deleteClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                    //查询班级存在不，查询该班级存在这课程不
+//                    flag = deleteSelectClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                    if (flag) {
+//                        if (judge1) {
+//                            //删除课程
+//                            deleteClassCourse(classId.getText().toString(),teacherId.getText().toString());
+//                            Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(getContext(),"删除失败,该班级不存在该课程",Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        Toast.makeText(getContext(),"删除失败,班级号不存在",Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });
@@ -186,6 +188,15 @@ public class ClassCourseFragment extends Fragment implements View.OnClickListene
 
     private void deleteClassCourse(String classId,String teacherId) {
         //删除课程
+        ServiceAdminDeleteCourseInfo serviceAdminDeleteCourseInfo = new ServiceAdminDeleteCourseInfo();
+        serviceAdminDeleteCourseInfo.init(classId,teacherId,"class");
+        serviceAdminDeleteCourseInfo.start();
+        BaseBean baseBean = serviceAdminDeleteCourseInfo.show();
+        if (baseBean.getMsg().equals("删除成功")){
+            Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(),"删除失败",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean select(String classId) {
