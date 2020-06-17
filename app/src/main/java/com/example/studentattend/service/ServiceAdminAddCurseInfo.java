@@ -3,14 +3,7 @@ package com.example.studentattend.service;
 import android.util.Log;
 
 import com.example.studentattend.dao.BaseBean;
-import com.example.studentattend.dao.StudentOrTeacherInquireBean;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

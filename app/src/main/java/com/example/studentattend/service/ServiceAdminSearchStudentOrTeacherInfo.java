@@ -3,7 +3,6 @@ package com.example.studentattend.service;
 import android.util.Log;
 
 import com.example.studentattend.dao.StudentOrTeacherInquireBean;
-import com.example.studentattend.dao.StudentRecordBean;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
