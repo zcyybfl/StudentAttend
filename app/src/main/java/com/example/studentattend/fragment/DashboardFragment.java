@@ -26,10 +26,17 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.studentattend.R;
 import com.example.studentattend.activity.MainActivity;
 import com.example.studentattend.activity.SplashActivity;
+import com.example.studentattend.dao.BaseBean;
+import com.example.studentattend.dao.ClassCourseInquireBean;
 import com.example.studentattend.model.DashboardViewModel;
+import com.example.studentattend.service.ServiceAddTeacherAttendInfo;
+import com.example.studentattend.service.ServiceStudentModifyAttendInfo;
+import com.example.studentattend.service.ServiceTeacherSearchClass;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.TimeZone;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
@@ -148,7 +155,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     //获取班级号放入classnum需要获取服务器端的class
     public void getclass(){
-         String[] classnum = new String[]{"123","234","567","789"};
+        List<ClassCourseInquireBean> list = new ArrayList<>();
+        ServiceTeacherSearchClass serviceTeacherSearchClass = new ServiceTeacherSearchClass();
+        serviceTeacherSearchClass.init(SplashActivity.userBean.getSno());
+        serviceTeacherSearchClass.start();
+        list = serviceTeacherSearchClass.show();
+        String[] classnum = new String[list.size()];
+        for (int i = 0;i<list.size();i++){
+            classnum[i] = list.get(i).getClassId();
+        }
+        //String[] classnum = list.toArray(new String[list.size()]);
+         //String[] classnum = new String[]{"123","234","567","789"};
         Spinneradapterinit(classnum);
     }
     public void Spinneradapterinit(final String [] classnum){
@@ -172,9 +189,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
     //老师签到向服务器传送的数据
     public void signdatatea(){
+        ServiceAddTeacherAttendInfo serviceAddTeacherAttendInfo = new ServiceAddTeacherAttendInfo();
         SplashActivity.userBean.getSno();//教工号
         AttendTimetea= getLocalDatetimeString("GMT+8");//时间
         attendid = SplashActivity.userBean.getSno()+attendclassnum+AttendTimetea;//签到id
+        serviceAddTeacherAttendInfo.init(SplashActivity.userBean.getSno(),AttendTimetea,attendclassnum,attendid,String.valueOf(attendnumtea));
+        serviceAddTeacherAttendInfo.start();
+        BaseBean baseBean = serviceAddTeacherAttendInfo.show();
+        if (baseBean.getMsg().equals("成功")){
+            Toast.makeText(mContext, "生成签到码成功", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "生成签到码失败", Toast.LENGTH_SHORT).show();
+        }
         Log.d("1",attendclassnum);//班级
         Log.d("2",AttendTimetea);
         Log.d("3",""+attendnumtea);
@@ -182,7 +208,19 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
     //学生签到需要向服务器传送的数据
     public  void signdatastu(String AttendNumberstu){//传入的是签到码
-
+        ServiceStudentModifyAttendInfo serviceStudentModifyAttendInfo = new ServiceStudentModifyAttendInfo();
+        serviceStudentModifyAttendInfo.init(SplashActivity.userBean.getSno(),SplashActivity.userBean.getClassmate(),AttendNumberstu);
+        serviceStudentModifyAttendInfo.start();
+        BaseBean baseBean = serviceStudentModifyAttendInfo.show();
+        if (baseBean.getMsg().equals("签到成功")){
+            Toast.makeText(mContext, "你已签到成功", Toast.LENGTH_SHORT).show();
+        }else if (baseBean.getMsg().equals("你已签到")){
+            Toast.makeText(mContext, "请勿重复签到", Toast.LENGTH_SHORT).show();
+        }else if (baseBean.getMsg().equals("已结束")){
+            Toast.makeText(mContext, "签到已结束", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "签到码无效或你不属于此班级", Toast.LENGTH_SHORT).show();
+        }
         SplashActivity.userBean.getSno();//学号
         SplashActivity.userBean.getClassmate();//班级
         AttendTime= getLocalDatetimeString("GMT+8");//时间
