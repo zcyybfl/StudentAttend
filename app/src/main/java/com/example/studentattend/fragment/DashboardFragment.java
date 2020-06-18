@@ -27,7 +27,6 @@ import com.example.studentattend.activity.MainActivity;
 import com.example.studentattend.activity.SplashActivity;
 import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.ClassCourseInquireBean;
-import com.example.studentattend.model.DashboardViewModel;
 import com.example.studentattend.service.ServiceAddTeacherAttendInfo;
 import com.example.studentattend.service.ServiceStudentModifyAttendInfo;
 import com.example.studentattend.service.ServiceTeacherSearchClass;
@@ -84,19 +83,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     @SuppressLint("SimpleDateFormat")
     public static  String getLocalDatetimeString(String local) {
-
-//        Calendar cal = new
-//                GregorianCalendar(TimeZone.getTimeZone(local));
-//
-//        cal.setTimeInMillis(Calendar.getInstance().getTimeInMillis());
-//
-//        String date = cal.get(Calendar.YEAR) + "-"
-//                + (cal.get(Calendar.MONTH) + 1) + "-"
-//                + cal.get(Calendar.DAY_OF_MONTH);
-//
-//        String time = cal.get(Calendar.HOUR_OF_DAY) + ":"
-//                + cal.get(Calendar.MINUTE) + ":"
-//                + cal.get(Calendar.SECOND);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH:mm:ss
         //获取当前时间
         Date date = new Date(System.currentTimeMillis());
@@ -182,7 +168,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -191,9 +176,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void signdatatea(){
         ServiceAddTeacherAttendInfo serviceAddTeacherAttendInfo = new ServiceAddTeacherAttendInfo();
         SplashActivity.userBean.getSno();//教工号
-        AttendTimetea= getLocalDatetimeString("GMT+8");//时间
-        attendid = SplashActivity.userBean.getSno()+attendclassnum+AttendTimetea;//签到id
-        serviceAddTeacherAttendInfo.init(SplashActivity.userBean.getSno(),AttendTimetea,attendclassnum,attendid,String.valueOf(attendnumtea));
+        attendTime= getLocalDatetimeString("GMT+8");//时间
+        attendId = SplashActivity.userBean.getSno()+attendClassNum+attendTimeTea;//签到id
+        serviceAddTeacherAttendInfo.init(SplashActivity.userBean.getSno(),attendTimeTea,attendClassNum,attendId,String.valueOf(attendNumTea));
         serviceAddTeacherAttendInfo.start();
         BaseBean baseBean = serviceAddTeacherAttendInfo.show();
         if (baseBean.getMsg().equals("成功")){
@@ -201,10 +186,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }else {
             Toast.makeText(mContext, "生成签到码失败", Toast.LENGTH_SHORT).show();
         }
-        Log.d("1",attendclassnum);//班级
-        Log.d("2",AttendTimetea);
-        Log.d("3",""+attendnumtea);
-        Log.d("4",attendid);
     }
     //学生签到需要向服务器传送的数据
     public  void signdatastu(String AttendNumberstu){//传入的是签到码
