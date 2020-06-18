@@ -79,8 +79,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         //获取当前时间
         Date date = new Date(System.currentTimeMillis());
         return simpleDateFormat.format(date);
-
     }
+
     public static boolean isFastDoubleClick() {
         long time = SystemClock.uptimeMillis(); // 此方法仅用于Android
         if (time - lastClickTime < 5000) {
@@ -145,6 +145,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
         spinnerAdapterInit(classNum);
     }
+
     public void spinnerAdapterInit(final String [] classNum){
         //创建ArrayAdapter对象
         ArrayAdapter<String> adapter= new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, classNum);
@@ -161,6 +162,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         });
 
     }
+
     //老师签到向服务器传送的数据
     public void signDataTea(){
         ServiceAddTeacherAttendInfo serviceAddTeacherAttendInfo = new ServiceAddTeacherAttendInfo();
@@ -175,6 +177,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             Toast.makeText(mContext, "生成签到码失败", Toast.LENGTH_SHORT).show();
         }
     }
+
     //学生签到需要向服务器传送的数据
     public  void signDataStu(String attendNumberStu){//传入的是签到码
         ServiceStudentModifyAttendInfo serviceStudentModifyAttendInfo = new ServiceStudentModifyAttendInfo();

@@ -32,8 +32,6 @@ public class MainActivity extends BaseActivity {
         //去掉标题栏
         Objects.requireNonNull(this.getSupportActionBar()).hide();
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_my)
                 .build();

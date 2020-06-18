@@ -108,10 +108,4 @@ public class HomeFragment extends Fragment implements OnBannerListener {
         webView.putExtras(bundle);
         startActivity(webView);
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        onCreate(null);
-//    }
 }

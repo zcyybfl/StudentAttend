@@ -52,11 +52,6 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
         teacherInquireListView = view.findViewById(R.id.teacher_inquire_listView);
     }
 
-    private void initView() {
-        //initStudentOrTeacherInquireBean();
-        initStudentOrTeacherInquireAdapter();
-    }
-
     private void initStudentOrTeacherInquireAdapter() {
         //创建adapter adapter有很多种类型，这里使用最简单的类型——数组
         StudentOrTeacherInquireAdapter studentOrTeacherInquireAdapter = new StudentOrTeacherInquireAdapter(requireContext(),
@@ -78,7 +73,7 @@ public class TeacherFragment extends Fragment implements View.OnClickListener {
         if (flag) {
             nullTeacher.setVisibility(View.GONE);
             teacherInquireListView.setVisibility(View.VISIBLE);
-            initView();
+            initStudentOrTeacherInquireAdapter();
         } else {
             nullTeacher.setVisibility(View.VISIBLE);
             teacherInquireListView.setVisibility(View.GONE);
