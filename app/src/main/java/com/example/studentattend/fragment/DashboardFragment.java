@@ -127,7 +127,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == attendButtonTea){
-                text.setText("签到码为"+attendNumTea);
+                text.setText("签到码:\t"+attendNumTea);
             }
         }
     };
