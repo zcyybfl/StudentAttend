@@ -33,20 +33,16 @@ import com.example.studentattend.service.ServiceTeacherSearchClass;
 import java.util.List;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
     public static final int attendButtonTea = 1;
-    private String attendNumberStu;
-    private String attendTime;
     private EditText editText;
     private TextView text;
-    private Button button;
-    private Button button2;
     private Context mContext;
-    private  View root;
     private Spinner spinner;
     private String attendClassNum;
-    private String attendId;
     private int attendNumTea;
     private static long lastClickTime;
 
@@ -58,16 +54,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        View root;
         if (MainActivity.student_teacher){
          root = inflater.inflate(R.layout.fragment_attendstu, container, false);
             editText = root.findViewById(R.id.attendNumber);
-            button = root.findViewById(R.id.attendButton);
+            Button button = root.findViewById(R.id.attendButton);
             button.setOnClickListener(this);
         }
         else {
             root = inflater.inflate(R.layout.fragment_attendtea, container, false);
             spinner = root.findViewById(R.id.attendSpinner);
-            button2 = root.findViewById(R.id.attendButtonTea);
+            Button button2 = root.findViewById(R.id.attendButtonTea);
             button2.setOnClickListener(this);
             text = root.findViewById(R.id.attendNumTea);
             getClassNum();
@@ -78,6 +75,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @SuppressLint("SimpleDateFormat")
     public static  String getLocalDatetimeString() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH:mm:ss
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+08"));
         //获取当前时间
         Date date = new Date(System.currentTimeMillis());
         return simpleDateFormat.format(date);
@@ -96,7 +94,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.attendButton:
-                attendNumberStu = editText.getText().toString().trim();//签到
+                String attendNumberStu = editText.getText().toString().trim();//签到
                 if (attendNumberStu.isEmpty()){
                     Toast.makeText(mContext,"签到码为空",Toast.LENGTH_SHORT).show();
                 }
@@ -166,9 +164,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     //老师签到向服务器传送的数据
     public void signDataTea(){
         ServiceAddTeacherAttendInfo serviceAddTeacherAttendInfo = new ServiceAddTeacherAttendInfo();
-        attendTime= getLocalDatetimeString();//时间
-        attendId = SplashActivity.userBean.getSno() + "-" + attendClassNum + "-" + attendTime;//签到id
-        serviceAddTeacherAttendInfo.init(SplashActivity.userBean.getSno(),attendTime,attendClassNum,attendId,String.valueOf(attendNumTea));
+        String attendTime = getLocalDatetimeString();//时间
+        String attendId = SplashActivity.userBean.getSno() + "-" + attendClassNum + "-" + attendTime;//签到id
+        serviceAddTeacherAttendInfo.init(SplashActivity.userBean.getSno(), attendTime,attendClassNum, attendId,String.valueOf(attendNumTea));
         serviceAddTeacherAttendInfo.start();
         BaseBean baseBean = serviceAddTeacherAttendInfo.show();
         if (baseBean.getMsg().equals("成功")){
@@ -197,6 +195,5 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(mContext, "签到码无效或你不属于此班级", Toast.LENGTH_SHORT).show();
                 break;
         }
-        attendTime= getLocalDatetimeString();//时间
     }
 }
