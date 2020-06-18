@@ -121,4 +121,8 @@
     <string name="smallest_integer">最小整数</string>
     <string name="maximum_integer">最大整数</string>
     <string name="ten">10</string>
+    <string name="roll_call_password">请输入点名口令</string>
+    <string name="tips_student">tips:\n请确认当前课程是您所选课程，并输入正确的点名口令。</string>
+    <string name="tips_teacher">tips:\n请选择发起签到的班级，点击确认发起签到</string>
+    <string name="check_in_code">当前还未生成签到码</string>
 </resources>

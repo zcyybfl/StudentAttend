@@ -1,86 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.DashboardFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.DashboardFragment"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/title_dashboard"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#00BCD4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="MissingConstraints">
+        android:background="#00BCD4">
 
         <TextView
             android:id="@+id/dashboard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#00BCD4"
             android:gravity="center"
-            android:text="课程"
+            android:text="@string/title_dashboard"
             android:textColor="#FFFFFF"
             android:textSize="22sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
-
-        app:layout_constraintTop_toBottomOf="@+id/title_dashboard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="5dp">
 
-        android:id="@+id/AttendCard"
-        android:layout_width="261dp"
-        android:layout_height="48dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-        app:cardCornerRadius="10dp">
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="19.6dp"/>
 
-        <Spinner
-            android:id="@+id/attendspinner"
-            android:layout_width="203dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:spinnerMode="dropdown" />
-        <Button
-            android:id="@+id/attendButtontea"
-            android:layout_gravity="end"
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:text="确认"
-            android:background="#00BCD4"
-            android:textColor="#FFFFFF"/>
+            <Spinner
+                android:id="@+id/attendSpinner"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:spinnerMode="dropdown" />
+
+            <Button
+                android:id="@+id/attendButtonTea"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/ok"
+                android:textSize="18sp"
+                android:background="#00BCD4"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/teaTips"
-        android:layout_width="261dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AttendCard"
-        android:layout_marginTop="10dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="tips:\n请选择发起签到的班级，点击确认发起签到"
-        android:textSize="16dp"/>
-    <TextView
-        android:id="@+id/attendnumtea"
-        android:layout_width="261dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/teaTips"
-        android:layout_marginTop="20dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="当前还未生成签到码"
-        android:textSize="22dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="@string/tips_teacher"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/attendNumTea"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/check_in_code"
+            android:textSize="22sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

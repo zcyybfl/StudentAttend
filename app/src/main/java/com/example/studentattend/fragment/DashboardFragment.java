@@ -1,7 +1,7 @@
 package com.example.studentattend.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.net.wifi.aware.DiscoverySession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,7 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.studentattend.R;
 import com.example.studentattend.activity.MainActivity;
@@ -38,13 +37,14 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
-    public static final int attendButtontea = 1;
-    private String AttendNumberstu;
-    private String AttendNumbertea;
-    private String AttendTime;
-    private String AttendTimetea;
+    public static final int attendButtonTea = 1;
+    private String attendNumberStu;
+    private String attendTime;
+    private String attendTimeTea;
     private EditText editText;
     private TextView text;
     private Button button;
@@ -52,9 +52,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private Context mContext;
     private  View root;
     private Spinner spinner;
-    private String attendclassnum;
-    private String attendid;
-    private int attendnumtea;
+    private String attendClassNum;
+    private String attendId;
+    private int attendNumTea;
     private static long lastClickTime;
 
     @Override
@@ -65,41 +65,43 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         if (MainActivity.student_teacher){
          root = inflater.inflate(R.layout.fragment_attendstu, container, false);
-            editText = root.findViewById(R.id.attendnumber);
+            editText = root.findViewById(R.id.attendNumber);
             button = root.findViewById(R.id.attendButton);
             button.setOnClickListener(this);
         }
-        else if(!MainActivity.student_teacher) {
+        else {
             root = inflater.inflate(R.layout.fragment_attendtea, container, false);
-            spinner = root.findViewById(R.id.attendspinner);
-            button2 = root.findViewById(R.id.attendButtontea);
+            spinner = root.findViewById(R.id.attendSpinner);
+            button2 = root.findViewById(R.id.attendButtonTea);
             button2.setOnClickListener(this);
-            text = root.findViewById(R.id.attendnumtea);
+            text = root.findViewById(R.id.attendNumTea);
             getclass();
         }
         return root;
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static  String getLocalDatetimeString(String local) {
 
-        Calendar cal = new
-                GregorianCalendar(TimeZone.getTimeZone(local));
-
-        cal.setTimeInMillis(Calendar.getInstance().getTimeInMillis());
-
-        String date = cal.get(Calendar.YEAR) + "-"
-                + (cal.get(Calendar.MONTH) + 1) + "-"
-                + cal.get(Calendar.DAY_OF_MONTH);
-
-        String time = cal.get(Calendar.HOUR_OF_DAY) + ":"
-                + cal.get(Calendar.MINUTE) + ":"
-                + cal.get(Calendar.SECOND);
-
+//        Calendar cal = new
+//                GregorianCalendar(TimeZone.getTimeZone(local));
+//
+//        cal.setTimeInMillis(Calendar.getInstance().getTimeInMillis());
+//
+//        String date = cal.get(Calendar.YEAR) + "-"
+//                + (cal.get(Calendar.MONTH) + 1) + "-"
+//                + cal.get(Calendar.DAY_OF_MONTH);
+//
+//        String time = cal.get(Calendar.HOUR_OF_DAY) + ":"
+//                + cal.get(Calendar.MINUTE) + ":"
+//                + cal.get(Calendar.SECOND);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH:mm:ss
+        //获取当前时间
+        Date date = new Date(System.currentTimeMillis());
         return
-                date + " "  + time;
+                simpleDateFormat.format(date);
 
     }
     public static boolean isFastDoubleClick() {
@@ -115,23 +117,22 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.attendButton:
-                AttendNumberstu=editText.getText().toString().trim();//签到
-                Log.d("1", AttendNumberstu);
-                if (AttendNumberstu.equals("")){
+                attendNumberStu=editText.getText().toString().trim();//签到
+                if (attendNumberStu.equals("")){
                     Toast.makeText(mContext,"签到码为空",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    signdatastu(AttendNumberstu);
+                    signdatastu(attendNumberStu);
                 }
                 break;
-            case R.id.attendButtontea:
+            case R.id.attendButtonTea:
                 if (!isFastDoubleClick()) {
-                    attendnumtea = (int) (100000 + Math.random() * (999999 - 100000 + 1));
+                    attendNumTea = (int) (100000 + Math.random() * (999999 - 100000 + 1));
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             Message message = new Message();
-                            message.what = attendButtontea;
+                            message.what = attendButtonTea;
                             handler.sendMessage(message);
                         }
                     }).start();
@@ -142,13 +143,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 break;
         }
     }
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.what==attendButtontea){
-
-                text.setText("签到码为"+attendnumtea);
+            if (msg.what==attendButtonTea){
+                text.setText("签到码为"+attendNumTea);
             }
         }
     };
@@ -176,8 +177,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                attendclassnum=classnum[position];
-                Toast.makeText(mContext, "选择了班级号" + classnum[position], Toast.LENGTH_SHORT).show();
+                attendClassNum=classnum[position];
             }
 
             @Override
@@ -223,7 +223,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
         SplashActivity.userBean.getSno();//学号
         SplashActivity.userBean.getClassmate();//班级
-        AttendTime= getLocalDatetimeString("GMT+8");//时间
-        Log.d("2",AttendTime);
+        attendTime= getLocalDatetimeString("GMT+8");//时间
+        Log.d("2",attendTime);
     }
 }
