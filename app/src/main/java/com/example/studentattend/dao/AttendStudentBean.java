@@ -1,7 +1,5 @@
 package com.example.studentattend.dao;
 
-import java.util.Date;
-
 public class AttendStudentBean {
 
     private String time;

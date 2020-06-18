@@ -2,7 +2,6 @@ package com.example.studentattend.service;
 
 import android.util.Log;
 
-import com.example.studentattend.dao.BaseBean;
 import com.example.studentattend.dao.TeacherRecordBean;
 import com.google.gson.Gson;
 

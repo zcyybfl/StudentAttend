@@ -62,7 +62,7 @@ public class HomeAppAdapter extends RecyclerView.Adapter<HomeAppAdapter.ViewHold
                 int position = holder.getAdapterPosition();
                 switch (position) {
                     case 0:
-                        html("https://www.baidu.com/");
+                        html("http://www.baidu.com/");
                         break;
                     case 1:
                         html("http://fanyi.youdao.com/");
