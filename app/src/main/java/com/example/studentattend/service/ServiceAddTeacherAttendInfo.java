@@ -11,7 +11,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ServiceAddTeacherAttendInfo extends Thread{
+public class ServiceAddTeacherAttendInfo extends Thread {
     private String url;
     private String sno;
     private String time;
