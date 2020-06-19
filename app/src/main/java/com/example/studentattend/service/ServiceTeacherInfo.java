@@ -37,7 +37,7 @@ public class ServiceTeacherInfo extends Thread{
 
     public TeacherRecordBean show(){
         while (true){
-            Log.d("ServiceLogin", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServiceTeacherInfo", "responseDate is " + responseDate);
             if (responseDate != null){
                 teacherRecordBean = gson.fromJson(responseDate,TeacherRecordBean.class);
                 responseDate = null;

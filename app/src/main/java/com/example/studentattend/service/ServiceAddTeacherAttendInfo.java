@@ -56,10 +56,9 @@ public class ServiceAddTeacherAttendInfo extends Thread {
 
     public BaseBean show(){
         while (true){
-            Log.d("ServiceModify", "responseDate is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServiceAddTeacherAttendInfo", "responseDate is " + responseDate);
             if (responseDate != null){
                 baseBean = gson.fromJson(responseDate,BaseBean.class);
-                Log.d("111111111111111111111", "show: ---------------" + baseBean.getMsg());
                 responseDate = null;
                 return baseBean;
             }

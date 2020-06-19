@@ -21,7 +21,6 @@ public class ServiceAttendStudent extends Thread{
     public String url;
     public static String responseDate = null;
     public Gson gson = new Gson();
-    StudentRecordBean studentRecordBean;
 
     public void init(String student_id, String teacher_id){
         url = "http://zltzlt.cn:8080/studentAttend/Student_Attend_details";
@@ -45,7 +44,7 @@ public class ServiceAttendStudent extends Thread{
     public List<AttendStudentBean> show(){
         JsonParser jsonParser = new JsonParser();
         while (true){
-            Log.d("ServiceLogin", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServiceAttendStudent", "responseDate is " + responseDate);
             if (responseDate != null){
                 JsonArray jsonElements = jsonParser.parse(responseDate).getAsJsonArray();
                 List<AttendStudentBean> list = new ArrayList<>();
@@ -53,6 +52,7 @@ public class ServiceAttendStudent extends Thread{
                     AttendStudentBean attendStudentBean = gson.fromJson(beans,AttendStudentBean.class);
                     list.add(attendStudentBean);
                 }
+                responseDate = null;
                 return list;
             }
         }

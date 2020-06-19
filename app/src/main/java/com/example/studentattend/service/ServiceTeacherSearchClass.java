@@ -44,7 +44,7 @@ public class ServiceTeacherSearchClass extends Thread{
     public List<ClassCourseInquireBean> show(){
         JsonParser jsonParser = new JsonParser();
         while (true){
-            Log.d("ServiceLogin", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServiceTeacherSearchClass", "responseDate is " + responseDate);
             if (responseDate != null){
                 JsonArray jsonElements = jsonParser.parse(responseDate).getAsJsonArray();
                 List<ClassCourseInquireBean> list = new ArrayList<>();

@@ -46,7 +46,7 @@ public class ServiceAttendRecordStudent extends Thread{
     public List<StudentRecordBean> show(){
         JsonParser jsonParser = new JsonParser();
         while (true){
-            Log.d("ServiceLogin", "request is " + responseDate);//不加会导致输错账户和密码后登不上去，暂时不知怎么解决
+            Log.d("ServiceAttendRecordStudent", "responseDate is " + responseDate);
             if (responseDate != null){
                 JsonArray jsonElements = jsonParser.parse(responseDate).getAsJsonArray();
                 List<StudentRecordBean> list = new ArrayList<>();
@@ -54,6 +54,7 @@ public class ServiceAttendRecordStudent extends Thread{
                     StudentRecordBean studentRecordBean1 = gson.fromJson(beans,StudentRecordBean.class);
                     list.add(studentRecordBean1);
                 }
+                responseDate = null;
                 return list;
             }
         }
