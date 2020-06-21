@@ -36,6 +36,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     Bundle bundle=new Bundle();
     public static UserBean userBean;
     private ImageView splashImage;
+    //判断服务端有无此账号
+    private boolean judge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             serviceLogin.init(UserManage.userInfo.getUserName(),UserManage.userInfo.getPassword(),UserManage.userInfo.getType());
             serviceLogin.start();
             baseBean = serviceLogin.show();
+            if (baseBean.getMsg().equals("登录失败")) {
+                judge = false;
+                UserManage.getInstance().clear(SplashActivity.this);
+            } else {
+                judge = true;
+            }
             String json = gson.toJson(baseBean.getData());
             userBean = gson.fromJson(json, UserBean.class);
         }
@@ -62,7 +70,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void run() {
                 //从闪屏界面跳转到首界面
-                if (flag) {
+                if (flag && judge) {
                     Intent intent = new Intent(SplashActivity.this,MainActivity.class);
                     if (UserManage.userInfo.getType().equals("student")) {
                         bundle.putBoolean("student_teacher", true);
@@ -118,7 +126,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.textView) {//从闪屏界面跳转到首界面
-            if (flag) {
+            if (flag && judge) {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 if (UserManage.userInfo.getType().equals("student")) {
                     bundle.putBoolean("student_teacher", true);
