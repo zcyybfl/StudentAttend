@@ -16,8 +16,8 @@ public class ServiceAdminAddCurseInfo extends Thread{
     public Gson gson = new Gson();
 
     public void init(String sno,String courseNameOrId,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/ServiceAddCourse";
-        path = url + "?sno=" + sno + "&courseNameOrId=" + courseNameOrId + "&flag=" + flag;
+        url = "http://hsjnb.com:8889/admin/addCourse";
+        path = url + "?courseId=" + sno + "&courseName=" + courseNameOrId + "&flag=" + flag;
     }
 
     @Override

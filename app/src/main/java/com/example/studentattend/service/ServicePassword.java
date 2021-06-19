@@ -18,7 +18,11 @@ public class ServicePassword extends Thread {
     BaseBean baseBean = null;
 
     public void init(String username,String phone,String email,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/Retrieve";
+        if (flag.equals("student")){
+            url = "http://hsjnb.com:8889/student/retrieve";
+        }else {
+            url = "http://hsjnb.com:8889/teacher/retrieve";
+        }
         path = url + "?sno=" + username + "&phone=" + phone + "&email=" + email +"&flag=" + flag;
     }
 

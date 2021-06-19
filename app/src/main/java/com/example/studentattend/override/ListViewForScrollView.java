@@ -21,7 +21,7 @@ public class ListViewForScrollView extends ListView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, // 设计一个较大的值和AT_MOST模式
-                MeasureSpec.AT_MOST);
+                MeasureSpec.AT_MOST);//
         super.onMeasure(widthMeasureSpec, newHeightMeasureSpec);//再调用原方法测量
     }
 }

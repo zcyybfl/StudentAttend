@@ -24,7 +24,11 @@ public class ServiceModify extends Thread{
     BaseBean baseBean = null;
 
     public void init(String sno,String item,String content,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/Modify";
+        if (flag.equals("student")){
+            url = "http://hsjnb.com:8889/student/modify";
+        }else {
+            url = "http://hsjnb.com:8889/teacher/modify";
+        }
         this.sno = sno;
         this.item = item;
         this.content = content;

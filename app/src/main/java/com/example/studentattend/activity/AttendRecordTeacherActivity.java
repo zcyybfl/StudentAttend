@@ -102,7 +102,7 @@ public class AttendRecordTeacherActivity extends AppCompatActivity implements Vi
             super.handleMessage(msg);
             if (msg.what == CHOICE) {
                 final EditText editText = new EditText(AttendRecordTeacherActivity.this);
-                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                editText.setInputType(InputType.TYPE_CLASS_TEXT);
                 new AlertDialog.Builder(AttendRecordTeacherActivity.this)
                         .setTitle("请输入班级号")
                         .setIcon(R.mipmap.app_icon)

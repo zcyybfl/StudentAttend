@@ -22,7 +22,7 @@ public class ServiceAdminDeleteCourseInfo extends Thread{
     BaseBean baseBean = null;
 
     public void init(String sno,String teacherId,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/ServiceDeleteCourse";
+        url = "http://hsjnb.com:8889/admin/deleteCourse";
         this.sno = sno;
         this.teacherId = teacherId;
         this.flag = flag;

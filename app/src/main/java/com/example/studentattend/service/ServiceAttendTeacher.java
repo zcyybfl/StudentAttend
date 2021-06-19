@@ -23,8 +23,8 @@ public class ServiceAttendTeacher extends Thread{
     public Gson gson = new Gson();
 
     public void init(String sno,String time){
-        url = "http://zltzlt.cn:8080/studentAttend/Teacher_Class_Attend_one";
-        path = url + "?sno=" + sno + "&time=" + time;
+        url = "http://hsjnb.com:8889/teacher/searchAttendDetail";
+        path = url + "?sno=" + sno + "&date=" + time;
     }
 
     @Override

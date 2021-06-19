@@ -24,7 +24,7 @@ public class ServiceAddTeacherAttendInfo extends Thread {
     BaseBean baseBean = null;
 
     public void init(String sno,String time,String classId,String attendId,String attendCode){
-        url = "http://zltzlt.cn:8080/studentAttend/AddTeacherAttendInfo";
+        url = "http://hsjnb.com:8889/teacher/addAttend";
         this.sno = sno;
         this.time = time;
         this.classId = classId;

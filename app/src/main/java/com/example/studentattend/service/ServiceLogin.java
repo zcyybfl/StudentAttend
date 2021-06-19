@@ -18,8 +18,16 @@ public class ServiceLogin extends Thread{
     BaseBean baseBean = null;
 
     public void init(String username,String password,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/Login";
-        path = url + "?sno=" + username + "&password=" + password + "&flag=" + flag;
+        if (flag.equals("student")){
+            url = "http://hsjnb.com:8889/student/login";
+        }else {
+            url = "http://hsjnb.com:8889/teacher/login";
+        }
+
+
+//        path = url + "?sno=" + username + "&password=" + password + "&flag=" + flag;
+        path = url + "?sno=" + username + "&password=" + password;
+        System.out.println(path);
     }
 
     @Override
@@ -40,7 +48,7 @@ public class ServiceLogin extends Thread{
         while (true){
             Log.d("ServiceLogin", "responseDate is " + responseDate);
             if (responseDate != null){
-                baseBean = gson.fromJson(responseDate,BaseBean.class);
+                baseBean = gson .fromJson(responseDate,BaseBean.class);
                 responseDate = null;
                 return baseBean;
             }

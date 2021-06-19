@@ -57,7 +57,7 @@ public class AttendStudentActivity extends AppCompatActivity implements View.OnC
         teacherName = findViewById(R.id.teacher_name_text);
         teacherId = findViewById(R.id.teacher_id_text);
         recordReturnStudent.setOnClickListener(this);
-    }
+    }//
 
     private void initAttend() {
         ServiceAttendStudent serviceAttendStudent = new ServiceAttendStudent();

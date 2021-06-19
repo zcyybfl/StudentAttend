@@ -24,8 +24,12 @@ public class ServiceRegister extends Thread{
     BaseBean baseBean = null;
 
     public void init(String sno,String password,String name,String sex,String classmate,String phone,String department,String email,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/Register?";
-        sb.append("sno=").append(sno);
+        if (flag.equals("student")){
+            url = "http://hsjnb.com:8889/student/register";
+        }else {
+            url = "http://hsjnb.com:8889/teacher/register";
+        }
+        /*sb.append("sno=").append(sno);
         if (flag.equals("student")){
             sb.append("&class=").append(classmate);
         }
@@ -35,7 +39,17 @@ public class ServiceRegister extends Thread{
         sb.append("&department=").append(department);
         sb.append("&phone=").append(phone);
         sb.append("&email=").append(email);
-        sb.append("&flag=").append(flag);
+        sb.append("&flag=").append(flag);*/
+        sb.append("sno=").append(sno);
+        if (flag.equals("student")){
+            sb.append("&classmate=").append(classmate);
+        }
+        sb.append("&password=").append(password);
+        sb.append("&name=").append(name);
+        sb.append("&sex=").append(sex);
+        sb.append("&department=").append(department);
+        sb.append("&phone=").append(phone);
+        sb.append("&email=").append(email);
     }
 
     @Override

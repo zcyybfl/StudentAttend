@@ -23,7 +23,7 @@ public class ServiceTeacherSearchClass extends Thread{
     public Gson gson = new Gson();
 
     public void init(String sno){
-        url = "http://zltzlt.cn:8080/studentAttend/TeacherSearchClass";
+        url = "http://hsjnb.com:8889/teacher/searchClassmate";
         path = url + "?sno=" + sno ;
     }
 

@@ -22,7 +22,7 @@ public class ServiceStudentModifyAttendInfo extends Thread{
     BaseBean baseBean = null;
 
     public void init(String sno,String classId,String attendCode){
-        url = "http://zltzlt.cn:8080/studentAttend/StudentModifyAttendInfo";
+        url = "http://hsjnb.com:8889/student/modifyAttend";
         this.sno = sno;
         this.classId = classId;
         this.attendCode = attendCode;

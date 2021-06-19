@@ -24,8 +24,9 @@ public class ServiceAdminSearchCourseInfo extends Thread{
     public Gson gson = new Gson();
 
     public void init(String sno,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/AdminSearchCourseInfo";
+        url = "http://hsjnb.com:8889/admin/searchCourses";
         path = url + "?sno=" + sno + "&flag=" + flag;
+        System.out.println(path);
     }
 
     @Override

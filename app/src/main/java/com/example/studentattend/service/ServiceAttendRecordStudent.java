@@ -25,7 +25,7 @@ public class ServiceAttendRecordStudent extends Thread{
     StudentRecordBean studentRecordBean;
 
     public void init(String sno){
-        url = "http://zltzlt.cn:8080/studentAttend/Student_Attend_all";
+        url = "http://hsjnb.com:8889/student/searchAttendAll";
         path = url + "?sno=" + sno;
     }
 

@@ -17,7 +17,7 @@ public class ServiceTeacherInfo extends Thread{
     TeacherRecordBean teacherRecordBean;
 
     public void init(String sno){
-        url = "http://zltzlt.cn:8080/studentAttend/Teacher_attend_info";
+        url = "http://hsjnb.com:8889/teacher/searchCourse";
         path = url + "?sno=" + sno;
     }
 

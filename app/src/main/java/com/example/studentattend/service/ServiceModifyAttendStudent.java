@@ -21,9 +21,9 @@ public class ServiceModifyAttendStudent extends Thread{
     StringBuffer sb = new StringBuffer();
 
     public void init(String sno,String attend_id,String status){
-        url = "http://zltzlt.cn:8080/studentAttend/Modify_Student_Attend?";
+        url = "http://hsjnb.com:8889/teacher/modifyAttend";
         sb.append("sno=").append(sno);
-        sb.append("&attend_id=").append(attend_id);
+        sb.append("&attendId=").append(attend_id);
         sb.append("&status=").append(status);
 
     }

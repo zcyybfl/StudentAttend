@@ -22,7 +22,7 @@ public class ServiceAdminSearchStudentOrTeacherInfo extends Thread{
     public Gson gson = new Gson();
 
     public void init(String sno,String flag){
-        url = "http://zltzlt.cn:8080/studentAttend/AdminSearchStudentOrTeacherInfo";
+        url = "http://hsjnb.com:8889/admin/searchUser";
         path = url + "?sno=" + sno + "&flag=" + flag;
     }
 

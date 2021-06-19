@@ -92,7 +92,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private void initImage() {
         Glide
                 .with(this)
-                .load(Uri.parse("http://hsjnb.com/AttendStudent/splash.png"))
+                .load(Uri.parse("http://hsjnb.com:8081/AttendStudent/splash.png"))
                 .into(splashImage);
     }
 
